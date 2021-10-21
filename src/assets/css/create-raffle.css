@@ -1,0 +1,145 @@
+.create-raffle-img-container {
+  height: 70vh;
+  width: 60vh;
+  margin: 1rem auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: 0.15s ease-out;
+}
+
+.create-raffle-img-container.first-step-img {
+  background-image: url(../img/create-raffle01.png);
+}
+.create-raffle-img-container.second-step-img {
+  background-image: url(../img/create-raffle02.png);
+}
+
+.create-raffle-substep {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.3);
+  position: relative;
+  padding-left: 25px;
+}
+.create-raffle-substep:not(:first-child) {
+  margin-top: 18px;
+}
+
+.create-raffle-substep::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  left: 0;
+  top: calc(50% - 6px);
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  border-radius: 50%;
+}
+
+.create-raffle-substep.active-substep,
+.create-raffle-substep.done-substep {
+  color: var(--primary);
+  font-size: 22px;
+}
+.create-raffle-substep.active-substep::before {
+  background-color: var(--orange2);
+}
+.create-raffle-substep.done-substep::before {
+  background-color: var(--primary);
+}
+
+.create-raffle-input {
+  width: 80%;
+}
+
+.upload-image {
+  visibility: hidden;
+  padding: 10px;
+}
+
+.upload-image::before {
+  font-family: "icomoon" !important;
+  visibility: visible;
+
+  content: "\e901";
+  font-size: 30px;
+  padding: 15px;
+  margin: 10px auto;
+  color: #a4a4a4;
+  border: 1px solid #a4a4a4;
+  box-sizing: border-box;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.form-control.raffle-description-input {
+  border-radius: 8px !important;
+}
+
+.estimation,
+.raffle-sharing {
+  font-size: 24px;
+  line-height: 36px;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 10px;
+}
+
+.substep-number {
+  color: var(--orange2);
+}
+/* Styling for Responsive Layout */
+
+@media (max-width: 991px) {
+  .create-raffle-img-container {
+    height: 90vw !important;
+    width: 90vw !important;
+    max-width: 450px;
+    max-height: 400px;
+  }
+  .create-raffle-input {
+    width: 90% !important;
+    margin: 0 auto;
+  }
+  .create-raffle-img-container {
+    max-width: 70vw;
+  }
+
+  .upload-image::before {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
+
+body.night-mode .first-step-img {
+  background-image: url(../img/create-raffle01-dark.png);
+}
+body.night-mode .second-step-img {
+  background-image: url(../img/create-raffle02-dark.png);
+}
+
+body.night-mode .create-raffle-substep {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+body.night-mode .create-raffle-substep::before {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+body.night-mode .create-raffle-substep.done-substep::before {
+  background-color: white !important;
+}
+body.night-mode .create-raffle-substep.active-substep::before {
+  background-color: var(--orange2) !important;
+}
+
+body.night-mode .create-raffle-substep.active-substep,
+body.night-mode .create-raffle-substep.done-substep {
+  color: var(--primary);
+  font-size: 22px;
+}
+
+body.night-mode .estimation,
+body.night-mode .raffle-sharing {
+  color: rgba(255, 255, 255, 0.5);
+}

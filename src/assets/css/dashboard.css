@@ -1,0 +1,111 @@
+.dashboard-title {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 42px;
+}
+
+.card-title-box {
+  min-height: 45px;
+}
+
+.dashboard-card-title {
+  font-weight: 500;
+  font-size: 1.25rem !important;
+  line-height: 28px;
+}
+
+.dashboard-card-text {
+  font-size: 14px;
+}
+
+.dashborad-faq-link {
+  color: var(--primary) !important;
+  font-size: 1.25rem;
+  margin-right: 1rem;
+  position: relative;
+}
+
+.dashborad-faq-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: var(--orange2);
+  bottom: 10px;
+  left: 0;
+  transition: width 0.3s;
+}
+
+#support-ticket {
+  margin-top: 100px !important;
+  margin-bottom: 200px !important;
+}
+
+.support-options-container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.support-ticket-textarea {
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.support-submit {
+  width: 263px;
+  height: 58px;
+  background: var(--orange2);
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+
+  color: #ffffff;
+}
+
+fieldset {
+  border: 1px solid var(--orange2);
+  padding: 12px;
+  border-radius: 12px;
+}
+
+legend {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  padding: 0 10px;
+  width: fit-content;
+  float: initial !important;
+}
+
+.your-successful-raffle::after {
+  content: "\e902";
+  font-family: "icomoon" !important;
+  font-size: 20px;
+  bottom: 10px;
+  left: 50%;
+  color: #398a3c;
+
+  position: absolute;
+}
+
+@media (max-width: 991px) {
+  .support-options-container {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .support-submit {
+    width: 152px;
+    height: 40px;
+  }
+
+  .card-title-box {
+    min-height: 65px;
+  }
+}
+
+body.night-mode .support-ticket-textarea {
+  background-color: transparent !important;
+  color: white !important;
+}

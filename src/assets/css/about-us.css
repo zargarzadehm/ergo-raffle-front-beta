@@ -1,0 +1,91 @@
+#about-us {
+  margin-top: 280px !important;
+}
+
+.about-us-title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.about-us-container,
+.contact-form-container {
+  border: 2px solid var(--orange2);
+  border-radius: 16px;
+}
+
+.about-us-img {
+  border-radius: 16px;
+}
+
+.about-us-text {
+  font-size: 19px;
+  line-height: 36px;
+}
+
+#contact-us {
+  margin-top: 100px !important;
+}
+
+.contact-us-container {
+  padding: 0 !important;
+}
+
+.contact-form-container {
+  padding: 24px !important;
+}
+
+.about-form-subtitle {
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
+  margin-bottom: 24px !important;
+}
+
+.about-email-form {
+  width: 50% !important;
+}
+
+.contact-us-btn {
+  background-color: var(--orange2);
+  width: 263px;
+  height: 58px;
+  color: white !important;
+  margin-top: 24px;
+
+  background: #ff4c29;
+  border-radius: 8px;
+}
+
+@media (max-width: 991px) {
+  #about-us {
+    margin-top: 100px !important;
+  }
+
+  .container {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+  }
+  .row {
+    margin: 0 !important;
+  }
+  .about-us-container {
+    padding: 20px !important;
+  }
+  .col-lg-7 {
+    margin-top: 40px !important;
+  }
+
+  .about-email-form {
+    width: 100% !important;
+  }
+
+  .contact-us-btn {
+    width: 152px !important;
+    height: 40px !important;
+  }
+}
+
+body.night-mode .form-control {
+  background-color: transparent !important;
+}

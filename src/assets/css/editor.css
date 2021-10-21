@@ -1,0 +1,62 @@
+.editor__editable,
+/* Classic build. */
+main .ck-editor[role='application'] .ck.ck-content,
+/* Decoupled document build. */
+.ck.editor__editable[role='textbox'],
+.ck.ck-editor__editable[role='textbox'],
+/* Inline & Balloon build. */
+.ck.editor[role='textbox'] {
+  min-height: 100px;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.editor__editable,
+/* Classic build. */
+main .ck-editor[role='application'] .ck.ck-content,
+/* Decoupled document build. */
+.ck.editor__editable[role='textbox'],
+.ck.ck-editor__editable[role='textbox'],
+/* Inline & Balloon build. */
+.ck.editor[role='textbox'] {
+  box-shadow: none;
+  border-color: var(--primary);
+}
+
+.ck.ck-toolbar {
+  background-color: var(--secondary) !important;
+}
+
+.ck.ck-toolbar.ck-toolbar_grouping {
+  border: none !important;
+}
+
+.editor-bordered-box {
+  border: 1px solid #a4a4a4;
+  box-sizing: border-box;
+  border-radius: 24px;
+  padding: 10px;
+  width: 80%;
+}
+
+@media (max-width: 991px) {
+  .editor-bordered-box {
+    width: 100%;
+  }
+}
+
+body.night-mode .ck.ck-icon {
+  color: white;
+}
+
+body.night-mode .ck.ck-editor__main > .ck-editor__editable {
+  background-color: transparent;
+}
+
+body.night-mode .ck.ck-button:not(.ck-disabled):hover,
+body.night-mode a.ck.ck-button:not(.ck-disabled):hover,
+body.night-mode .ck.ck-button.ck-on,
+body.night-mode a.ck.ck-button.ck-on {
+  background-color: var(--orange2);
+}
