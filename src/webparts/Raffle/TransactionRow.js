@@ -1,5 +1,5 @@
 const TransactionRow = ({ transaction, row }) => {
-    return (<>{transaction.type === 'Ticket' ?<div className="transaction-container my-5">
+    return (<>{transaction.type !== 'Winner' ?<div className="transaction-container my-5">
     <div className="row g-1 g-md-2 mb-2">
       <div className="col-1">
         <div

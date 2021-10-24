@@ -13,7 +13,7 @@ const Pagination = memo(({currentPage, totalPages, totalItems, PAGE_SIZE, prevPa
         <button className="page-link page-number">{currentPage} / {totalPages}</button>
       </li>
 
-      <li className={totalItems === PAGE_SIZE ? "page-item" : "page-item disabled"}>
+      <li className={currentPage !== totalPages ? "page-item" : "page-item disabled"}>
         <button className="page-link" onClick={nextPage}>
           <span className="icon-next-page next-page"></span>
         </button>

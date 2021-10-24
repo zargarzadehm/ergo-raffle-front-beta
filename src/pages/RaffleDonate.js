@@ -1,5 +1,5 @@
 
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, useContext } from "react";
 import { donateRaffle, getRaffleDonationStatus, getSingleRaffle, getYourActiveRaffleTickets } from "../service/raffle.service";
 import { useParams } from "react-router-dom";
 import { toast } from 'react-toastify';
@@ -20,6 +20,7 @@ import "../assets/css/donate.css";
 
 let intervallerItem = null;
 const RaffleDonate = ({history}) => {
+    const context = useContext(ThemeContext);
     const location = useLocation();
     const [isTermsAccepted, setIsTermsAccepted] = useState(true);
     const modalRef = useRef();
@@ -69,6 +70,8 @@ const RaffleDonate = ({history}) => {
       setActiveStep(newStep);
       setIsTermsAccepted(true);
       if(newStep === 1) {
+        window.localStorage.setItem('wallet', window.btoa(walletAddress))
+        context.setHasWallet(walletAddress);
         stepBarRef.current.style.width = "41%";
       } else if (newStep === 2) {
         stepBarRef.current.style.width = "83%";
@@ -90,8 +93,11 @@ const RaffleDonate = ({history}) => {
         stepBarRef.current.style.width = "0%";
       }
     }
-    const changeWalletAddress = () => {
+    const changeWalletAddress = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       setWalletAddress(raffleWalletAddressRef.current.value)
+      context.setHasWallet(raffleWalletAddressRef.current.value)
     }
     const ticketCountHandler = (count) => {
       setTicketCount(count);

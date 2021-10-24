@@ -8,7 +8,7 @@ export const getAllYourDonations = (address, offset, limit) => {
     return axios.get(config.baseUrl+`/wallet/${address}/donation?offset=${offset}&limit=${limit}`)
 }
 export const postRaffle = (raffleName, address, walletAddress, files, ergGoal, ticketPrice, ticketPercent, deadline, description, recaptcha) => {
-    return axios.post(config.baseUrl+`/raffle/`, {name: raffleName, charity: address, wallet: walletAddress, picture: files, goal: ergGoal, ticketPrice: ticketPrice, charityPercent: ticketPercent, deadline: deadline, description: description, recaptcha: recaptcha})
+    return axios.post(config.baseUrl+`/raffle`, {name: raffleName, charity: address, wallet: walletAddress, picture: files, goal: ergGoal, ticketPrice: ticketPrice, charityPercent: ticketPercent, deadline: deadline, description: description, recaptcha: recaptcha})
 }
 export const getAllYourRafflesYouWin = (address, offset, limit) => {
     return axios.get(config.baseUrl+`/wallet/${address}/win?limit=${limit}&offset=${offset}`)

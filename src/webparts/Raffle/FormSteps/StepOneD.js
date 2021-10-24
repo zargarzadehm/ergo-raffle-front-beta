@@ -1,7 +1,7 @@
 import { memo, useState } from "react";
 
 const StepOneD = memo(({formFeedback, defaultValue})=>{
-    const [address, setAddress] = useState(defaultValue)
+    const [address, setAddress] = useState(defaultValue);
     const handleChange = (e) => {
       const {value} = e.target;
       setAddress(value);

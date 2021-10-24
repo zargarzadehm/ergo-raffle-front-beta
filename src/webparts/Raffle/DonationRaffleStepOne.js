@@ -1,7 +1,10 @@
 import { memo } from "react";
+import ThemeContext from "../../context";
 
 const DonationRaffleStepOne = memo(({toggleNextStep, raffleWalletAddressRef, walletAddress, changeWalletAddress})=>{
-    return (<>
+    return (<ThemeContext.Consumer>
+      {({hasWallet})=>(
+      <>
     <div className={ "step-content step-1 text-center"}>
     <h3 className="step-title">What is your wallet address?</h3>
     <form className={'my-5'}>
@@ -9,7 +12,7 @@ const DonationRaffleStepOne = memo(({toggleNextStep, raffleWalletAddressRef, wal
         <input
           ref={raffleWalletAddressRef}
           type="text"
-          value={walletAddress}
+          value={hasWallet}
           className="form-control"
           id="floatingInput"
           placeholder="Wallet Address"
@@ -28,8 +31,8 @@ const DonationRaffleStepOne = memo(({toggleNextStep, raffleWalletAddressRef, wal
       </div>
     </div>
   </div> 
-  </>
-  );
+  </>)}
+  </ThemeContext.Consumer>);
 });
 
 export default DonationRaffleStepOne;

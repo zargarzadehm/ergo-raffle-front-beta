@@ -1,13 +1,16 @@
-import { memo, useState } from "react";
+import { memo, useContext } from "react";
+import ThemeContext from "../../../context";
 
-const StepOneE = memo(({formFeedback, defaultValue})=>{
-    const [ walletAddress, setWalletAddress ] = useState(defaultValue);
+const StepOneE = memo(({formFeedback})=>{
+    const context = useContext(ThemeContext);
     const handleChange = (e) => {
       const { value } = e.target;
-      setWalletAddress(value);
       formFeedback(value);
+      context.setHasWallet(value);
     }
-    return (<div className="first-step step-1-e">
+    return (<ThemeContext>
+      {({hasWallet})=>(
+    <div className="first-step step-1-e">
     <div className="step-content text-center text-lg-start">
       <h3 className="step-title mb-4">
         Please write the address of your wallet
@@ -21,7 +24,7 @@ const StepOneE = memo(({formFeedback, defaultValue})=>{
           "
         >
           <input
-            value={walletAddress}
+            value={hasWallet}
             type="text"
             className="form-control"
             id="floatingInput"
@@ -33,7 +36,9 @@ const StepOneE = memo(({formFeedback, defaultValue})=>{
         </div>
       </form>
     </div>
-  </div>)
+  </div>
+  )}
+  </ThemeContext>)
 });
 
 export default StepOneE;

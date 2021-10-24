@@ -26,10 +26,9 @@ const RaffleSuccessFul = ({history}) => {
     const getTransactions = useCallback(()=>{
       getRaffleTransactions(id,0, staticText.PAGE_SIZE).then(
         ({data})=> {
-          
           const items = data.items;
           setWinnerRaffleTransactions([...items].filter((a)=> a.type === 'Winner'));
-          setTicketRaffleTransactions([...items].filter((a)=> a.type === 'Ticket'));
+          setTicketRaffleTransactions([...items].filter((a)=> a.type !== 'Winner'));
           setTotalTransactionPages(isNaN(Math.ceil(data.total/staticText.PAGE_SIZE)) ? 1 : Math.ceil(data.total/staticText.PAGE_SIZE));
           setTotal(typeof data.total === 'undefined' ? 0 : data.total);
         }
@@ -54,19 +53,19 @@ const RaffleSuccessFul = ({history}) => {
         ({data})=> {
           const items = data.items;
           setWinnerRaffleTransactions([...items].filter((a)=> a.type === 'Winner'));
-          setTicketRaffleTransactions([...items].filter((a)=> a.type === 'Ticket'));
+          setTicketRaffleTransactions([...items].filter((a)=> a.type !== 'Winner'));
         }
       )
     }
     const prevPage = () => {
       const newPage = page-1;
-      setPage(newPage);
       titleRef.current.scrollIntoView();
+      setPage(newPage);
       getRaffleTransactions(id,(newPage-1)*staticText.PAGE_SIZE,staticText.PAGE_SIZE).then(
         ({data})=> {
           const items = data.items;
           setWinnerRaffleTransactions([...items].filter((a)=> a.type === 'Winner'));
-          setTicketRaffleTransactions([...items].filter((a)=> a.type === 'Ticket'));
+          setTicketRaffleTransactions([...items].filter((a)=> a.type !== 'Winner'));
         }
       )
     }
@@ -113,11 +112,11 @@ const RaffleSuccessFul = ({history}) => {
           {Array.isArray(ticketRaffleTransactions) && ticketRaffleTransactions.length > 0 ? "Details of transactions" : null}
         </h2>
         <div className="winner-box mb-5"> 
-          {(Array.isArray(winnerRaffleTransactions) ? winnerRaffleTransactions : []).map((item,key)=>(<WinnerTransactionRow key={item.id} transaction={item} />))}
+          {(Array.isArray(winnerRaffleTransactions) ? winnerRaffleTransactions : []).map((item,key)=>(<WinnerTransactionRow key={key+Math.random()+'-items'} transaction={item} />))}
         </div>
       </div>
       <div className="container all-transactions">
-        {(Array.isArray(ticketRaffleTransactions) ? ticketRaffleTransactions : []).map((item,key)=>(<TransactionRow key={item.id} transaction={item} row={key+1} />))}
+        {(Array.isArray(ticketRaffleTransactions) ? [...ticketRaffleTransactions] : []).map((item,key)=>(<TransactionRow key={key+Math.random()+'-items'} transaction={item} row={key+1} />))}
       </div>
     </section>
     <section id="pagination" className="p-5">

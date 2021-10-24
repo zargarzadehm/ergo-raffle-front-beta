@@ -3,7 +3,7 @@ import "../assets/css/donate.css";
 import "../assets/css/timer.css";
 import "../assets/css/editor.css";
 import "../assets/css/create-raffle.css";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Title from "../components/Title";
 import { toast } from 'react-toastify';
 import ThemeContext from "../context";
@@ -19,6 +19,7 @@ import CreateRaffleStepThree from "../webparts/Raffle/CreateRaffleStepThree";
 let intervallerItem = null;
 const CreateRaffle = () => {
     const location = useLocation();
+    const context = useContext(ThemeContext);
     const modalRef = useRef();
     const stepBarRef = useRef();
     const [ activeStep, setActiveStep ] = useState(1);
@@ -26,7 +27,7 @@ const CreateRaffle = () => {
     const [activeStepsTotal] = useState([5,4,1]);
     const [ raffleName, setRaffleName ] = useState('');
     const [ address, setAddress ] = useState('');
-    const [ walletAddress, setWalletAddress ] = useState(window.localStorage.getItem('wallet') !== null ? window.atob(window.localStorage.getItem('wallet')) : '');
+    const [ walletAddress, setWalletAddress ] = useState((window.localStorage.getItem('wallet') !== null) ? window.atob(window.localStorage.getItem('wallet')) : '');
     const [ files, setFiles ] = useState([]);
     const [ ergGoal, setErgGoal ] = useState('');
     const [ ticketPrice, setTicketPrice ] = useState('0.25');
@@ -62,11 +63,7 @@ const CreateRaffle = () => {
           setIsActive(false)
         }
       } else if(newStep === 2) {
-        if(files.length > 0) {
           setIsActive(true);
-        } else {
-          setIsActive(false)
-        }
       } else if(newStep === 3) {
         if(description.length > 0) {
           setIsActive(true);
@@ -86,6 +83,8 @@ const CreateRaffle = () => {
           setIsActive(false)
         }
       } else if(newStep === 6) {
+        window.localStorage.setItem('wallet', window.btoa(walletAddress))
+        context.setHasWallet(walletAddress);
         if(ergGoal.length > 0) {
           setIsActive(true);
         } else {
@@ -168,11 +167,7 @@ const CreateRaffle = () => {
         }
         setRaffleName(value);
       } else if(activeStep === 2) {
-        if(value.length === 0) {
-          setIsActive(false);
-        } else {
-          setIsActive(true);
-        }
+        setIsActive(true);
         setFiles(value);
       } else if(activeStep === 3) {
         if(value.length === 0) {
