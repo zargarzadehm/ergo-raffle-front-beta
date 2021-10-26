@@ -100,7 +100,7 @@ const Header = forwardRef((props,headerRef) => {
                     data-bs-toggle="modal"
                     data-bs-target="#walletModal"
                   >
-                    Set Wallet
+                    {!hasWallet ? 'Set Wallet' : <span className={'smaller-wallet-set'}>Wallet : {hasWallet}</span>}
                   </button>
                 </div>
               </div>

@@ -80,53 +80,6 @@ body.night-mode .next-page {
   color: var(--secondary);
 }
 
-.raffle-success .raffle-img-container {
-  position: relative;
-}
-.raffle-success .raffle-img-container img {
-  filter: brightness(40%);
-}
-
-.raffle-success .raffle-img-container::after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  bottom: -27px;
-  left: -27px;
-  border-radius: 16px;
-  background-image: url("../img/successful.png");
-  background-size: 60%;
-  background-repeat: no-repeat;
-  background-position: left bottom;
-}
-.dashboard-donated {
-  margin-top: 4.5rem !important;
-}
-.raffle-card-link {
-  height: 100%;
-}
-.raffle-unsuccess .raffle-img-container {
-  position: relative;
-}
-.raffle-unsuccess .raffle-img-container img {
-  filter: brightness(50%);
-}
-
-.raffle-unsuccess .raffle-img-container::after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  bottom: -27px;
-  left: -27px;
-
-  border-radius: 16px;
-  background-image: url("../img/unsuccessful.png");
-  background-size: 60%;
-  background-repeat: no-repeat;
-  background-position: left bottom;
-}
 
 .page-link {
   border: none !important;

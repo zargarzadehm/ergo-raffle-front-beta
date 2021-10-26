@@ -11,13 +11,13 @@ const AskForDonationBox = memo(({raffle}) => {
           <span className="collected-erg">{((raffle.ticket && raffle.ticket.erg)||0)/1000000000}</span> ERG have been collected
           so far!
           <br className="d-lg-none" />
-          <span className="total-erg"> {(((raffle.goal)||0)/1000000000) - (((raffle.ticket && raffle.ticket.erg)||0)/1000000000)} </span>
+          <span className="total-erg"> {(((raffle.goal)||0)/1000000000) - (((raffle.ticket && raffle.ticket.erg)||0)/1000000000) < 0 ? 0 : (((raffle.goal)||0)/1000000000) - (((raffle.ticket && raffle.ticket.erg)||0)/1000000000)} </span>
           ERG remaining!
         </p>
       </div>
     </div>
     <h3 className="help-request mt-5">
-      Why not help this raffle fund {(((raffle.goal)||0)/1000000000) - (((raffle.ticket && raffle.ticket.erg)||0)/1000000000)} more ERG now!
+      {(((((raffle.goal)||0)/1000000000) - (((raffle.ticket && raffle.ticket.erg)||0)/1000000000))) > 0 ? ("Why not help this raffle fund " + ((((raffle.goal)||0)/1000000000) - (((raffle.ticket && raffle.ticket.erg)||0)/1000000000) < 0 ? 0 : (((raffle.goal)||0)/1000000000) - (((raffle.ticket && raffle.ticket.erg)||0)/1000000000)) + " more ERG now!") : null}
     </h3>
   </div>)
 })

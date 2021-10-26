@@ -67,11 +67,10 @@ const StepTwoB = memo(({formFeedback, defaultValue}) => {
                 create-raffle-input
                 raffle-donation-input
                 mt-4
-              "
-            >
+              ">
               <input
                 value={ticketPrice}
-                type="text"
+                type="number"
                 className="form-control"
                 id="ticket-price"
                 placeholder="Custom Price"

@@ -9,8 +9,8 @@ const DashboardRaffleWinner = ({yourRaffle})=>{
       <div id="all-your-raffles" className="row g-4">
           
       {(Array.isArray(yourRaffle) ? yourRaffle : []).map((item,key)=>(
-        <div className="col-6 col-lg-3" key={key+6000+'-elem'}>
-          <Raffle img={item} />
+        <div className="col-6 col-lg-3" key={key+Math.random()+6000+'-elem'}>
+          <Raffle raffle={item} />
         </div>
       ))}
       </div>

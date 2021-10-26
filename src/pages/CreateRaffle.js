@@ -156,7 +156,10 @@ const CreateRaffle = () => {
               )
             }, 1000);
           }
-      )
+      ).catch((e) => {
+        setIsTermsAccepted(false);
+        notify(e.response.data.message);
+      })
     }
     const handleSteps = (value) => {
       if(activeStep === 1) {

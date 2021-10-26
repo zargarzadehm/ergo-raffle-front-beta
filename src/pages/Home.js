@@ -82,7 +82,7 @@ const Home = () => {
       <div className="container">
         <div className="row g-4">
             {inProgress ? <div className={'loading-wrapper'}>
-              <img src={loader} alt={'loading spinner'} /></div>:[...raffles].map((item)=>(<div key={item.name+'-raffle-card'} className="col-6 col-lg-4">
+              <img src={loader} alt={'loading spinner'} /></div>:[...raffles].map((item)=>(<div key={item.name+Math.random()+'-raffle-card'} className="col-6 col-lg-4">
                   <Raffle raffle={item} />
                   </div>))}
         </div>

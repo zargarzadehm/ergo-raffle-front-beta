@@ -2,9 +2,8 @@
 import hand from '../../assets/img/home-hand.png';
 import handDark from '../../assets/img/home-hand-dark.png';
 import ThemeContext, { DARK_THEME } from '../../context';
-import { lazy, memo } from 'react';
-
-const HomeLeftColumn = lazy(()=>import('./HomeLeftColumn'));
+import { memo } from 'react';
+import HomeLeftColumn from './HomeLeftColumn';
 
 const HomeHeader = memo(()=>{
     return (<ThemeContext.Consumer>

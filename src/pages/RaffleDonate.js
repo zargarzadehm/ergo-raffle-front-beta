@@ -25,7 +25,7 @@ const RaffleDonate = ({history}) => {
     const [isTermsAccepted, setIsTermsAccepted] = useState(true);
     const modalRef = useRef();
     const raffleWalletAddressRef = useRef();
-    const [ ticketCount, setTicketCount ] = useState('5.00');
+    const [ ticketCount, setTicketCount ] = useState(5);
     const params = useParams();
     const [recaptcha, setRecaptcha] = useState('');
     const [ raffleTransactions, setRaffleTransactions ] = useState([]);

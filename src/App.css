@@ -166,6 +166,13 @@ body.night-mode .site-logo {
   -o-transition: 0.2s ease;
   transition: 0.2s ease;
 }
+.smaller-wallet-set {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+  display: block;
+}
 .set-wallet:hover {
   color: var(--secondary);
 }

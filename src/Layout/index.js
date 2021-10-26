@@ -11,7 +11,7 @@ import Footer from '../webparts/Shared/Footer';
 import Header from '../webparts/Shared/Header';
 import SideBar from '../webparts/Shared/SideBar';
 import 'react-toastify/dist/ReactToastify.css';
-
+import ShareModal from '../webparts/Modal/ShareModal';
 
 const Layout = memo(({children}) => {
   let [ hasWallet, setHasWallet ] = useState((window.localStorage.getItem('wallet') !== null && typeof window.localStorage.getItem('wallet') !== 'undefined') ? window.atob(window.localStorage.getItem('wallet')) : '');
@@ -46,6 +46,7 @@ const Layout = memo(({children}) => {
       </div>
       <DonationFinishModal modInfo={modalInfo} modStatus={modalStatus} />
       <WalletModal wallet={hasWallet} />
+      <ShareModal />
       <ToastContainer />
       </ThemeContext.Provider>)
   });

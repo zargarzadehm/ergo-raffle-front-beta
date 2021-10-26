@@ -18,11 +18,10 @@ const StepTwoA = memo(({formFeedback, defaultValue}) => {
                             form-floating
                             create-raffle-input
                             raffle-donation-input
-                          "
-                        >
+                          ">
                           <input
                             value={ergGoal}
-                            type="text"
+                            type="number"
                             className="form-control"
                             id="floatingInput"
                             placeholder="Donation Amount"

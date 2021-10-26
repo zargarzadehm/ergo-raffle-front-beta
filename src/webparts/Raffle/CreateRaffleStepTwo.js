@@ -14,7 +14,7 @@ const CreateRaffleStepTwo = memo(({formFeedback, deadline, ticketPercent, ticket
       : activeStep === 8 ?
         <StepTwoC formFeedback={(value) => handleSteps(value)} defaultValue={deadline} />
       : activeStep === 9 ?
-        <StepTwoD formFeedback={(value) => handleSteps(value)} defaultValue={ticketPercent} />
+        <StepTwoD formFeedback={(value) => handleSteps(value)} defaultValue={ticketPercent} deadline={deadline} />
       : null }</>)
 });
 

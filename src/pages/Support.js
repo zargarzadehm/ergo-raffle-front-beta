@@ -54,7 +54,7 @@ const Support = () => {
           {activeTab !== 2 ? inProgress ?  <div className={'loading-wrapper'}><img src={loader} alt={'Loading Spinner'} /></div> :
           (Array.isArray(raffles) ? raffles : []).map((item)=>(
             
-              <div className="col-6 col-lg-4" key={item.name+1000+'-item'}>
+              <div className="col-6 col-lg-4" key={item.name+1000+Math.random()+'-item'}>
                   <div className="card raffle-card">
                       <Raffle raffle={item} />  
                   </div>

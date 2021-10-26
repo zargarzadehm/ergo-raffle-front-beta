@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const StepTwoDonation = ({handleRadioChange, defaultValue})=> {
-    const [ radioCheck, setRadioCheck] = useState(typeof defaultValue === 'undefined' ? '5.00' : defaultValue);
+    const [ radioCheck, setRadioCheck] = useState(typeof defaultValue === 'undefined' ? 5 : defaultValue);
     const handleChange = (e) => {
       const { value } = e.target
       setRadioCheck(value);
@@ -29,8 +29,8 @@ const StepTwoDonation = ({handleRadioChange, defaultValue})=> {
           className="btn-check"
           name="options-outlined"
           id="five-tickets"
-          value={'5.00'}
-          checked={radioCheck === '5.00'}
+          value={5}
+          checked={radioCheck === 5}
           onChange={handleChange}
         />
         <label className="btn btn-outline-danger" htmlFor="five-tickets">5 ticket</label>
@@ -39,8 +39,8 @@ const StepTwoDonation = ({handleRadioChange, defaultValue})=> {
           className="btn-check"
           name="options-outlined"
           id="ten-tickets"
-          value={'10.00'}
-          checked={radioCheck === '10.00'}
+          value={10}
+          checked={radioCheck === 10}
           onChange={handleChange}
         />
         <label className="btn btn-outline-danger" htmlFor="ten-tickets"
@@ -50,8 +50,8 @@ const StepTwoDonation = ({handleRadioChange, defaultValue})=> {
           className="btn-check"
           name="options-outlined"
           id="twenty-tickets"
-          value={'20.00'}
-          checked={radioCheck === '20.00'}
+          value={20}
+          checked={radioCheck === 20}
           onChange={handleChange}
         />
         <label className="btn btn-outline-danger" htmlFor="twenty-tickets">20 Ticket</label>
@@ -60,8 +60,8 @@ const StepTwoDonation = ({handleRadioChange, defaultValue})=> {
           className="btn-check"
           name="options-outlined"
           id="thirty-tickets"
-          value={'30.00'}
-          checked={radioCheck === '30.00'}
+          value={30}
+          checked={radioCheck === 30}
           onChange={handleChange}
         />
         <label className="btn btn-outline-danger" htmlFor="thirty-tickets">30 Ticket</label>
@@ -71,7 +71,7 @@ const StepTwoDonation = ({handleRadioChange, defaultValue})=> {
       <div className="form-floating ticket-count-input">
         <input
           onChange={handleChange}
-          type="text"
+          type="number"
           className="form-control"
           id="floatingInput"
           placeholder="Ticket Counts"

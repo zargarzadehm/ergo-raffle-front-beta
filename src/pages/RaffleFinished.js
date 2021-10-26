@@ -1,6 +1,6 @@
 
 import '../assets/css/donate.css';
-import { useCallback, useRef, useState } from 'react';
+import { memo, useCallback, useRef, useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Title from '../components/Title';
@@ -13,22 +13,23 @@ import WinnerTransactionRow from '../webparts/Raffle/WinnerTransactionRow';
 import Pagination from '../webparts/Shared/Pagination';
 import staticText from '../statics';
 
-const RaffleSuccessFul = ({history}) => {
+const RaffleSuccessFul = memo(({history}) => {
     const titleRef = useRef();
     let { id } = useParams();
     const [page, setPage] = useState(1);
     const [ raffle, setRaffle ] = useState({name:'', description: ''})
-    const [winnerRaffleTransactions, setWinnerRaffleTransactions] = useState([]);
+    const [ winnerRaffleTransactions, setWinnerRaffleTransactions ] = useState([]);
     const [ ticketRaffleTransactions, setTicketRaffleTransactions ] = useState([]);
+    const [ charityRaffleTransactions, setCharityRaffleTransactions ] = useState([]);
     const [ totalTransactionPagess, setTotalTransactionPages ] = useState(0);
     const [ total, setTotal ] = useState(0);
-
     const getTransactions = useCallback(()=>{
       getRaffleTransactions(id,0, staticText.PAGE_SIZE).then(
         ({data})=> {
           const items = data.items;
           setWinnerRaffleTransactions([...items].filter((a)=> a.type === 'Winner'));
-          setTicketRaffleTransactions([...items].filter((a)=> a.type !== 'Winner'));
+          setCharityRaffleTransactions([...items].filter((a)=> a.type === 'Charity'));
+          setTicketRaffleTransactions([...items].filter((a)=> a.type !== 'Winner' && a.type !== 'Charity'));
           setTotalTransactionPages(isNaN(Math.ceil(data.total/staticText.PAGE_SIZE)) ? 1 : Math.ceil(data.total/staticText.PAGE_SIZE));
           setTotal(typeof data.total === 'undefined' ? 0 : data.total);
         }
@@ -52,8 +53,7 @@ const RaffleSuccessFul = ({history}) => {
       getRaffleTransactions(id,(newPage-1)*staticText.PAGE_SIZE,staticText.PAGE_SIZE).then(
         ({data})=> {
           const items = data.items;
-          setWinnerRaffleTransactions([...items].filter((a)=> a.type === 'Winner'));
-          setTicketRaffleTransactions([...items].filter((a)=> a.type !== 'Winner'));
+          setTicketRaffleTransactions([...items].filter((a)=> a.type !== 'Winner' && a.type !== 'Charity'));
         }
       )
     }
@@ -64,14 +64,15 @@ const RaffleSuccessFul = ({history}) => {
       getRaffleTransactions(id,(newPage-1)*staticText.PAGE_SIZE,staticText.PAGE_SIZE).then(
         ({data})=> {
           const items = data.items;
-          setWinnerRaffleTransactions([...items].filter((a)=> a.type === 'Winner'));
-          setTicketRaffleTransactions([...items].filter((a)=> a.type !== 'Winner'));
+          setTicketRaffleTransactions([...items].filter((a)=> a.type !== 'Winner' && a.type !== 'Charity'));
         }
       )
     }
+
     return (<>
     {raffle ? <Title title={'Ergo Raffle -' + raffle.name} /> : null}
   <main>
+
     <section id="raffle-intorduction" className="p-2 p-lg-5 mb-4 mt-header">
       <div className="container">
         <div className="row">
@@ -112,8 +113,11 @@ const RaffleSuccessFul = ({history}) => {
           {Array.isArray(ticketRaffleTransactions) && ticketRaffleTransactions.length > 0 ? "Details of transactions" : null}
         </h2>
         <div className="winner-box mb-5"> 
-          {(Array.isArray(winnerRaffleTransactions) ? winnerRaffleTransactions : []).map((item,key)=>(<WinnerTransactionRow key={key+Math.random()+'-items'} transaction={item} />))}
+          {(Array.isArray(winnerRaffleTransactions) ? winnerRaffleTransactions : []).map((item,key)=>(<WinnerTransactionRow isWinner={true} key={key+Math.random()+'-items'} transaction={item} />))}
         </div>
+        <div className="winner-box mb-5"> 
+          {(Array.isArray(charityRaffleTransactions) ? charityRaffleTransactions : []).map((item,key)=>(<WinnerTransactionRow isWinner={false} key={key+Math.random()+'-items-charity'} transaction={item} />))}
+        </div> 
       </div>
       <div className="container all-transactions">
         {(Array.isArray(ticketRaffleTransactions) ? [...ticketRaffleTransactions] : []).map((item,key)=>(<TransactionRow key={key+Math.random()+'-items'} transaction={item} row={key+1} />))}
@@ -126,6 +130,6 @@ const RaffleSuccessFul = ({history}) => {
     </section>
   </main>
   </>)
-}
+})
 
 export default RaffleSuccessFul;

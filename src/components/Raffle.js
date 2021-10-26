@@ -25,10 +25,10 @@ const Raffle = memo(({raffle}) => {
           {raffle.status === 'active' ? <p className="remaining-days">{Math.floor((raffle.deadline-info.height)/(720))} days remaining</p> : <p className="remaining-days">{Math.abs(Math.floor((raffle.deadline-info.height)/(720)))} days passed</p>}
         </div>
         <div className="progress-container mb-5">
-          <div className="progress-bar" style={{width: (parseFloat(raffle.erg/raffle.goal)*100)+'%'}}></div>
+          <div className="progress-bar" style={{width: (parseFloat((!isNaN(raffle.erg) ? raffle.erg : (raffle && raffle.ticket && raffle.ticket.erg))/raffle.goal)*100)+'%'}}></div>
           <div className="raised">
             <p className="mt-1">
-              <span className="remaining-erg">{raffle.erg/staticText.ERG_SCALE}</span> ERG raised of
+              <span className="remaining-erg">{(!isNaN(raffle.erg) ? raffle.erg : (raffle && raffle.ticket && raffle.ticket.erg))/staticText.ERG_SCALE}</span> ERG raised of
               <span className="total-erg"> {raffle.goal/staticText.ERG_SCALE} </span>
               ERG
             </p>

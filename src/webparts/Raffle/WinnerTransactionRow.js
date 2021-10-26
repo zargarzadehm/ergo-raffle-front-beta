@@ -1,8 +1,8 @@
 import { memo } from "react";
 
-const WinnerTransactionRow = memo(({transaction}) => {
-    return (<>{transaction.type === 'Winner' ? <>
-    <h2 className="winner-title text-left mb-4">Winner transaction</h2>
+const WinnerTransactionRow = memo(({transaction,isWinner}) => {
+    return (<>{transaction.type === 'Winner' || transaction.type === 'Charity' ? <>
+    <h2 className="winner-title text-left mb-4">{isWinner ? 'Winner Transactions' : 'Charity transactions' }</h2>
     <div className="winner-address-box mb-2 bordered-field-orange">
       <p>
         Wallet Address:

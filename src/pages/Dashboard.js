@@ -8,6 +8,7 @@ import DashboardRaffleDonation from '../webparts/Dashboard/DashboardRaffleDonati
 import DashboardRaffleWinner from '../webparts/Dashboard/DashboardRaffleWinner';
 import DashboardFaq from '../webparts/Dashboard/DashboardFaq';
 import Tabs from '../components/Tabs';
+import DashboardRafflePin from '../webparts/Dashboard/DashboardRafflePin';
 
 const Dashboard = ({history}) => {
   const [ activeTab, setActiveTab ] = useState(1);
@@ -17,13 +18,14 @@ const Dashboard = ({history}) => {
   const [ yourRaffle, setYourRaffle ] = useState([]);
   useEffect(()=> {
     const myWallAddress = window.atob(window.localStorage.getItem('wallet'));
+
     getAllYourDonations(myWallAddress, 0, staticText.PAGE_SIZE).then(
       ({data})=> {
-        setDonationRaffle(data);
+        setDonationRaffle(data.items);
       })
       getAllYourRafflesYouWin(myWallAddress, 0 , 30).then(
         ({data})=> {
-          setYourRaffle(data)
+          setYourRaffle(data.items);
       });
   },[]);
   const changeTab = (tabIndex) => {
@@ -35,6 +37,8 @@ const Dashboard = ({history}) => {
     return (<>
     <Title title={'Ergo Raffle - Dashboard'} />
   <main>
+    
+      <DashboardRafflePin pinnedRaffles={window.localStorage.getItem('pin') !== null ? window.localStorage.getItem('pin') : '[]'} />
       <DashboardRaffleDonation donationRaffle={donationRaffle} />
       <DashboardRaffleWinner yourRaffle={yourRaffle} />
       <div className="dashboard-support-choice d-flex justify-content-around">
