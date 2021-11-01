@@ -1,51 +1,53 @@
-import { memo, useRef, useState } from "react";
+import { memo, useState } from "react";
 import { toast } from 'react-toastify';
 import { supportFormSubmission } from "../../service/support.service";
-const SupportForm = memo(()=> {
-    const supportTextRef = useRef();
-    const [ shouldDisable, setShouldDisable ] = useState(true);
-    const handleChange = () => {
-      if(supportTextRef.current.value.length > 2) {
-        setShouldDisable(false);
-      } else {
-        setShouldDisable(true);
-      }
+const SupportForm = memo(() => {
+  const [shouldDisable, setShouldDisable] = useState(true);
+  const [supportText, setSupportText] = useState('');
+  const handleChange = (e) => {
+    const { value } = e.target;
+    if (value.length > 2) {
+      setShouldDisable(false);
+      setSupportText(value);
+    } else {
+      setShouldDisable(true);
     }
-    const notify = (msg) => toast(msg);
-
-    const supportSubmit = (text) => {
-      supportFormSubmission(text).then(
-        ({data})=> {
-          if(data.state === 'success') {
-            setShouldDisable(true);
-            notify("Support Has Been Sent!");  
-            supportTextRef.current.value = '';
-          } else {
-            setShouldDisable(false);
-            notify(data.message)
-          }
-
-        }).catch((e) => {
-          setShouldDisable(false);
-          notify(e.response.data.message);
-        });
   }
-    const support = (e) => {
-      e.preventDefault();
-      supportSubmit(supportTextRef.current.value);
-    }
-    
-    return (<>
+  const notify = (msg) => toast(msg);
+
+  const supportSubmit = (text) => {
+    supportFormSubmission(supportText).then(
+      ({ data }) => {
+        if (data.state === 'success') {
+          setShouldDisable(true);
+          notify("Support Has Been Sent!");
+          setSupportText('');
+        } else {
+          setShouldDisable(false);
+          notify(data.message)
+        }
+
+      }).catch((e) => {
+        setShouldDisable(false);
+        notify(e.response.data.message);
+      });
+  }
+  const support = (e) => {
+    e.preventDefault();
+    supportSubmit(supportText);
+  }
+
+  return (<>
     <h2 className="faq-title text-center mb-4">Want help?</h2>
     <div className="support-ticket-container">
       <form>
         <fieldset>
           <legend>Write your message here</legend>
           <textarea
-            ref={supportTextRef}
             className="form-control support-ticket-textarea"
             id="support-ticket-textarea"
             rows="7"
+            value={supportText}
             onChange={handleChange}
           ></textarea>
         </fieldset>
@@ -56,7 +58,7 @@ const SupportForm = memo(()=> {
         </div>
       </form>
     </div>
-    </>)
+  </>)
 });
 
 export default SupportForm;

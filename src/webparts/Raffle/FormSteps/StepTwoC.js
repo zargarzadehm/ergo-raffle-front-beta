@@ -1,15 +1,14 @@
 import { memo, useState } from "react";
-import ThemeContext from "../../../context";
+import EstimationBox from "../EstimationBox";
 
-const StepTwoC = memo(({formFeedback, defaultValue}) => {
-    const [deadline, setDeadline] = useState(defaultValue);
-    const handleChange = (e) => {
-      const {value} = e.target;
-      setDeadline(value);
-      formFeedback(value);
-    }
-    return (<ThemeContext.Consumer>
-      {({info})=>(<div className="second-step step-2-c">
+const StepTwoC = memo(({ formFeedback, defaultValue }) => {
+  const [deadline, setDeadline] = useState(defaultValue);
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setDeadline(value);
+    formFeedback('deadline',value);
+  }
+  return (<div className="second-step step-2-c">
       <div className="step-content text-center text-lg-start">
         <h3 className="step-title mb-4">What is your deadline?</h3>
         <div className="row">
@@ -25,22 +24,19 @@ const StepTwoC = memo(({formFeedback, defaultValue}) => {
                   type="text"
                   className="form-control"
                   id="raffle-deadline"
-                  placeholder="Charity Address"
+                  placeholder="charity Address"
                   required
                   onChange={handleChange}
                 />
                 <label htmlFor="raflfle-deadline"
-                  >Deadline blocks</label>
+                >Deadline blocks</label>
               </div>
             </form>
           </div>
-          <div className="col-6">
-            <p className="estimation">Estimation: Almost {parseInt((deadline-info.height)/(720)) < 0 ? 0 : (deadline-info.height)/(720)} Days!</p>
-          </div>
+          <EstimationBox deadline={deadline} />
         </div>
       </div>
-    </div>)}
-    </ThemeContext.Consumer>)
+    </div>)
 });
 
 export default StepTwoC;

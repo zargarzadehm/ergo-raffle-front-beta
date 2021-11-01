@@ -1,17 +1,17 @@
 const ShareModal = () => {
-    
-    return (<div
+
+  return (<div
     className="modal fade"
     id="shareModal"
     tabIndex="-1"
     aria-labelledby="shareModalLabel"
     aria-hidden="true"
-    >
+  >
     <div className="modal-dialog modal-dialog-centered">
       <div className="modal-content">
         <div className="modal-header">
           <label htmlFor="Wallet-address" className="col-form-label text-center d-flex"
-            >Where do you want to share?</label>
+          >Where do you want to share?</label>
           <button
             type="button"
             className="btn-close"
@@ -30,7 +30,7 @@ const ShareModal = () => {
         </div>
       </div>
     </div>
-    </div>)
+  </div>)
 };
 
 export default ShareModal;

@@ -1,7 +1,7 @@
 import { memo } from "react";
 
-const RaffleBarStep = memo(({activeStep, stepBarRef})=> {
-    return(<div className="create-raffle-header mb-3">
+const RaffleBarStep = memo(({ activeStep, stepBarRef }) => {
+  return (<div className="create-raffle-header mb-3">
     <h3 className="help-request create-raffle-title text-center mt-3">
       Ready to create a new raffle?
     </h3>

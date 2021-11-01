@@ -1,8 +1,8 @@
 import { memo } from "react";
 import staticText from "../../statics";
 
-const RaffleIconBox = memo(({raffle})=> {
-    return (<div className="row">
+const RaffleIconBox = memo(({ raffle }) => {
+  return (<div className="row">
     <div className="col-4 text-center">
       <span className="slider-icon raffle-icon icon-donated"></span>
 
@@ -16,7 +16,7 @@ const RaffleIconBox = memo(({raffle})=> {
       <span className="slider-icon raffle-icon icon-piggy"></span>
 
       <p className="ico-text mt-2">
-        <span className="people-number">{((raffle.ticket && raffle.ticket.erg) || 0)/staticText.ERG_SCALE}</span><br />
+        <span className="people-number">{((raffle.ticket && raffle.ticket.erg) || 0) / staticText.ERG_SCALE}</span><br />
         ERG gathered
       </p>
     </div>

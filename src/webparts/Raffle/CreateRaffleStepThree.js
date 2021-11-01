@@ -4,49 +4,49 @@ import { Link } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 
 
-const CreateRaffleStepThree = memo(({ setResponse, response, setIsTermsAccepted}) => {
-    const checkboxRef = useRef();
-    const context = useContext(ThemeContext);
-      const handleTerms = (e) => {
-        const { checked } = e.target;
-        if(checked) {
-          let enabled = true;
-          if(context.info.required && response.length < 10) {
-            enabled = false;
-          }
-          setIsTermsAccepted(enabled);
-        } else {
-          setIsTermsAccepted(false);
-        }
+const CreateRaffleStepThree = memo(({ setResponse, response, setIsTermsAccepted }) => {
+  const checkboxRef = useRef();
+  const context = useContext(ThemeContext);
+  const handleTerms = (e) => {
+    const { checked } = e.target;
+    if (checked) {
+      let enabled = true;
+      if (context.info.required && response.length < 10) {
+        enabled = false;
       }
-      function verifyCallback(value) {
-          setResponse(value);
-          const checked = checkboxRef.current.checked;
-          if(checked) {
-            let enabled = true;
-            if(context.info.required && value.length < 10) {
-              enabled = false;
-            }
-            setIsTermsAccepted(enabled);
-          } else {
-            setIsTermsAccepted(false);
-          }
+      setIsTermsAccepted(enabled);
+    } else {
+      setIsTermsAccepted(false);
+    }
+  }
+  function verifyCallback(value) {
+    setResponse(value);
+    const checked = checkboxRef.current.checked;
+    if (checked) {
+      let enabled = true;
+      if (context.info.required && value.length < 10) {
+        enabled = false;
       }
-    return (<ThemeContext.Consumer>
-        {({info})=>(
-        <div className={"row step-3-container"}>
-            <h3 className="step-title">Please accept our terms of use</h3>
-            <div className="row accept-terms my-5">
-            <div className="col-lg-6 verify-recaptcha text-center">
-                {info.required ? 
-            <ReCAPTCHA
+      setIsTermsAccepted(enabled);
+    } else {
+      setIsTermsAccepted(false);
+    }
+  }
+  return (<ThemeContext.Consumer>
+    {({ info }) => (
+      <div className={"row step-3-container"}>
+        <h3 className="step-title">Please accept our terms of use</h3>
+        <div className="row accept-terms my-5">
+          <div className="col-lg-6 verify-recaptcha text-center">
+            {info.required ?
+              <ReCAPTCHA
                 sitekey={info.pubKey}
                 onChange={verifyCallback}
-            />
-            : null}
-            </div>
-            <div
-                className="
+              />
+              : null}
+          </div>
+          <div
+            className="
                 my-5 my-lg-0
                 col-lg-6
                 verify-terms
@@ -54,25 +54,24 @@ const CreateRaffleStepThree = memo(({ setResponse, response, setIsTermsAccepted}
                 align-items-center
                 justify-content-center
                 "
-            >
-                <div className="form-check">
-                <input
-                    ref={checkboxRef}
-                    className="form-check-input"
-                    type="checkbox"
-                    value="on"
-                    id="flexCheckDefault"
-                    onChange={handleTerms}
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                    I agree to the
-                    <Link to={'/'} className="terms-link">terms of use</Link>
-                </label>
-                </div>
+          >
+            <div className="form-check">
+              <input
+                ref={checkboxRef}
+                className="form-check-input"
+                type="checkbox"
+                value="on"
+                id="flexCheckDefault"
+                onChange={handleTerms}
+              />
+              <label className="form-check-label" htmlFor="flexCheckDefault">
+                I agree to the <Link to={'/'} className="terms-link"> terms of use</Link>
+              </label>
             </div>
-            </div>
-        </div>)}
-        </ThemeContext.Consumer>)
+          </div>
+        </div>
+      </div>)}
+  </ThemeContext.Consumer>)
 });
 
 export default CreateRaffleStepThree;

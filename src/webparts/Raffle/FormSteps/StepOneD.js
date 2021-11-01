@@ -1,13 +1,13 @@
 import { memo, useState } from "react";
 
-const StepOneD = memo(({formFeedback, defaultValue})=>{
-    const [address, setAddress] = useState(defaultValue);
-    const handleChange = (e) => {
-      const {value} = e.target;
-      setAddress(value);
-      formFeedback(value);
-    }
-    return (<div className="first-step step-1-d">
+const StepOneD = memo(({ formFeedback, defaultValue }) => {
+  const [address, setAddress] = useState(defaultValue);
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setAddress(value);
+    formFeedback('address', value);
+  }
+  return (<div className="first-step step-1-d">
     <div className="step-content text-center text-lg-start">
       <h3 className="step-title mb-4">
         Please write the address of the charity
@@ -25,7 +25,7 @@ const StepOneD = memo(({formFeedback, defaultValue})=>{
             value={address}
             className="form-control"
             id="floatingInput"
-            placeholder="Charity Address"
+            placeholder="charity Address"
             onChange={handleChange}
             required
           />

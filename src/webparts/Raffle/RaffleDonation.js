@@ -1,7 +1,7 @@
 import { memo } from "react"
 
-const RaffleDonation = memo(()=>{
-    return (<div className="row mb-2">
+const RaffleDonation = memo(() => {
+  return (<div className="row mb-2">
     <div className="col-md-1">
       <div className=""></div>
     </div>

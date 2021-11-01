@@ -1,11 +1,11 @@
 import { memo } from "react";
 
-const Pagination = memo(({currentPage, totalPages, totalItems, PAGE_SIZE, prevPage, nextPage})=>{
-    return (<nav aria-label="Page navigation example">
+const Pagination = memo(({ currentPage, totalPages, totalItems, PAGE_SIZE, prevPage, nextPage }) => {
+  return (<nav aria-label="Page navigation example">
     <ul className="pagination justify-content-center">
-      
+
       <li className={currentPage > 1 ? "page-item" : "page-item disabled"}>
-        <button className="page-link"  tabIndex="-1" onClick={prevPage}>
+        <button className="page-link" tabIndex="-1" onClick={prevPage}>
           <span className="icon-prev-page-01 prev-page"></span>
         </button>
       </li>

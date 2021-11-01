@@ -1,54 +1,54 @@
 import { memo, useState } from "react";
 import ThemeContext from "../../../context";
 
-const StepTwoD = memo(({formFeedback, defaultValue, deadline}) => {
-    const [ ticketPercent, setTicketPercent ] = useState(defaultValue);
-    const handleChange = (e) => {
-      const { value } = e.target;
-      setTicketPercent(value);
-      formFeedback(value)
-    }
-    return(<ThemeContext.Consumer>
-      {({info})=>(
-          <div className="second-step step-2-d">
-            <div className="step-content text-center text-lg-start">
-              <h3 className="step-title mb-4">
-                What percentage do you prefer for each share?
-              </h3>
-              <div className="row">
-                <div className="col-4">
-                  <form>
-                    <div
-                      className="
+const StepTwoD = memo(({ formFeedback, defaultValue }) => {
+  const [ticketPercent, setTicketPercent] = useState(defaultValue);
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setTicketPercent(value);
+    formFeedback('ticketPercent', value)
+  }
+  return (<ThemeContext.Consumer>
+    {({ info }) => (
+      <div className="second-step step-2-d">
+        <div className="step-content text-center text-lg-start">
+          <h3 className="step-title mb-4">
+            What percentage do you prefer for each share?
+          </h3>
+          <div className="row">
+            <div className="col-4">
+              <form>
+                <div
+                  className="
                         form-floating
                         create-raffle-input
                         charity-share-input
                       "
-                    >
-                      <input
-                        value={ticketPercent}
-                        type="text"
-                        className="form-control"
-                        id="charity-share"
-                        placeholder="Ticket Share Percent"
-                        required
-                        onChange={handleChange}
-                      />
-                      <label htmlFor="charity-share">Charity Share</label>
-                    </div>
-                  </form>
+                >
+                  <input
+                    value={ticketPercent}
+                    type="text"
+                    className="form-control"
+                    id="charity-share"
+                    placeholder="Ticket Share Percent"
+                    required
+                    onChange={handleChange}
+                  />
+                  <label htmlFor="charity-share">Charity Share</label>
                 </div>
-                <div className="col-4">
-                  <p className="raffle-sharing winner-share">Winner Percent: {100 - ticketPercent - 5}%</p>
-                </div>
-                <div className="col-4">
-                  <p className="raffle-sharing service-share">Service: 5%</p>
-                </div>
-              </div>
+              </form>
+            </div>
+            <div className="col-4">
+              <p className="raffle-sharing winner-share">Winner Percent: {100 - ticketPercent - 5}%</p>
+            </div>
+            <div className="col-4">
+              <p className="raffle-sharing service-share">Service: 5%</p>
             </div>
           </div>
-          )}
-        </ThemeContext.Consumer>)
+        </div>
+      </div>
+    )}
+  </ThemeContext.Consumer>)
 });
 
 export default StepTwoD;

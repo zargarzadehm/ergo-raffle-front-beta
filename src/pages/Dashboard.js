@@ -1,6 +1,6 @@
 import '../assets/css/dashboard.css';
 import '../assets/css/faq.css';
-import { useState,  useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Title from '../components/Title';
 import { getAllYourDonations, getAllYourRafflesYouWin } from '../service/raffle.service';
 import staticText from '../statics';
@@ -10,42 +10,46 @@ import DashboardFaq from '../webparts/Dashboard/DashboardFaq';
 import Tabs from '../components/Tabs';
 import DashboardRafflePin from '../webparts/Dashboard/DashboardRafflePin';
 
-const Dashboard = ({history}) => {
-  const [ activeTab, setActiveTab ] = useState(1);
-  const [ tabContent ] = useState(staticText.dashboardTabs);
+function Dashboard({ history }) {
+  const [activeTab, setActiveTab] = useState(1);
+  const [tabContent] = useState(staticText.dashboardTabs);
   const [faqs] = useState(staticText.faq)
-  const [ donationRaffle, setDonationRaffle ] = useState([]);
-  const [ yourRaffle, setYourRaffle ] = useState([]);
-  useEffect(()=> {
+  const [donationRaffle, setDonationRaffle] = useState([]);
+  const [yourRaffle, setYourRaffle] = useState([]);
+  const [isWinnerRaffleFinished, setIsWinnerRaffleFinished] = useState(false);
+  const [isDonationFinished, setIsDonationFinished] = useState(false);
+  useEffect(() => {
     const myWallAddress = window.atob(window.localStorage.getItem('wallet'));
 
     getAllYourDonations(myWallAddress, 0, staticText.PAGE_SIZE).then(
-      ({data})=> {
+      ({ data }) => {
         setDonationRaffle(data.items);
+        setIsDonationFinished(true);
       })
-      getAllYourRafflesYouWin(myWallAddress, 0 , 30).then(
-        ({data})=> {
-          setYourRaffle(data.items);
+    getAllYourRafflesYouWin(myWallAddress, 0, 30).then(
+      ({ data }) => {
+        setIsWinnerRaffleFinished(true)
+        setYourRaffle(data.items);
       });
-  },[]);
+  }, []);
   const changeTab = (tabIndex) => {
     setActiveTab(tabIndex);
-    if(tabIndex === 0) {
+    if (tabIndex === 0) {
       history.push('/support');
     }
   }
-    return (<>
+  return (<>
     <Title title={'Ergo Raffle - Dashboard'} />
-  <main>
-    
+    <main>
+
       <DashboardRafflePin pinnedRaffles={window.localStorage.getItem('pin') !== null ? window.localStorage.getItem('pin') : '[]'} />
-      <DashboardRaffleDonation donationRaffle={donationRaffle} />
-      <DashboardRaffleWinner yourRaffle={yourRaffle} />
+      <DashboardRaffleDonation loading={isDonationFinished} donationRaffle={donationRaffle} />
+      <DashboardRaffleWinner loading={isWinnerRaffleFinished} yourRaffle={yourRaffle} />
       <div className="dashboard-support-choice d-flex justify-content-around">
-          <Tabs tabs={tabContent} defaultActiveTab={1} activeTab={activeTab} setActiveTab={setActiveTab} changeTabContent={(tabIndex)=> changeTab(tabIndex)} />
+        <Tabs tabs={tabContent} defaultActiveTab={1} activeTab={activeTab} setActiveTab={setActiveTab} changeTabContent={(tabIndex) => changeTab(tabIndex)} />
       </div>
       <DashboardFaq faqs={faqs} />
-  </main>
+    </main>
   </>);
 }
 
