@@ -29,7 +29,7 @@ const Carousel = memo(({ raffle }) => {
                 <span
                   className="icon-complete-icon slider-icon slider-icon1"
                 ></span>
-                <p className="ic-text mt-2">{Math.ceil(raffle.erg / raffle.goal * 100)}% complete!</p>
+                <p className="ic-text mt-2">{Math.ceil(raffle.erg / raffle.goal * 100) <= 100 ? Math.ceil(raffle.erg / raffle.goal * 100) : '100 '}% complete!</p>
               </div>
               <div className="slider-ic-box">
                 <span

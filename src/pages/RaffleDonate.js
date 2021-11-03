@@ -9,7 +9,6 @@ import DonationRaffleStepOne from "../webparts/Raffle/DonationRaffleStepOne";
 import DonationRaffleStepTwo from "../webparts/Raffle/DonationRaffleStepTwo";
 import DonationRaffleStepThree from "../webparts/Raffle/DonationRaffleStepThree";
 import DonateRaffleProgress from "../webparts/Raffle/DonateRaffleProgress";
-import "../assets/css/donate.css";
 import RaffleDonationHeader from "../webparts/Raffle/RaffleDonationHeader";
 import RaffleDonateMiddleBar from "../webparts/Raffle/RaffleDonateMiddleBar";
 import RaffleTickets from "../webparts/Raffle/RaffleTickets";
@@ -18,7 +17,6 @@ let intervallerItem = null;
 const RaffleDonate = ({ history }) => {
   const context = useContext(ThemeContext);
   const [isTermsAccepted, setIsTermsAccepted] = useState(true);
-  const raffleWalletAddressRef = useRef();
   const [ticketCount, setTicketCount] = useState(5);
   const params = useParams();
   const [recaptcha, setRecaptcha] = useState('');
@@ -26,7 +24,7 @@ const RaffleDonate = ({ history }) => {
   const [raffle, setRaffle] = useState({});
   const stepBarRef = useRef();
   const [activeStep, setActiveStep] = useState(0);
-  const [walletAddress, setWalletAddress] = useState(window.localStorage.getItem('wallet') !== null ? window.atob(window.localStorage.getItem('wallet')) : '');
+  const [walletAddress, setWalletAddress] = useState(context.hasWallet);
   const notify = (msg) => toast(msg);
 
   const checkStatus = useCallback((status, id) => {
@@ -34,19 +32,22 @@ const RaffleDonate = ({ history }) => {
       history.push('/raffle/show/' + id)
     }
   }, [history]);
+  const getRaffleTransactionsOnLoad = useCallback((id) => {
+    getYourActiveRaffleTickets(id, walletAddress).then(
+      ({ data }) => {
+        setRaffleTransactions(data.items);
+      }
+    )
+  }, [walletAddress]);
   useEffect(() => {
     getSingleRaffle(params.id).then(({ data }) => {
       setRaffle(data)
       checkStatus(data.status, params.id)
     });
     if (window.localStorage.getItem('wallet') !== null) {
-      getYourActiveRaffleTickets(params.id, window.atob(window.localStorage.getItem('wallet') !== null ? window.localStorage.getItem('wallet') : '')).then(
-        ({ data }) => {
-          setRaffleTransactions(data.items);
-        }
-      )
+      getRaffleTransactionsOnLoad(params.id);
     }
-  }, [params.id, checkStatus]);
+  }, [params.id, checkStatus, getRaffleTransactionsOnLoad]);
   const handleFeedback = (value, response) => {
     setIsTermsAccepted(!value);
     setRecaptcha(response);
@@ -83,15 +84,14 @@ const RaffleDonate = ({ history }) => {
   const changeWalletAddress = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setWalletAddress(raffleWalletAddressRef.current.value)
-    context.setHasWallet(raffleWalletAddressRef.current.value)
+    setWalletAddress(e.target.value)
+    context.setHasWallet(e.target.value)
   }
   const ticketCountHandler = (count) => {
     setTicketCount(count);
   }
   const donate = (setModInfo, setModStatus) => {
     setIsTermsAccepted(true);
-    context.setIsDonation(true);
     donateRaffle(params.id, walletAddress, ticketCount, recaptcha).then(
       ({ data }) => {
         notify('Donation Perfomerd!');
@@ -137,13 +137,16 @@ const RaffleDonate = ({ history }) => {
               <DonateRaffleProgress activeStep={activeStep} stepBarRef={stepBarRef} />
               <div className="step-content-container my-3 py-5">
                 {activeStep === 0 ?
-                  <DonationRaffleStepOne walletAddress={walletAddress} toggleNextStep={toggleNextStep} raffleWalletAddressRef={raffleWalletAddressRef} changeWalletAddress={changeWalletAddress} />
+                  <DonationRaffleStepOne walletAddress={walletAddress} toggleNextStep={toggleNextStep}
+                    changeWalletAddress={changeWalletAddress} />
                   : null}
                 {activeStep === 1 ?
-                  <DonationRaffleStepTwo reduceStep={reduceStep} toggleNextStep={toggleNextStep} ticketCount={ticketCount} ticketCountHandler={ticketCountHandler} />
+                  <DonationRaffleStepTwo reduceStep={reduceStep} toggleNextStep={toggleNextStep}
+                    ticketCount={ticketCount} ticketCountHandler={ticketCountHandler} />
                   : null}
                 {activeStep === 2 ?
-                  <DonationRaffleStepThree donate={donate} isTermsAccepted={isTermsAccepted} handleFeedback={handleFeedback} setModalInfo={setModalInfo} setModalStatus={setModalStatus} reduceStep={reduceStep} />
+                  <DonationRaffleStepThree donate={donate} isTermsAccepted={isTermsAccepted}
+                    handleFeedback={handleFeedback} setModalInfo={setModalInfo} setModalStatus={setModalStatus} reduceStep={reduceStep} />
                   : null}
               </div>
             </div>

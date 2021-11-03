@@ -1,5 +1,5 @@
 import { memo } from "react";
-import staticText from "../../statics";
+import Erg from "../../components/Erg";
 
 const RaffleDestinationInfo = memo(({ raffle }) => {
   return (<>
@@ -7,7 +7,7 @@ const RaffleDestinationInfo = memo(({ raffle }) => {
       <div className={raffle.status !== 'active' ? "donation-goal-box bordered-field" : "donation-goal-box bordered-field bordered-field-orange"}>
         <p className="total-donation">
           Total donation goal:
-          <span className="total-donation-number"> {isNaN(raffle.goal / staticText.ERG_SCALE) ? 0 : raffle.goal / staticText.ERG_SCALE} </span> ERG
+          <span className="total-donation-number"> <Erg erg={isNaN(raffle.goal) ? 0 : raffle.goal} shouldDisplay={true} /> </span>
         </p>
       </div>
       <div className="raffle-shares-box d-flex bordered-field">

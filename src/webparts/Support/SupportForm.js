@@ -6,16 +6,16 @@ const SupportForm = memo(() => {
   const [supportText, setSupportText] = useState('');
   const handleChange = (e) => {
     const { value } = e.target;
+    setSupportText(value);
     if (value.length > 2) {
       setShouldDisable(false);
-      setSupportText(value);
     } else {
       setShouldDisable(true);
     }
   }
   const notify = (msg) => toast(msg);
 
-  const supportSubmit = (text) => {
+  const supportSubmit = () => {
     supportFormSubmission(supportText).then(
       ({ data }) => {
         if (data.state === 'success') {
@@ -34,7 +34,7 @@ const SupportForm = memo(() => {
   }
   const support = (e) => {
     e.preventDefault();
-    supportSubmit(supportText);
+    supportSubmit();
   }
 
   return (<>

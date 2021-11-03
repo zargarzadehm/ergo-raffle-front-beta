@@ -1,4 +1,4 @@
-import { memo, useContext, useRef, useState } from "react";
+import { memo, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 import ThemeContext from "../../context";
@@ -6,7 +6,6 @@ import ThemeContext from "../../context";
 const StepThreeDonation = memo(({ handleFeedback }) => {
   const context = useContext(ThemeContext);
   const [response, setResponse] = useState('');
-  const checkboxRef = useRef();
   const handleChange = (e) => {
     const { checked } = e.target;
     let enabled = false;
@@ -28,22 +27,17 @@ const StepThreeDonation = memo(({ handleFeedback }) => {
 
   const verifyCallback = (res) => {
     setResponse(res);
-    const { checked } = checkboxRef.current;
     let enabled = false;
-    if (checked) {
-      if (context.info.required) {
-        if (res.length > 5) {
-          enabled = true;
-        } else {
-          enabled = false;
-        }
-      } else {
+    if (context.info.required) {
+      if (res.length > 5) {
         enabled = true;
+      } else {
+        enabled = false;
       }
-      handleFeedback(enabled, res)
     } else {
-      handleFeedback(false, null);
+      enabled = true;
     }
+    handleFeedback(enabled, res)
   };
   return (<>
     <ThemeContext.Consumer>
@@ -73,7 +67,6 @@ const StepThreeDonation = memo(({ handleFeedback }) => {
                 className="form-check-input"
                 type="checkbox"
                 value=""
-                ref={checkboxRef}
                 id="flexCheckDefault"
                 onChange={handleChange}
               />

@@ -1,5 +1,3 @@
-import '../assets/css/dashboard.css';
-import '../assets/css/faq.css';
 import { useState, useEffect } from 'react';
 import Title from '../components/Title';
 import { getAllYourDonations, getAllYourRafflesYouWin } from '../service/raffle.service';
@@ -10,10 +8,10 @@ import DashboardFaq from '../webparts/Dashboard/DashboardFaq';
 import Tabs from '../components/Tabs';
 import DashboardRafflePin from '../webparts/Dashboard/DashboardRafflePin';
 
-function Dashboard({ history }) {
+const Dashboard = ({ history }) => {
+  const tabContent = staticText.dashboardTabs;
+  const faqs = staticText.faq;
   const [activeTab, setActiveTab] = useState(1);
-  const [tabContent] = useState(staticText.dashboardTabs);
-  const [faqs] = useState(staticText.faq)
   const [donationRaffle, setDonationRaffle] = useState([]);
   const [yourRaffle, setYourRaffle] = useState([]);
   const [isWinnerRaffleFinished, setIsWinnerRaffleFinished] = useState(false);

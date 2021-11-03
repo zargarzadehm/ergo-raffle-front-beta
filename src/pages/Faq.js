@@ -1,16 +1,13 @@
-import { lazy, useState } from 'react';
-import '../assets/css/faq.css';
+import FaqAccordion from '../components/FaqAccordion';
 import Title from '../components/Title';
 import staticText from '../statics';
 
-const FaqAccordion = lazy(() => import('../components/FaqAccordion'));
 
-function Faq() {
-  let [faqs] = useState(staticText.faq)
+const Faq = () => {
+  let faqs = staticText.faq;
   return (<>
     <Title title={'Ergo Raffle - FAQ'} />
     <main>
-      {/* <!-- Question Accordion --> */}
       <section id="questions" className="p-lg-5 mt-header">
         <div className="container">
           <h2 className="faq-title text-center mb-4">Have any questions?</h2>

@@ -18,7 +18,7 @@ const CreateRaffleButtonBar = ({ activeStep, isActive, nextStep, prevStep, isTer
                     disabled={!isTermsAccepted}
                     type="button"
                     className="btn create-next finish mt-3"
-                    onClick={()=>submitRaffleCreate()}>
+                    onClick={() => submitRaffleCreate()}>
                     Finish
                 </button>
                 : null}

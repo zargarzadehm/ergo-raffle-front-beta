@@ -1,5 +1,5 @@
 import { memo } from "react";
-import staticText from "../../statics";
+import Erg from "../../components/Erg";
 
 const RaffleIconBox = memo(({ raffle }) => {
   return (<div className="row">
@@ -16,7 +16,7 @@ const RaffleIconBox = memo(({ raffle }) => {
       <span className="slider-icon raffle-icon icon-piggy"></span>
 
       <p className="ico-text mt-2">
-        <span className="people-number">{((raffle.ticket && raffle.ticket.erg) || 0) / staticText.ERG_SCALE}</span><br />
+        <span className="people-number"><Erg shouldDisplay={false} erg={((raffle.ticket && raffle.ticket.erg) || 0)} /></span><br />
         ERG gathered
       </p>
     </div>

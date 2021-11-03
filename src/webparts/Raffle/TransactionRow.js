@@ -28,7 +28,8 @@ const TransactionRow = ({ transaction, row }) => {
       <div className="col-11 col-lg-8 offset-1 offset-lg-0">
         <div className="transaction-id gray-field">
           <p>
-            Transaction ID: <a href={transaction.link} target="_blank" rel="noreferrer"> <span className="transaction-id-text">{transaction.id}</span></a>
+            Transaction ID: <a href={transaction.link} target="_blank" rel="noreferrer">
+              <span className="transaction-id-text">{transaction.id}</span></a>
           </p>
         </div>
       </div>

@@ -1,11 +1,11 @@
-import staticText from "../../statics";
+import Erg from "../../components/Erg";
 
-const TotalRaisedMoney = ({raffle}) => {
+const TotalRaisedMoney = ({ raffle }) => {
     const raisedErg = () => {
-        return (((raffle.ticket && raffle.ticket.erg) || 0) / staticText.ERG_SCALE);
+        return (raffle.ticket && raffle.ticket.erg) || 0;
     }
 
-    return (<p>Total Raised Money: <span className="total-raised">{raisedErg()}</span> ERG</p>)
+    return (<p>Total Raised Money: <span className="total-raised"><Erg erg={raisedErg()} shouldDisplay={true} /></span></p>)
 }
 
 export default TotalRaisedMoney;

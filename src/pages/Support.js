@@ -1,5 +1,3 @@
-import '../assets/css/faq.css';
-import '../assets/css/dashboard.css';
 import { useState } from 'react';
 import SupportForm from '../webparts/Support/SupportForm';
 import Tabs from '../components/Tabs';
@@ -11,8 +9,8 @@ import staticText from '../statics';
 import DashboardFaq from '../webparts/Dashboard/DashboardFaq';
 
 const Support = () => {
-  const [tabsContent] = useState(staticText.supportTabs);
-  const [faqs] = useState(staticText.faq)
+  const tabsContent = staticText.supportTabs;
+  const faqs = staticText.faq;
   const [activeTab, setActiveTab] = useState(2);
   const [raffles, setRaffles] = useState([]);
   const [inProgress, setInProgress] = useState(true);
@@ -45,7 +43,8 @@ const Support = () => {
       <section id="dashboard-top-options" className="p-lg-5 mt-header">
         <div className="container text-center">
           <div className="support-options-container d-flex justify-content-between">
-            <Tabs tabs={tabsContent} activeTab={activeTab} setActiveTab={setActiveTab} defaultActiveTab={2} changeTabContent={(tabIndex) => changeTab(tabIndex)} />
+            <Tabs tabs={tabsContent} activeTab={activeTab} setActiveTab={setActiveTab}
+              defaultActiveTab={2} changeTabContent={(tabIndex) => changeTab(tabIndex)} />
           </div>
         </div>
       </section>

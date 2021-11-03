@@ -1,33 +1,30 @@
-import { lazy, memo, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState, useContext } from 'react';
 import loader from '../assets/img/loader.svg';
 import Raffle from '../components/Raffle';
 import { getRafflesByState } from '../service/raffle.service';
-import '../assets/css/raffles.css';
 import Title from '../components/Title';
 import staticText from '../statics';
 import ThemeContext from '../context';
-
-const CircleTabs = lazy(() => import('../components/CircleTabs'));
-const Pagination = lazy(() => import('../webparts/Shared/Pagination'));
+import CircleTabs from '../components/CircleTabs';
+import Pagination from '../webparts/Shared/Pagination';
 
 const Raffles = memo(() => {
-  let [tabsContent] = useState(staticText.raffleListTabs);
-  let [inProgress, setInProgress] = useState(true);
-  let [activeTab, setActiveTab] = useState('all');
+  const context = useContext(ThemeContext)
+  const tabsContent = staticText.raffleListTabs;
+  const [inProgress, setInProgress] = useState(true);
+  const [activeTab, setActiveTab] = useState('all');
   const [raffles, setRaffles] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(1);
 
-  const nextPage = (ref) => {
-    ref.current.scrollTo(0, 0);
+  const nextPage = () => {
     const newPage = page + 1;
     setPage(newPage);
     fetchData(activeTab, newPage);
   }
 
-  const prevPage = (ref) => {
-    ref.current.scrollTo(0, 0);
+  const prevPage = () => {
     let newPage = page - 1;
     if (newPage <= 0) {
       newPage = 1;
@@ -41,7 +38,11 @@ const Raffles = memo(() => {
     setActiveTab(tabIndex);
   }
 
+  const scrollToTop = useCallback(() => {
+    context.wrapperRef.current.scrollTo(0, 0);
+  }, [context.wrapperRef])
   const fetchTabRaffles = useCallback((p, status) => {
+    scrollToTop()
     getRafflesByState(staticText.PAGE_SIZE * (p - 1), staticText.PAGE_SIZE * p, status).then(
       ({ data }) => {
         setInProgress(false);
@@ -50,8 +51,8 @@ const Raffles = memo(() => {
         setTotalItems(data.total);
       }
     )
-  }, []);
-  
+  }, [scrollToTop]);
+
   const fetchData = useCallback((tab, p) => {
     setInProgress(true);
     setRaffles([]);
@@ -97,7 +98,8 @@ const Raffles = memo(() => {
           </section>
           <section id="pagination" className="p-5">
             {!(totalPages < 1 || (totalPages === 1 && page === 1)) ?
-              <Pagination currentPage={page} totalPages={totalPages} prevPage={() => prevPage(wrapperRef)} nextPage={() => nextPage(wrapperRef)} PAGE_SIZE={staticText.PAGE_SIZE} totalItems={totalItems} />
+              <Pagination currentPage={page} totalPages={totalPages} prevPage={() => prevPage()} nextPage={() => nextPage()}
+                PAGE_SIZE={staticText.PAGE_SIZE} totalItems={totalItems} />
               : null}
           </section>
         </main>

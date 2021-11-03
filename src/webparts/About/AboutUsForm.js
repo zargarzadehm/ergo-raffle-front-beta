@@ -1,21 +1,21 @@
-import { memo, useRef, useState } from "react"
+import { memo, useState } from "react"
 import { toast } from 'react-toastify';
 import { aboutFormSubmission } from "../../service/support.service";
 
 const AboutUsForm = memo(() => {
-  const emailRef = useRef();
-  const messageRef = useRef();
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
   const [shouldDisable, setShouldDisable] = useState(true);
   const notify = (msg) => toast(msg);
   const handleSubmit = (e) => {
     e.preventDefault();
-    aboutFormSubmission(emailRef.current.value, messageRef.current.value).then(
+    aboutFormSubmission(email, message).then(
       ({ data }) => {
+        setEmail('')
+        setMessage('');
         if (data.state === 'success') {
           setShouldDisable(true);
           toast('Form Fubmitted');
-          emailRef.current.value = '';
-          messageRef.current.value = '';
         } else {
           setShouldDisable(false);
           toast(data.message);
@@ -26,12 +26,12 @@ const AboutUsForm = memo(() => {
       notify(e.response.data.message);
     });
   }
-  const handleChange = () => {
+  const validateMessage = () => {
     let sDisable = true;
     let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if (re.test(emailRef.current.value)) {
-      if (messageRef.current.value.length > 2) {
+    if (re.test(email)) {
+      if (message.length > 2) {
         sDisable = false;
       } else {
         sDisable = true;
@@ -40,6 +40,14 @@ const AboutUsForm = memo(() => {
       sDisable = true;
     }
     setShouldDisable(sDisable);
+  }
+  const handleChangeEmail = (e) => {
+    validateMessage();
+    setEmail(e.target.value);
+  }
+  const handleChangeMessage = (e) => {
+    validateMessage();
+    setMessage(e.target.value);
   }
   return (<>
     <h2 className="about-us-title text-center mb-4">Contact Us</h2>
@@ -50,12 +58,12 @@ const AboutUsForm = memo(() => {
         </h4>
         <div className="form-floating about-email-form">
           <input
-            ref={emailRef}
             type="email"
             className="form-control"
             id="floatingInput"
             placeholder="Email Address"
-            onChange={handleChange}
+            value={email}
+            onChange={handleChangeEmail}
           />
           <label htmlFor="floatingInput">Email</label>
         </div>
@@ -64,11 +72,11 @@ const AboutUsForm = memo(() => {
         </h4>
         <div className="form-floating">
           <textarea
-            ref={messageRef}
+            value={message}
             className="form-control"
             placeholder="Leave a comment here"
             id="floatingTextarea2"
-            onChange={handleChange}
+            onChange={handleChangeMessage}
           ></textarea>
           <label htmlFor="floatingTextarea2">Your Message</label>
         </div>

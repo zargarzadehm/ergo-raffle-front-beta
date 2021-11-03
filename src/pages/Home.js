@@ -1,23 +1,22 @@
 import loader from '../assets/img/loader.svg';
 import RaffleWork from '../components/RaffleWork';
 import { Link } from 'react-router-dom';
-import { Suspense, lazy, useState, useEffect, useCallback } from 'react';
+import { Suspense, useState, useEffect, useCallback } from 'react';
 import { getSucceedRaffle, getLatestRaffle, getNearDeadlineRaffle, getTopRaffle } from '../service/raffle.service';
 import Raffle from '../components/Raffle';
 import Title from '../components/Title';
 import staticText from '../statics';
-
-const LazyCarousel = lazy(() => import('../webparts/Home/CarouselBar'));
-const HeadingTitle = lazy(() => import('../webparts/Shared/HeadingTitle'));
-const Tabs = lazy(() => import('../components/Tabs'));
-const HomeHeader = lazy(() => import('../webparts/Home/HomeHeader'));
+import CarouselBar from '../webparts/Home/CarouselBar';
+import HeadingTitle from '../webparts/Shared/HeadingTitle';
+import Tabs from '../components/Tabs';
+import HomeHeader from '../webparts/Home/HomeHeader';
 
 function Home() {
   const [raffles, setRaffles] = useState([]);
   const [successfulRaffles, setSuccessfulRaffles] = useState([]);
   const [inProgress, setInProgress] = useState(true);
   const [activeTab, setActiveTab] = useState(0);
-  const [tabsContent] = useState(staticText.homeTabs);
+  const tabsContent = staticText.homeTabs;
 
   const fetchData = (tabIndex) => {
     if (tabIndex === 1) {
@@ -82,7 +81,8 @@ function Home() {
       <div className="container">
         <div className="row g-4">
           {inProgress ? <div className={'loading-wrapper'}>
-            <img src={loader} alt={'loading spinner'} /></div> : [...raffles].map((item) => (<div key={item.name + Math.random() + '-raffle-card'} className="col-6 col-lg-4">
+            <img src={loader} alt={'loading spinner'} /></div> : [...raffles].map((item) =>
+            (<div key={item.name + Math.random() + '-raffle-card'} className="col-6 col-lg-4">
               <Raffle raffle={item} />
             </div>))}
         </div>
@@ -96,7 +96,7 @@ function Home() {
     <HeadingTitle title={'Discover recent successfull raffles'} />
     <Suspense fallback={''}>
       {successfulRaffles && successfulRaffles.length > 0 ?
-        <LazyCarousel raffles={successfulRaffles} />
+        <CarouselBar raffles={successfulRaffles} />
         : <div className={'loading-wrapper'}>
           <img src={loader} alt={'loading spinner'} /></div>}
     </Suspense>

@@ -7,8 +7,8 @@ import StepOneE from "../../webparts/Raffle/FormSteps/StepOneE";
 import preview from '../../assets/img/preview.png';
 
 const CreateRaffleStepOne = memo(({ activeStep, raffleName, files, description, address, walletAddress, formFeedback, setIsActive }) => {
-  const handleSteps = (key,value) => {
-    formFeedback(key,value)
+  const handleSteps = (key, value) => {
+    formFeedback(key, value)
   }
   return (<>{activeStep === 1 ?
     <StepOneA formFeedback={(key, value) => handleSteps(key, value)} defaultValue={raffleName} />

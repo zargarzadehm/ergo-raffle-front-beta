@@ -1,5 +1,4 @@
 
-import '../assets/css/donate.css';
 import { memo, useCallback, useRef, useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -73,11 +72,13 @@ const RaffleSuccessFul = memo(({ history }) => {
       <FinishedRaffleHeader raffle={raffle} />
       <FinishedRaffleMiddleBar raffle={raffle} />
       {Array.isArray(ticketRaffleTransactions) && ticketRaffleTransactions.length > 0 ?
-      <FinishedRaffleTransactions titleRef={titleRef} winnerRaffleTransactions={winnerRaffleTransactions} charityRaffleTransactions={charityRaffleTransactions} ticketRaffleTransactions={ticketRaffleTransactions} />
-      : null }
+        <FinishedRaffleTransactions titleRef={titleRef} winnerRaffleTransactions={winnerRaffleTransactions}
+          charityRaffleTransactions={charityRaffleTransactions} ticketRaffleTransactions={ticketRaffleTransactions} />
+        : null}
       <section id="pagination" className="p-5">
         {!(totalTransactionPagess < 1 || (page === 1 && totalTransactionPagess === 1)) ?
-          <Pagination currentPage={page} totalPages={totalTransactionPagess} totalItems={total} PAGE_SIZE={staticText.PAGE_SIZE} prevPage={prevPage} nextPage={nextPage} />
+          <Pagination currentPage={page} totalPages={totalTransactionPagess} totalItems={total}
+            PAGE_SIZE={staticText.PAGE_SIZE} prevPage={prevPage} nextPage={nextPage} />
           : null}
       </section>
     </main>

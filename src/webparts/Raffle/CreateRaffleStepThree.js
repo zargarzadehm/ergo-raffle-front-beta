@@ -1,11 +1,10 @@
-import { memo, useContext, useRef } from "react";
+import { memo, useContext } from "react";
 import ThemeContext from "../../context";
 import { Link } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 
 
 const CreateRaffleStepThree = memo(({ setResponse, response, setIsTermsAccepted }) => {
-  const checkboxRef = useRef();
   const context = useContext(ThemeContext);
   const handleTerms = (e) => {
     const { checked } = e.target;
@@ -21,16 +20,11 @@ const CreateRaffleStepThree = memo(({ setResponse, response, setIsTermsAccepted 
   }
   function verifyCallback(value) {
     setResponse(value);
-    const checked = checkboxRef.current.checked;
-    if (checked) {
-      let enabled = true;
-      if (context.info.required && value.length < 10) {
-        enabled = false;
-      }
-      setIsTermsAccepted(enabled);
-    } else {
-      setIsTermsAccepted(false);
+    let enabled = true;
+    if (context.info.required && value.length < 10) {
+      enabled = false;
     }
+    setIsTermsAccepted(enabled);
   }
   return (<ThemeContext.Consumer>
     {({ info }) => (
@@ -57,7 +51,6 @@ const CreateRaffleStepThree = memo(({ setResponse, response, setIsTermsAccepted 
           >
             <div className="form-check">
               <input
-                ref={checkboxRef}
                 className="form-check-input"
                 type="checkbox"
                 value="on"

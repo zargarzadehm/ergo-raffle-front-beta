@@ -2,13 +2,16 @@ import axios from 'axios';
 import { config } from './config';
 
 export const getTopRaffle = (offset, limit) => {
-    return axios.get(config.baseUrl + `/raffle?offset=${offset}&limit=${limit}&sorting=activity`)
+    return axios.get(config.baseUrl + `/raffle?offset=${offset}&limit=${limit}&sorting=-activity&status=active`)
 }
 export const getAllYourDonations = (address, offset, limit) => {
     return axios.get(config.baseUrl + `/wallet/${address}/donation?offset=${offset}&limit=${limit}`)
 }
 export const postRaffle = (raffleName, address, walletAddress, files, ergGoal, ticketPrice, ticketPercent, deadline, description, recaptcha) => {
-    return axios.post(config.baseUrl + `/raffle`, { name: raffleName, charity: address, wallet: walletAddress, picture: files, goal: ergGoal, ticketPrice: ticketPrice, charityPercent: ticketPercent, deadline: deadline, description: description, recaptcha: recaptcha })
+    return axios.post(config.baseUrl + `/raffle`, {
+        name: raffleName, charity: address, wallet: walletAddress, picture: files,
+        goal: ergGoal, ticketPrice: ticketPrice, charityPercent: ticketPercent, deadline: deadline, description: description, recaptcha: recaptcha
+    })
 }
 export const getAllYourRafflesYouWin = (address, offset, limit) => {
     return axios.get(config.baseUrl + `/wallet/${address}/win?limit=${limit}&offset=${offset}`)
@@ -20,10 +23,10 @@ export const getYourActiveRaffleTickets = (id, wallet) => {
     return axios.get(config.baseUrl + `/raffle/${id}/address/${wallet}/donation`)
 }
 export const getNearDeadlineRaffle = (offset, limit) => {
-    return axios.get(config.baseUrl + `/raffle?offset=${offset}&limit=${limit}&sorting=deadline`)
+    return axios.get(config.baseUrl + `/raffle?offset=${offset}&limit=${limit}&sorting=-deadline&status=active`)
 }
 export const getLatestRaffle = (offset, limit) => {
-    return axios.get(config.baseUrl + `/raffle?offset=${offset}&limit=${limit}&sorting=createTime`)
+    return axios.get(config.baseUrl + `/raffle?offset=${offset}&limit=${limit}&sorting=-createTime&status=active`)
 }
 export const getSucceedRaffle = (offset, limit) => {
     return axios.get(config.baseUrl + `/raffle?offset=${offset}&limit=${limit}&status=succeed`)

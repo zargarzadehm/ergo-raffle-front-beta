@@ -1,14 +1,12 @@
-import '../assets/css/about-us.css';
 import aboutImg from "../assets/img/about-us.png";
 import Title from '../components/Title';
 import AboutUsForm from '../webparts/About/AboutUsForm';
 import AboutUsText from '../webparts/About/AboutUsText';
 
-function About () {
+function About() {
   return (<>
     <Title title={'Ergo Raffle - About'} />
     <main>
-      {/* <!-- Contact us--> */}
       <section id="about-us" className="mt-header">
         <div className="container">
           <h2 className="about-us-title text-center mb-4">About Us</h2>

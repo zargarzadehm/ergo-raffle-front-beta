@@ -4,7 +4,7 @@ import StepTwoB from "../../webparts/Raffle/FormSteps/StepTwoB";
 import StepTwoC from "../../webparts/Raffle/FormSteps/StepTwoC";
 import StepTwoD from "../../webparts/Raffle/FormSteps/StepTwoD";
 const CreateRaffleStepTwo = memo(({ formFeedback, deadline, ticketPercent, ticketPrice, ergGoal, activeStep }) => {
-  const handleSteps = (key,value) => {
+  const handleSteps = (key, value) => {
     formFeedback(key, value);
   }
   return (<>{activeStep === 6 ?

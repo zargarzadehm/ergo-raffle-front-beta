@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const StepOneA = ({ formFeedback, defaultValue }) => {
-  const [raffleName, setRaffleName] = useState(defaultValue);
+  const [raffleName, setRaffleName] = useState(defaultValue || '');
   const handleChange = (e) => {
     let { value } = e.target;
     setRaffleName(value);

@@ -22,9 +22,12 @@ const ShareModal = () => {
         <div className="modal-body">
           <form>
             <div className={'row'}>
-              <div className={'col-4 text-center'}><a href={`https://t.me/share/url?url=${window.location.href}&text=Ergo Raffle`} rel="noreferrer" target="_blank">Telegram</a></div>
-              <div className={'col-4 text-center'}><a href={`http://twitter.com/share?text=Ergo Raffle&url=${window.location.href}`} rel="noreferrer" target="_blank">Twitter</a></div>
-              <div className={'col-4 text-center'}><a href={`whatsapp://send?text=${window.location.href}`} rel="noreferrer" target="_blank" data-action="share/whatsapp/share">WhatsApp</a></div>
+              <div className={'col-4 text-center'}><a href={`https://t.me/share/url?url=${window.location.href}&text=Ergo Raffle`}
+                rel="noreferrer" target="_blank">Telegram</a></div>
+              <div className={'col-4 text-center'}><a href={`http://twitter.com/share?text=Ergo Raffle&url=${window.location.href}`}
+                rel="noreferrer" target="_blank">Twitter</a></div>
+              <div className={'col-4 text-center'}><a href={`whatsapp://send?text=${window.location.href}`} rel="noreferrer"
+                target="_blank" data-action="share/whatsapp/share">WhatsApp</a></div>
             </div>
           </form>
         </div>

@@ -6,10 +6,8 @@ const RaffleBarStep = memo(({ activeStep, stepBarRef }) => {
       Ready to create a new raffle?
     </h3>
     <div className="row my-2 step-circle-box">
-      {/* <!-- change the width of this row for each step (41% and 83%) --> */}
       <div className="col-12 step-bar zero-width" ref={stepBarRef}></div>
       <div className="col-2 step-circle-container">
-        {/* <!-- Important! add class "step-active" whenever user presses next and goes to next steps --> */}
         <div className="step-circle step-1-circle step-active"></div>
       </div>
       <div className="col-8 step-circle-container">

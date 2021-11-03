@@ -3,7 +3,8 @@ import CreateRaffleStepTwo from "./CreateRaffleStepTwo";
 import RaffleBarSubStepsOne from "./RaffleBarSubStepsOne";
 import RaffleBarSubStepsTwo from "./RaffleBarSubStepsTwo";
 
-const CreateRaffleStepIndicator = ({ setIsActive, activeStep, subStep, barTitle, raffleName, address, description, files, activeStepsTotal, walletAddress, handleSteps, ergGoal, ticketPercent, ticketPrice, deadline }) => {
+const CreateRaffleStepIndicator = ({ setIsActive, activeStep, subStep, barTitle, raffleName, address, description,
+    files, activeStepsTotal, walletAddress, handleSteps, ergGoal, ticketPercent, ticketPrice, deadline }) => {
     return (<>
         <div className="create-raffle-body my-5">
             <div className="mobile-raffle-steps d-lg-none text-start mb-5">
@@ -27,7 +28,8 @@ const CreateRaffleStepIndicator = ({ setIsActive, activeStep, subStep, barTitle,
                     </> : null}
                 </div>
                 <div className="col-lg-8 create-raffle-steps-content">
-                    <CreateRaffleStepOne formFeedback={(key, value) => handleSteps(key,value)} setIsActive={setIsActive} activeStep={activeStep} raffleName={raffleName} address={address} description={description} files={files} walletAddress={walletAddress} />
+                    <CreateRaffleStepOne formFeedback={(key, value) => handleSteps(key, value)} setIsActive={setIsActive}
+                        activeStep={activeStep} raffleName={raffleName} address={address} description={description} files={files} walletAddress={walletAddress} />
                 </div>
             </div>
             {activeStep > 5 ?
@@ -43,7 +45,8 @@ const CreateRaffleStepIndicator = ({ setIsActive, activeStep, subStep, barTitle,
                             <RaffleBarSubStepsTwo activeStep={activeStep} /> : null}
                     </div>
                     <div className="col-lg-8 create-raffle-steps-content">
-                        <CreateRaffleStepTwo formFeedback={(key, value) => handleSteps(key, value)} activeStep={activeStep} ergGoal={ergGoal} ticketPrice={ticketPrice} ticketPercent={ticketPercent} deadline={deadline} />
+                        <CreateRaffleStepTwo formFeedback={(key, value) => handleSteps(key, value)} activeStep={activeStep}
+                            ergGoal={ergGoal} ticketPrice={ticketPrice} ticketPercent={ticketPercent} deadline={deadline} />
                     </div>
                 </div>
                 : null}

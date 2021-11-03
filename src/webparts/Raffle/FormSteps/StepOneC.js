@@ -1,6 +1,20 @@
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
+const editorConfiguration = {
+  toolbar: ['bold',
+    'italic',
+    'underline',
+    'strikethrough',
+    '|',
+    'alignment',
+    'outdent',
+    'indent',
+    'numberedList',
+    'bulletedList',
+    '|',
+    'link'],
+};
 const StepOneC = ({ formFeedback, defaultValue }) => {
   const changeEditor = (data) => {
     formFeedback('description', data);
@@ -15,6 +29,7 @@ const StepOneC = ({ formFeedback, defaultValue }) => {
           <div>
             <CKEditor
               editor={ClassicEditor}
+              config={editorConfiguration}
               data={defaultValue}
               onChange={(event, editor) => {
                 const data = editor.getData();

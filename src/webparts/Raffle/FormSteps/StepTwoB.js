@@ -5,7 +5,7 @@ const StepTwoB = memo(({ formFeedback, defaultValue }) => {
   const [ticketPrice, setTicketPrice] = useState(defaultValue)
   const handleChange = (value) => {
     setTicketPrice(value);
-    formFeedback('ticketPrice',value)
+    formFeedback('ticketPrice', value)
   }
   return (<div className="second-step step-2-b">
     <div className="step-content text-center text-lg-start">

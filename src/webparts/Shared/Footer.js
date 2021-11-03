@@ -14,7 +14,8 @@ const Footer = memo(() => {
           </Link>
           <Link to={'/'} className="site-link mt-2">Ergo Raffle</Link>
           <div className="footer-links mt-3 pt-3">
-            {staticText.footers.map((item, key) => (<Link key={key + Math.random() + 'footer-elem'} className="nav-link nav-link-offcanvas" to={item.link}>{item.title}</Link>))}
+            {staticText.footers.map((item, key) => (<Link key={key + Math.random() + 'footer-elem'}
+              className="nav-link nav-link-offcanvas" to={item.link}>{item.title}</Link>))}
             <a
               rel="noreferrer"
               className="nav-link"
@@ -24,7 +25,8 @@ const Footer = memo(() => {
             >Wallet</a>
           </div>
           <div className="footer-links footer-sublinks mt-4">
-            {Object.entries(staticText.socials).map(([key, value], i) => (<a rel="noreferrer" key={i} target="_blank" className="nav-link nav-sublink" href={value}>{key}</a>))}
+            {Object.entries(staticText.socials).map(([key, value], i) => (<a rel="noreferrer" key={i} target="_blank"
+              className="nav-link nav-sublink" href={value}>{key}</a>))}
           </div>
         </div>
         <div className="footer-copyright text-center mb-4">

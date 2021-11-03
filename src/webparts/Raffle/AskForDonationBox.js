@@ -1,14 +1,13 @@
 import { memo } from "react";
-import staticText from "../../statics";
+import Erg from "../../components/Erg";
 
 const AskForDonationBox = memo(({ raffle }) => {
   const remainingErg = () => {
-    return (((((raffle.goal) || 0) / staticText.ERG_SCALE) - (((raffle.ticket && raffle.ticket.erg) || 0) / staticText.ERG_SCALE))) > 0 ? 
-    ((((((raffle.goal) || 0) / staticText.ERG_SCALE) - (((raffle.ticket && raffle.ticket.erg) || 0) / staticText.ERG_SCALE) < 0 ? 0 : (((raffle.goal) || 0) / staticText.ERG_SCALE) - (((raffle.ticket && raffle.ticket.erg) || 0) / staticText.ERG_SCALE)))) : null
+    return ((raffle.goal) || 0) - ((raffle.ticket && raffle.ticket.erg) || 0) > 0 ? (raffle.goal - (raffle.ticket && raffle.ticket.erg) || 0) : 0
   }
 
   const collectedErg = () => {
-    return ((raffle.ticket && raffle.ticket.erg) || 0) / staticText.ERG_SCALE;
+    return ((raffle.ticket && raffle.ticket.erg) || 0);
   }
 
   const progress = () => {
@@ -21,16 +20,16 @@ const AskForDonationBox = memo(({ raffle }) => {
       <div className="progress-bar" style={{ width: progress() + '%' }}></div>
       <div className="raised">
         <p className="mt-1">
-          <span className="collected-erg">{collectedErg()}</span> ERG have been collected
+          <span className="collected-erg"><Erg erg={collectedErg()} shouldDisplay={true} /></span> have been collected
           so far!
           <br className="d-lg-none" />
-          <span className="total-erg"> {remainingErg()} </span>
-          ERG remaining!
+          <span className="total-erg"> <Erg erg={remainingErg()} shouldDisplay={true} /> </span>
+          remaining!
         </p>
       </div>
     </div>
     <h3 className="help-request mt-5">
-      {"Why not help this raffle fund " + remainingErg() + " more ERG now!"}
+      Why not help this raffle fund  <Erg shouldDisplay={false} erg={remainingErg()} /> more ERG now!
     </h3>
   </div>)
 })

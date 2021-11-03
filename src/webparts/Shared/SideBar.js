@@ -1,9 +1,7 @@
-import { lazy, Suspense, useRef } from "react";
 import { memo } from "react";
+import Navigation from './Navigation';
 
-const LazyNav = lazy(() => import('./Navigation'));
 const SideBar = memo(() => {
-  const offCanvasNightMode = useRef();
   const toggleMode = (e) => {
     e.preventDefault();
     toggleNight();
@@ -18,12 +16,9 @@ const SideBar = memo(() => {
       id="sidebar"
       aria-labelledby="sidebar-label"
     >
-      <Suspense fallback={''}>
-        <LazyNav />
-      </Suspense>
+      <Navigation />
       <div className="night-mode-btn-offcanvas text-center mt-5">
         <button
-          ref={offCanvasNightMode}
           className="night-mode-link night-mode-link-offcanvas"
           rel="noreferrer"
           id="night-mode"

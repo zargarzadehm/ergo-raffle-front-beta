@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-const RaffleModalStepNumber = memo(({ modStatus, timerRef, remainingSeconds, isDonation }) => {
+const RaffleModalStepNumber = memo(({ modStatus, timerRef, remainingSeconds }) => {
   return (<>
     <div className="text-center operation-text mt-5">
       <p>The operation will be done automaticly afterward.</p>
@@ -43,13 +43,12 @@ const RaffleModalStepNumber = memo(({ modStatus, timerRef, remainingSeconds, isD
               </g>
             </svg>
             <span id="base-timer-label" ref={remainingSeconds} className="base-timer__label"
-            >700 Seconds</span
+            >900 Seconds</span
             >
           </div>
         </div>
       </div>
     </div>
-    {isDonation ?
     <div className="modal-footer d-flex justify-content-center">
       <div className="donation-steps-description">
         <div className="donation-steps-box p-3">
@@ -64,7 +63,6 @@ const RaffleModalStepNumber = memo(({ modStatus, timerRef, remainingSeconds, isD
         service from cheating.
       </p>
     </div>
-    : null}
   </>)
 });
 

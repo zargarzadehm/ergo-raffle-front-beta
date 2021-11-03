@@ -1,5 +1,4 @@
 import Raffle from '../../components/Raffle';
-import { Link } from 'react-router-dom';
 
 const DashboardRaffleWinner = ({ yourRaffle, loading }) => {
   return (<section id="all-your-raffles-container" className="mt-5">
@@ -12,11 +11,6 @@ const DashboardRaffleWinner = ({ yourRaffle, loading }) => {
             <Raffle raffle={item} />
           </div>
         ))}
-      </div>
-      <div className="see-more-raffles text-center mt-5">
-        <Link to={"/raffle/list"} className="nav-link see-more-link">
-          show more &#62;
-        </Link>
       </div>
     </div>
   </section>

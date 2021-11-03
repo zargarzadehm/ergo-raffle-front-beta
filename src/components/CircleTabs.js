@@ -13,9 +13,9 @@ const CircleTabs = memo(({ tabs, changeTabContent }) => {
         onClick={() => { setActiveTab(item.value); changeTab(item.value); }}
         className={activeTab === item.value ? "btn btn-outline-raffle btn-raffle-active" : "btn btn-outline-raffle"}
       >
-      {item.label}
-    </button>))
-    : null}
+        {item.label}
+      </button>))
+      : null}
   </>)
 });
 
