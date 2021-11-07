@@ -74,7 +74,10 @@ function Home() {
     <HomeHeader />
     <section>
       <div className="container raffle-links-container mt-5">
-        <Tabs tabs={tabsContent} setActiveTab={setActiveTab} activeTab={activeTab} changeTabContent={(tabIndex) => changeTab(tabIndex)} />
+        <Tabs tabs={tabsContent} 
+        setActiveTab={setActiveTab} 
+        activeTab={activeTab} 
+        changeTabContent={(tabIndex) => changeTab(tabIndex)} />
       </div>
     </section>
     <section id="raffle-cards" className="p-lg-5 mt-5">

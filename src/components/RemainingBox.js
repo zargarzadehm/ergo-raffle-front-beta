@@ -7,8 +7,8 @@ const RemainingBox = ({ raffle }) => {
     const remainingOrPassedDays = () => {
         return raffle.status === 'active' ?
             Math.floor((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE) === 0 ?
-                (Math.ceil(((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE) * 24)) + ' hours remaining' :
-                Math.floor((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE) + ' days remaining'
+                Math.abs((Math.ceil(((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE) * 24))) + ' hours remaining' :
+                Math.abs(Math.floor((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE)) + ' days remaining'
             :
             Math.floor((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE) === 0 ?
                 (Math.abs(Math.ceil((((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE) * 24)))) + ' hours passed' :

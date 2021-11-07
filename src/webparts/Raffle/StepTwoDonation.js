@@ -1,7 +1,8 @@
 import { useState } from "react";
+import Erg from "../../components/Erg";
 import TicketPriceRadioCheck from "./TicketPriceRadioCheck";
 
-const StepTwoDonation = ({ handleRadioChange, defaultValue }) => {
+const StepTwoDonation = ({ handleRadioChange, defaultValue, raffle }) => {
   const [radioCheck, setRadioCheck] = useState(typeof defaultValue === 'undefined' ? 5 : defaultValue);
   const handleChange = (e) => {
     const { value } = e.target
@@ -21,7 +22,7 @@ const StepTwoDonation = ({ handleRadioChange, defaultValue }) => {
           "
           >
             Ticket Price(ERG):
-            <span className="ticket-price-number">0.5</span>
+            <span className="ticket-price-number"> <Erg erg={raffle.ticket.price} shouldDisplay={false} /> </span>
           </p>
         </div>
         <div className="col-lg-6 text-center ticket-options-container">
@@ -30,13 +31,12 @@ const StepTwoDonation = ({ handleRadioChange, defaultValue }) => {
           <TicketPriceRadioCheck radioCheck={radioCheck} handleChange={handleChange} value={20} />
           <TicketPriceRadioCheck radioCheck={radioCheck} handleChange={handleChange} value={30} />
         </div>
-        <div className="col-lg-3">
-        </div>
         <div className="form-floating ticket-count-input">
           <input
             onChange={handleChange}
             type="number"
-            pattern="[0-9]+"
+            min={0}
+            step={1}
             className="form-control"
             id="floatingInput"
             placeholder="Ticket Counts"
@@ -44,6 +44,7 @@ const StepTwoDonation = ({ handleRadioChange, defaultValue }) => {
           />
           <label htmlFor="floatingInput">Ticket Counts</label>
         </div>
+          <p className="text-center mb-4">Total Amount Will Be: <Erg erg={radioCheck*raffle.ticket.price} shouldDisplay={true} /> </p>
       </div>
     </form>
   </>)

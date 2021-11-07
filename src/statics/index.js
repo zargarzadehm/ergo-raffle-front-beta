@@ -21,6 +21,7 @@ const staticText = {
         'Github': 'https://github.com/ErgoRaffle', 'Discord': "https://discord.gg/ahktsCT9TM", 'Whitepaper': "https://github.com/ErgoRaffle/raffle-documentation",
         'Ergo Forum': "https://www.ergoforum.org/", 'Ergo Platform': "https://www.ergoforum.org/"
     },
+    shareInfo: {'Telegram': (url)=>(`https://t.me/share/url?url=${url}&text=Ergo Raffle`), 'WhatsApp': (url)=>(`whatsapp://send?text=${url}`), 'Twitter': (url)=>(`http://twitter.com/share?text=Ergo Raffle&url=${url}`)},
     PAGE_SIZE: 12,
     ERG_SCALE: 1000000000,
     DAY_CONVERSION_SCALE: 720,

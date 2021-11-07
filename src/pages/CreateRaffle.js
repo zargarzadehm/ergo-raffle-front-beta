@@ -25,11 +25,11 @@ function CreateRaffle() {
     "Shares percentage",
     "Last Step : Agree to our terms",
   ]
+  const [maxStep, setMaxStep] = useState(1);
   const context = useContext(ThemeContext)
   const location = useLocation();
   const stepBarRef = useRef();
   const [activeStep, setActiveStep] = useState(1);
-  const [maxStep, setMaxStep] = useState(1);
   const [subStep, setSubStep] = useState(1);
   const [isActive, setIsActive] = useState('');
   const [formParams, setFormParams] = useState({
@@ -44,9 +44,7 @@ function CreateRaffle() {
   const handleSteps = (key, value) => {
     if (value.length === 0) {
       setIsActive(false);
-      setMaxStep(activeStep - 1);
     } else {
-      setMaxStep(activeStep);
       if (key === 'deadline' && value > 262800) {
         setIsActive(false);
       } else {
@@ -58,6 +56,9 @@ function CreateRaffle() {
 
   const nextStep = (e) => {
     e.preventDefault();
+    if (maxStep < activeStep - 1) {
+      setMaxStep(activeStep - 1);
+    }
     if (activeStep !== 1 && activeStep !== 4) {
       if (activeStep <= maxStep) {
         setIsActive(true);
@@ -99,9 +100,15 @@ function CreateRaffle() {
     setIsTermsAccepted(true);
     const fileArrays = [...formParams.files].sort((a, b) => a - b);
     const removeNulls = [...fileArrays].filter((a) => a != null);
-    postRaffle(formParams.raffleName, formParams.address, formParams.walletAddress, removeNulls, parseInt(formParams.ergGoal) * staticText.ERG_SCALE,
-      parseInt((formParams.ticketPrice) * staticText.ERG_SCALE), parseFloat(formParams.ticketPercent), parseFloat(formParams.deadline),
-      formParams.description, response).then(
+    postRaffle(formParams.raffleName,
+      formParams.address,
+      formParams.walletAddress,
+      removeNulls, parseInt(formParams.ergGoal) * staticText.ERG_SCALE,
+      parseInt((formParams.ticketPrice) * staticText.ERG_SCALE),
+      parseFloat(formParams.ticketPercent),
+      parseFloat(formParams.deadline),
+      formParams.description,
+      response).then(
         ({ data }) => {
           notify('Donation Perfomerd!');
           setIsTermsAccepted(false);
@@ -172,8 +179,11 @@ function CreateRaffle() {
               deadline={formParams.deadline}
               walletAddress={formParams.walletAddress} />
             {activeStep > 9 ?
-              <CreateRaffleStepThree info={info} setIsTermsAccepted={setIsTermsAccepted} isTermsAccepted={isTermsAccepted}
-                setResponse={setResponse} response={response} />
+              <CreateRaffleStepThree info={info}
+                setIsTermsAccepted={setIsTermsAccepted}
+                isTermsAccepted={isTermsAccepted}
+                setResponse={setResponse}
+                response={response} />
               : null}
             <CreateRaffleButtonBar
               isTermsAccepted={isTermsAccepted}

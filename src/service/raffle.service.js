@@ -40,8 +40,9 @@ export const getActiveRaffle = (offset, limit) => {
 export const getAllRaffle = (offset, limit) => {
     return axios.get(config.baseUrl + `/raffle?offset=${offset}&limit=${limit}&status=all`)
 }
-export const getRafflesByState = (offset, limit, status) => {
-    return axios.get(config.baseUrl + `/raffle?offset=${offset}&limit=${limit}&status=${status}`)
+export const getRafflesByState = (offset, limit, status, sort) => {
+    const sortItem = sort === 0 ? '-createTime' : sort === 1 ? '-activity' : '-deadline';
+    return axios.get(config.baseUrl + `/raffle?offset=${offset}&limit=${limit}&sorting=${sortItem}&status=${status}`)
 }
 export const getSingleRaffle = (id) => {
     return axios.get(config.baseUrl + `/raffle/${id}`)

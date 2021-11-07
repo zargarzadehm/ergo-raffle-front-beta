@@ -1,7 +1,8 @@
+import staticText from "../../statics";
 import TransactionRow from "./TransactionRow";
 import WinnerTransactionRow from "./WinnerTransactionRow";
 
-const FinishedRaffleTransactions = ({ winnerRaffleTransactions, charityRaffleTransactions, ticketRaffleTransactions, titleRef }) => {
+const FinishedRaffleTransactions = ({ winnerRaffleTransactions, charityRaffleTransactions, ticketRaffleTransactions, titleRef, page }) => {
     return (<section id="raffle-transactions">
         <div className="container mt-5">
             <h2 className="transaction-title text-center mb-4" ref={titleRef}>
@@ -16,7 +17,8 @@ const FinishedRaffleTransactions = ({ winnerRaffleTransactions, charityRaffleTra
         </div>
         <div className="container all-transactions">
             {(Array.isArray(ticketRaffleTransactions) ? [...ticketRaffleTransactions] : []).map((item, key) =>
-                (<TransactionRow key={key + Math.random() + '-items'} transaction={item} row={key + 1} />))}
+                (<TransactionRow key={key + Math.random() + '-items'} 
+                transaction={item} row={((page -1)*(staticText.PAGE_SIZE - winnerRaffleTransactions.length - charityRaffleTransactions.length)) + key + 1} />))}
         </div>
     </section>)
 }

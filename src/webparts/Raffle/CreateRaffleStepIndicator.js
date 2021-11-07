@@ -28,8 +28,15 @@ const CreateRaffleStepIndicator = ({ setIsActive, activeStep, subStep, barTitle,
                     </> : null}
                 </div>
                 <div className="col-lg-8 create-raffle-steps-content">
-                    <CreateRaffleStepOne formFeedback={(key, value) => handleSteps(key, value)} setIsActive={setIsActive}
-                        activeStep={activeStep} raffleName={raffleName} address={address} description={description} files={files} walletAddress={walletAddress} />
+                    <CreateRaffleStepOne
+                        formFeedback={(key, value) => handleSteps(key, value)}
+                        setIsActive={setIsActive}
+                        activeStep={activeStep}
+                        raffleName={raffleName}
+                        address={address}
+                        description={description}
+                        files={files}
+                        walletAddress={walletAddress} />
                 </div>
             </div>
             {activeStep > 5 ?
@@ -45,8 +52,13 @@ const CreateRaffleStepIndicator = ({ setIsActive, activeStep, subStep, barTitle,
                             <RaffleBarSubStepsTwo activeStep={activeStep} /> : null}
                     </div>
                     <div className="col-lg-8 create-raffle-steps-content">
-                        <CreateRaffleStepTwo formFeedback={(key, value) => handleSteps(key, value)} activeStep={activeStep}
-                            ergGoal={ergGoal} ticketPrice={ticketPrice} ticketPercent={ticketPercent} deadline={deadline} />
+                        <CreateRaffleStepTwo
+                            formFeedback={(key, value) => handleSteps(key, value)}
+                            activeStep={activeStep}
+                            ergGoal={ergGoal}
+                            ticketPrice={ticketPrice}
+                            ticketPercent={ticketPercent}
+                            deadline={deadline} />
                     </div>
                 </div>
                 : null}

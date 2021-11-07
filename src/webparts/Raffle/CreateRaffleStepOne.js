@@ -11,15 +11,22 @@ const CreateRaffleStepOne = memo(({ activeStep, raffleName, files, description, 
     formFeedback(key, value)
   }
   return (<>{activeStep === 1 ?
-    <StepOneA formFeedback={(key, value) => handleSteps(key, value)} defaultValue={raffleName} />
+    <StepOneA formFeedback={(key, value) => handleSteps(key, value)}
+      defaultValue={raffleName} />
     : activeStep === 2 ?
-      <StepOneB formFeedback={(key, value) => handleSteps(key, value)} defaultValue={files} preview={preview} setIsActive={setIsActive} />
+      <StepOneB formFeedback={(key, value) => handleSteps(key, value)}
+        defaultValue={files}
+        preview={preview}
+        setIsActive={setIsActive} />
       : activeStep === 3 ?
-        <StepOneC formFeedback={(key, value) => handleSteps(key, value)} defaultValue={description} />
+        <StepOneC formFeedback={(key, value) => handleSteps(key, value)}
+          defaultValue={description} />
         : activeStep === 4 ?
-          <StepOneD formFeedback={(key, value) => handleSteps(key, value)} defaultValue={address} />
+          <StepOneD formFeedback={(key, value) => handleSteps(key, value)}
+            defaultValue={address} />
           : activeStep === 5 ?
-            <StepOneE formFeedback={(key, value) => handleSteps(key, value)} defaultValue={walletAddress} />
+            <StepOneE formFeedback={(key, value) => handleSteps(key, value)}
+              defaultValue={walletAddress} />
             : null}
   </>)
 })

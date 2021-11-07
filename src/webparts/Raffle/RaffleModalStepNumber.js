@@ -49,20 +49,22 @@ const RaffleModalStepNumber = memo(({ modStatus, timerRef, remainingSeconds }) =
         </div>
       </div>
     </div>
-    <div className="modal-footer d-flex justify-content-center">
-      <div className="donation-steps-description">
-        <div className="donation-steps-box p-3">
-          <p className="donation-text">
-            Donation steps: <span>{modStatus} ({modStatus === 'waiting' ? 1 : modStatus === 'createdWaiting' ? 2 : modStatus === 'done' ? 3 : 4} of 4)</span>
-          </p>
+    {modStatus !== 'expired' ?
+      <div className="modal-footer d-flex justify-content-center">
+        <div className="donation-steps-description">
+          <div className="donation-steps-box p-3">
+            <p className="donation-text">
+              {window.location.href.indexOf('raffle/donate') >= 0 ? 'Donation Steps' : 'Create Raffle Steps'}: <span>{modStatus} ({modStatus === 'waiting' ? 1 : modStatus === 'createdWaiting' ? 2 : modStatus === 'done' ? 3 : 4} of 3)</span>
+            </p>
+          </div>
         </div>
+        <p className="donation-fineprint mt-2">
+          Your funds will be send back to you in case of any failure.
+          samrt contracts are being used to prevent the intermidiate
+          service from cheating.
+        </p>
       </div>
-      <p className="donation-fineprint mt-2">
-        Your funds will be send back to you in case of any failure.
-        samrt contracts are being used to prevent the intermidiate
-        service from cheating.
-      </p>
-    </div>
+      : null}
   </>)
 });
 

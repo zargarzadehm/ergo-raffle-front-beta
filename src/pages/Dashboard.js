@@ -44,7 +44,12 @@ const Dashboard = ({ history }) => {
       <DashboardRaffleDonation loading={isDonationFinished} donationRaffle={donationRaffle} />
       <DashboardRaffleWinner loading={isWinnerRaffleFinished} yourRaffle={yourRaffle} />
       <div className="dashboard-support-choice d-flex justify-content-around">
-        <Tabs tabs={tabContent} defaultActiveTab={1} activeTab={activeTab} setActiveTab={setActiveTab} changeTabContent={(tabIndex) => changeTab(tabIndex)} />
+        <Tabs 
+        tabs={tabContent} 
+        defaultActiveTab={1} 
+        activeTab={activeTab} 
+        setActiveTab={setActiveTab} 
+        changeTabContent={(tabIndex) => changeTab(tabIndex)} />
       </div>
       <DashboardFaq faqs={faqs} />
     </main>

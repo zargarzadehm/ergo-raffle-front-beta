@@ -28,13 +28,18 @@ const ScrollTop = () => {
 }
 
 const Layout = memo(({ children }) => {
-  const [hasWallet, setHasWallet] = useState((window.localStorage.getItem('wallet') !== null && typeof window.localStorage.getItem('wallet') !== 'undefined') ?
-    window.atob(window.localStorage.getItem('wallet')) : '');
+  const [hasWallet, setHasWallet] = useState((window.localStorage.getItem('wallet') !== null &&
+    typeof window.localStorage.getItem('wallet') !== 'undefined') ?
+    window.atob(window.localStorage.getItem('wallet')) :
+    '');
   const finishModalRef = useRef();
   const finishModalToggle = useRef();
   const wrapperRef = useRef();
-  const [theme, setTheme] = useState(window.localStorage.getItem('theme') !== null ? window.localStorage.getItem('theme') === DARK_THEME ?
-    DARK_THEME : LIGHT_THEME : LIGHT_THEME);
+  const [theme, setTheme] = useState(window.localStorage.getItem('theme') !== null ?
+    window.localStorage.getItem('theme') === DARK_THEME ?
+      DARK_THEME :
+      LIGHT_THEME :
+    LIGHT_THEME);
   const [info, setInfo] = useState({});
   const [modalStatus, setModalStatus] = useState(null);
   const [modalInfo, setModalInfo] = useState({ erg: 0, ticketCount: 0, address: '' });

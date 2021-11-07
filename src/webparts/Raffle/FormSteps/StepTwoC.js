@@ -5,7 +5,7 @@ const StepTwoC = memo(({ formFeedback, defaultValue }) => {
   const [deadline, setDeadline] = useState(defaultValue);
   const handleChange = (e) => {
     const { value } = e.target;
-    setDeadline(value);
+    setDeadline(value.split('.').join('').split('-').join(''));
     formFeedback('deadline', value);
   }
   return (<div className="second-step step-2-c">
@@ -21,15 +21,16 @@ const StepTwoC = memo(({ formFeedback, defaultValue }) => {
                   raffle-deadline-input">
               <input
                 value={deadline}
-                type="text"
+                type="number"
+                min={0}
+                step={1}
                 className="form-control"
                 id="raffle-deadline"
-                placeholder="charity Address"
+                placeholder="Deadline"
                 required
                 onChange={handleChange}
               />
-              <label htmlFor="raflfle-deadline"
-              >Deadline blocks</label>
+              <label htmlFor="raflfle-deadline">Deadline blocks</label>
             </div>
           </form>
         </div>

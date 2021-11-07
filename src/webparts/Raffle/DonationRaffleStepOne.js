@@ -20,7 +20,10 @@ const DonationRaffleStepOne = memo(({ toggleNextStep, walletAddress, changeWalle
       </form>
       <div className="row action-button mb-5">
         <div className="col-12 text-center">
-          <button type="button" disabled={walletAddress.length === 0 ? 'disabled' : null} onClick={toggleNextStep} className="btn donate-next next1 mt-3">
+          <button type="button"
+            disabled={walletAddress.length === 0 ? 'disabled' : null}
+            onClick={toggleNextStep}
+            className="btn donate-next next1 mt-3">
             next step
           </button>
         </div>

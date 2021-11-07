@@ -13,7 +13,10 @@ const Raffle = memo(({ raffle }) => {
       "card raffle-card raffle-unsuccess" : "card raffle-card"}>
       <div className="card-body">
         <div className="raffle-img-container">
-          <img src={raffle && Array.isArray(raffle.picture) && raffle.picture.length > 0 ? raffle.picture[0] :
+          <img src={raffle &&
+            Array.isArray(raffle.picture) &&
+            raffle.picture.length > 0 ?
+            raffle.picture[0] :
             defaultImg} className={'full-width'} alt="" />
         </div>
         <h3 className="raffle-title mt-3 mb-3 text-center">

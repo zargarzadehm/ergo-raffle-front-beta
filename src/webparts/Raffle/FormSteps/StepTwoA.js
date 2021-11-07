@@ -4,7 +4,7 @@ const StepTwoA = memo(({ formFeedback, defaultValue }) => {
   const [ergGoal, setErgGoal] = useState(defaultValue);
   const handleChange = (e) => {
     const { value } = e.target;
-    setErgGoal(value);
+    setErgGoal(value.split('-').join('').split('.').join(''));
     formFeedback('ergGoal', value)
   }
   return (<div className="second-step step-2-a">
@@ -16,13 +16,15 @@ const StepTwoA = memo(({ formFeedback, defaultValue }) => {
         <div
           className="form-floating create-raffle-input raffle-donation-input">
           <input
-            value={ergGoal}
             type="number"
+            min={1}
+            step={1}
             className="form-control"
             id="floatingInput"
             placeholder="Donation Amount"
             onChange={handleChange}
-            required
+            onKeyDown={(e)=> setErgGoal(e.target.value.split('-').join('').split('.').join(''))}
+            value={ergGoal}
           />
           <label htmlFor="floatingInput">Amount (ERG)</label>
         </div>

@@ -72,8 +72,11 @@ const RaffleSuccessFul = memo(({ history }) => {
       <FinishedRaffleHeader raffle={raffle} />
       <FinishedRaffleMiddleBar raffle={raffle} />
       {Array.isArray(ticketRaffleTransactions) && ticketRaffleTransactions.length > 0 ?
-        <FinishedRaffleTransactions titleRef={titleRef} winnerRaffleTransactions={winnerRaffleTransactions}
-          charityRaffleTransactions={charityRaffleTransactions} ticketRaffleTransactions={ticketRaffleTransactions} />
+        <FinishedRaffleTransactions titleRef={titleRef}
+          page={page}
+          winnerRaffleTransactions={winnerRaffleTransactions}
+          charityRaffleTransactions={charityRaffleTransactions}
+          ticketRaffleTransactions={ticketRaffleTransactions} />
         : null}
       <section id="pagination" className="p-5">
         {!(totalTransactionPagess < 1 || (page === 1 && totalTransactionPagess === 1)) ?

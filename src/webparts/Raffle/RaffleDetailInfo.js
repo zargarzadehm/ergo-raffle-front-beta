@@ -17,12 +17,17 @@ const RaffleDetailInfo = memo(({ raffle }) => {
       }
       if (!exists) {
         data.push(raffle);
+        window.localStorage.setItem('pin', JSON.stringify(data));
+        notify('Raffle Pinned');
+      } else {
+        const deletedItem = [...data].filter((a)=> a.id !== raffle.id);
+        window.localStorage.setItem('pin', JSON.stringify(deletedItem));
+        notify('Raffle Un Pinned');
       }
-      window.localStorage.setItem('pin', JSON.stringify(data));
     } else {
       window.localStorage.setItem('pin', JSON.stringify([raffle]));
+      notify('Raffle Pinned');
     }
-    notify('Raffle Pinned');
   }
   const remainingDays = () => {
     return Math.floor(((raffle.deadline - context.info.height) / staticText.DAY_CONVERSION_SCALE)) === 0 ?

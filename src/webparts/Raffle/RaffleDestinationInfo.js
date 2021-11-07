@@ -1,7 +1,9 @@
-import { memo } from "react";
+import { memo, useContext } from "react";
 import Erg from "../../components/Erg";
+import ThemeContext from "../../context";
 
 const RaffleDestinationInfo = memo(({ raffle }) => {
+  const context = useContext(ThemeContext);
   return (<>
     <div className="col-lg-5">
       <div className={raffle.status !== 'active' ? "donation-goal-box bordered-field" : "donation-goal-box bordered-field bordered-field-orange"}>
@@ -18,7 +20,7 @@ const RaffleDestinationInfo = memo(({ raffle }) => {
           <p>Winner: <span className="winner-share-text">{raffle.percent && raffle.percent.winner}%</span></p>
         </div>
         <div className="service-share flex-grow-1">
-          <p>Service: <span className="service-share-text">5%</span></p>
+          <p>Service: <span className="service-share-text">{context.info.serviceFee} %</span></p>
         </div>
       </div>
     </div>

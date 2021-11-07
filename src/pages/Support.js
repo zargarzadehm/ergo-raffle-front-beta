@@ -43,8 +43,12 @@ const Support = () => {
       <section id="dashboard-top-options" className="p-lg-5 mt-header">
         <div className="container text-center">
           <div className="support-options-container d-flex justify-content-between">
-            <Tabs tabs={tabsContent} activeTab={activeTab} setActiveTab={setActiveTab}
-              defaultActiveTab={2} changeTabContent={(tabIndex) => changeTab(tabIndex)} />
+            <Tabs
+              tabs={tabsContent}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              defaultActiveTab={2}
+              changeTabContent={(tabIndex) => changeTab(tabIndex)} />
           </div>
         </div>
       </section>

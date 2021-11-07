@@ -8,13 +8,18 @@ const CreateRaffleStepTwo = memo(({ formFeedback, deadline, ticketPercent, ticke
     formFeedback(key, value);
   }
   return (<>{activeStep === 6 ?
-    <StepTwoA formFeedback={(key, value) => handleSteps(key, value)} defaultValue={ergGoal} />
+    <StepTwoA formFeedback={(key, value) => handleSteps(key, value)}
+      defaultValue={ergGoal} />
     : activeStep === 7 ?
-      <StepTwoB formFeedback={(key, value) => handleSteps(key, value)} defaultValue={ticketPrice} />
+      <StepTwoB formFeedback={(key, value) => handleSteps(key, value)}
+        defaultValue={ticketPrice} />
       : activeStep === 8 ?
-        <StepTwoC formFeedback={(key, value) => handleSteps(key, value)} defaultValue={deadline} />
+        <StepTwoC formFeedback={(key, value) => handleSteps(key, value)}
+          defaultValue={deadline} />
         : activeStep === 9 ?
-          <StepTwoD formFeedback={(key, value) => handleSteps(key, value)} defaultValue={ticketPercent} deadline={deadline} />
+          <StepTwoD formFeedback={(key, value) => handleSteps(key, value)}
+            defaultValue={ticketPercent}
+            deadline={deadline} />
           : null}</>)
 });
 

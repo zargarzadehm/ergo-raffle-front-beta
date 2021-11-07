@@ -57,7 +57,15 @@ const StepOneB = memo(({ formFeedback, defaultValue, setIsActive, preview }) => 
       </h3>
       <div className="row">
         {['raffle-img1', 'raffle-img2', 'raffle-img3', 'raffle-img4'].map((item, key) => (
-          <RaffleImgFileUploader isLoading={isLoading} files={files} preview={preview} fillContent={fillContent} getBase64={getBase64} item={item} row={key} key={key} />
+          <RaffleImgFileUploader
+            isLoading={isLoading}
+            files={files}
+            preview={preview}
+            fillContent={fillContent}
+            getBase64={getBase64}
+            item={item}
+            row={key}
+            key={key} />
         ))}
       </div>
     </div>

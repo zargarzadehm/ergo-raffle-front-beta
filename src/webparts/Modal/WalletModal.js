@@ -17,6 +17,7 @@ const WalletModal = ({ walletProp }) => {
   const clearWalletAddress = () => {
     window.localStorage.removeItem('wallet');
     context.setHasWallet('');
+    setWallet('')
     notify('wallet removed');
   }
   const handleChange = (e) => {

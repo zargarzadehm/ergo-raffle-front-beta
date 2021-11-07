@@ -1,5 +1,7 @@
-const ShareModal = () => {
+import staticText from "../../statics";
 
+const ShareModal = () => {
+  const shareInfo = staticText.shareInfo;
   return (<div
     className="modal fade"
     id="shareModal"
@@ -22,12 +24,11 @@ const ShareModal = () => {
         <div className="modal-body">
           <form>
             <div className={'row'}>
-              <div className={'col-4 text-center'}><a href={`https://t.me/share/url?url=${window.location.href}&text=Ergo Raffle`}
-                rel="noreferrer" target="_blank">Telegram</a></div>
-              <div className={'col-4 text-center'}><a href={`http://twitter.com/share?text=Ergo Raffle&url=${window.location.href}`}
-                rel="noreferrer" target="_blank">Twitter</a></div>
-              <div className={'col-4 text-center'}><a href={`whatsapp://send?text=${window.location.href}`} rel="noreferrer"
-                target="_blank" data-action="share/whatsapp/share">WhatsApp</a></div>
+              {Object.keys(shareInfo).map((key) => (
+                <div className={'col-4 text-center'}><a href={shareInfo[key](window.location.href)}
+                  rel="noreferrer" target="_blank">{key}</a>
+                </div>
+              ))}
             </div>
           </form>
         </div>

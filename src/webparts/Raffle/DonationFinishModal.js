@@ -68,7 +68,13 @@ const DonationFinishModal = ({ modStatus, modInfo }) => {
     timerInterval = setInterval(() => {
       timePassed = timePassed += 1;
       timeLeft = TIME_LIMIT - timePassed;
-      remainingSeconds.current.innerHTML = `${timeLeft} Seconds`;
+      try {
+        remainingSeconds.current.innerHTML = `${timeLeft} Seconds`;
+      } catch (e) {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+        }
+      }
       setCircleDasharray();
       setCircleColor(timeLeft);
 
@@ -133,7 +139,12 @@ const DonationFinishModal = ({ modStatus, modInfo }) => {
               <div className="modal-body">
                 <RaffleModalAddress modInfo={modInfo} />
                 <RaffleModalTicketNumber modInfo={modInfo} />
-                <RaffleModalStepNumber isDonation={isDonation} remainingSeconds={remainingSeconds} timerRef={timerRef} modInfo={modInfo} modStatus={modStatus} />
+                <RaffleModalStepNumber
+                  isDonation={isDonation}
+                  remainingSeconds={remainingSeconds}
+                  timerRef={timerRef}
+                  modInfo={modInfo}
+                  modStatus={modStatus} />
               </div>
 
             </div>

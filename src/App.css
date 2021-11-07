@@ -32,6 +32,22 @@ body {
   background-repeat: no-repeat;
 }
 
+.slide-img-container {
+  height: 0 !important;
+  padding-bottom: 50% !important;
+  border-radius: 19px !important;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-img-container img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
 .raffle-link {
   cursor: pointer;
 }
@@ -242,7 +258,7 @@ body.night-mode .site-logo {
   font-size: 1.5rem;
   border: 2px solid var(--orange);
   border-radius: 8px;
-  padding: 2px 5px;
+  padding: 2px 15px;
   text-decoration: none;
 }
 
@@ -465,13 +481,12 @@ body.night-mode #walletModal .modal-content .set-modal {
 }
 
 body.night-mode .modal.fade.show {
-  background-color: rgba(7, 7, 57, 0.76);
+  background-color: rgba(7, 7, 57, 0.46);
 }
 
 body.night-mode .modal.fade.show .btn-close {
   background-color: #ff6c03 !important;
 }
-
 .progress-bar {
   height: 10px;
   background-color: var(--orange2);
@@ -1855,6 +1870,42 @@ body.night-mode #base-timer-label {
   color: #fff !important;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.night-mode #donation-modal .modal-content {
+  background-color: #070739 !important;
+}
+.recaptcha-cont {
+  margin: 20px 0;
+}
+body > .modal-backdrop.fade.show:last-of-type {
+  background-color: transparent !important;
+}
+.night-mode #donation-modal .modal-content .charity-address-text,
+.night-mode #donation-modal .modal-content .donation-modal-instruction,
+.night-mode #donation-modal .modal-content .charity-address,
+.night-mode #donation-modal .modal-content .tickets-number,
+.night-mode #donation-modal .modal-content p,
+.night-mode #donation-modal .modal-content #base-timer-label {
+  color: #fff !important;
+}
+.night-mode .night-mode-link {
+  background-color: #070739 !important;
+}
+.ReactModal__Overlay {
+  z-index: 2000 !important;
+}
+.night-mode-link .icon-moon {
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+}
 .raffle-unsuccess .raffle-img-container::after {
   position: absolute;
   content: "";
@@ -2730,4 +2781,14 @@ legend {
 body.night-mode .support-ticket-textarea {
   background-color: transparent !important;
   color: white !important;
+}
+@media(max-width: 990px) {
+  .upload-image + label {
+    margin-left: 15px !important;
+  }
+}
+@media (max-width: 768px) {
+  .slide-left-col {
+    width: 100vw;
+  }
 }

@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import ThemeContext from "../../context";
 
 const MobileHeader = ({ mobileHeaderRef }) => {
+    const context = useContext(ThemeContext);
     return (<div ref={mobileHeaderRef} className="fixed-top">
         <section
             id="mobile-nav"
@@ -25,7 +28,7 @@ const MobileHeader = ({ mobileHeaderRef }) => {
                     data-bs-toggle="modal"
                     data-bs-target="#walletModal"
                 >
-                    Set Wallet
+                    {!context.hasWallet ? 'Set Wallet' : <span className={'smaller-wallet-set'}>Wallet : {context.hasWallet}</span>}
                 </button>
             </div>
             <Link className="mt-3 mt-lg-0" to={"/"}>

@@ -1,15 +1,19 @@
-import { memo, useState } from "react"
+import { memo, useContext, useState } from "react"
 import { toast } from 'react-toastify';
+import ThemeContext from "../../context";
 import { aboutFormSubmission } from "../../service/support.service";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const AboutUsForm = memo(() => {
+  const context = useContext(ThemeContext);
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [shouldDisable, setShouldDisable] = useState(true);
+  const [response, setResponse] = useState('');
   const notify = (msg) => toast(msg);
   const handleSubmit = (e) => {
     e.preventDefault();
-    aboutFormSubmission(email, message).then(
+    aboutFormSubmission(email, message, response).then(
       ({ data }) => {
         setEmail('')
         setMessage('');
@@ -49,6 +53,9 @@ const AboutUsForm = memo(() => {
     validateMessage();
     setMessage(e.target.value);
   }
+  function verifyCallback(value) {
+    setResponse(value);
+  }
   return (<>
     <h2 className="about-us-title text-center mb-4">Contact Us</h2>
     <div className="contact-form-container">
@@ -79,6 +86,9 @@ const AboutUsForm = memo(() => {
             onChange={handleChangeMessage}
           ></textarea>
           <label htmlFor="floatingTextarea2">Your Message</label>
+        </div>
+        <div className="recaptcha-cont">
+          {context && context.info && typeof context.info.pubKey !== 'undefined' ? context.info.required ? (<ReCAPTCHA onChange={verifyCallback} sitekey={context.info.pubKey} />) : null : null}
         </div>
         <div className="text-center">
           <button type="submit" disabled={shouldDisable} className="btn contact-us-btn" onClick={handleSubmit}>Send</button>

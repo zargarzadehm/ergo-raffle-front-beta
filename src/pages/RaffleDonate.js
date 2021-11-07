@@ -134,19 +134,32 @@ const RaffleDonate = ({ history }) => {
           <RaffleDonateMiddleBar raffle={raffle} />
           <section id="steps" className="my-5">
             <div className="container">
-              <DonateRaffleProgress activeStep={activeStep} stepBarRef={stepBarRef} />
+              <DonateRaffleProgress
+                activeStep={activeStep}
+                stepBarRef={stepBarRef} />
               <div className="step-content-container my-3 py-5">
                 {activeStep === 0 ?
-                  <DonationRaffleStepOne walletAddress={walletAddress} toggleNextStep={toggleNextStep}
+                  <DonationRaffleStepOne
+                    walletAddress={walletAddress}
+                    toggleNextStep={toggleNextStep}
                     changeWalletAddress={changeWalletAddress} />
                   : null}
                 {activeStep === 1 ?
-                  <DonationRaffleStepTwo reduceStep={reduceStep} toggleNextStep={toggleNextStep}
-                    ticketCount={ticketCount} ticketCountHandler={ticketCountHandler} />
+                  <DonationRaffleStepTwo
+                    reduceStep={reduceStep}
+                    raffle={raffle}
+                    toggleNextStep={toggleNextStep}
+                    ticketCount={ticketCount}
+                    ticketCountHandler={ticketCountHandler} />
                   : null}
                 {activeStep === 2 ?
-                  <DonationRaffleStepThree donate={donate} isTermsAccepted={isTermsAccepted}
-                    handleFeedback={handleFeedback} setModalInfo={setModalInfo} setModalStatus={setModalStatus} reduceStep={reduceStep} />
+                  <DonationRaffleStepThree
+                    donate={donate}
+                    isTermsAccepted={isTermsAccepted}
+                    handleFeedback={handleFeedback}
+                    setModalInfo={setModalInfo}
+                    setModalStatus={setModalStatus}
+                    reduceStep={reduceStep} />
                   : null}
               </div>
             </div>
