@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import ThemeContext from '../../context';
 
@@ -23,6 +23,9 @@ const WalletModal = ({ walletProp }) => {
   const handleChange = (e) => {
     setWallet(e.target.value);
   }
+  useEffect(()=>{
+    setWallet(context.hasWallet);
+  }, [context.hasWallet])
   const notify = (msg) => toast(msg);
   return (
     <div

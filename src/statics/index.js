@@ -32,6 +32,9 @@ const staticText = {
     winnerStateType: 'winner',
     charityStateType: 'charity',
     ticketStateType: 'ticket',
+    descriptionLimit: 250,
+    deadlineLimit: 262800,
+    donationTickets: [5,10,20,30]
 }
 
 export default staticText;

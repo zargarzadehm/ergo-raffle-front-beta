@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const StepOneA = ({ formFeedback, defaultValue }) => {
+const CreateRaffleName = ({ formFeedback, defaultValue }) => {
   const [raffleName, setRaffleName] = useState(defaultValue || '');
   const handleChange = (e) => {
     let { value } = e.target;
@@ -33,4 +33,4 @@ const StepOneA = ({ formFeedback, defaultValue }) => {
   )
 };
 
-export default StepOneA;
+export default CreateRaffleName;

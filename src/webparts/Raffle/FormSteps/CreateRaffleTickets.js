@@ -1,7 +1,7 @@
 import { memo, useState } from "react";
 import CreateRaffleTicketPrice from "../CreateRaffleTicketPrice";
 
-const StepTwoB = memo(({ formFeedback, defaultValue }) => {
+const CreateRaffleTickets = memo(({ formFeedback, defaultValue }) => {
   const [ticketPrice, setTicketPrice] = useState(defaultValue)
   const handleChange = (value) => {
     setTicketPrice(value);
@@ -49,4 +49,4 @@ const StepTwoB = memo(({ formFeedback, defaultValue }) => {
   )
 });
 
-export default StepTwoB;
+export default CreateRaffleTickets;

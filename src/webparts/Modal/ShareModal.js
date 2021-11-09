@@ -25,7 +25,7 @@ const ShareModal = () => {
           <form>
             <div className={'row'}>
               {Object.keys(shareInfo).map((key) => (
-                <div className={'col-4 text-center'}><a href={shareInfo[key](window.location.href)}
+                <div className={'col-4 text-center'} key={(key+(Math.random))+'-share-tab'}><a href={shareInfo[key](window.location.href)}
                   rel="noreferrer" target="_blank">{key}</a>
                 </div>
               ))}

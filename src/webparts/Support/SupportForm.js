@@ -1,11 +1,9 @@
-import { memo, useContext, useState } from "react";
+import { memo, useState } from "react";
 import { toast } from 'react-toastify';
 import { supportFormSubmission } from "../../service/support.service";
-import ReCAPTCHA from "react-google-recaptcha";
-import ThemeContext from "../../context";
+import Captcha from "../../components/Captcha";
 
 const SupportForm = memo(() => {
-  const context = useContext(ThemeContext);
   const [shouldDisable, setShouldDisable] = useState(true);
   const [supportText, setSupportText] = useState('');
   const [response, setResponse] = useState('');
@@ -59,7 +57,7 @@ const SupportForm = memo(() => {
           ></textarea>
         </fieldset>
         <div className="recaptcha-cont">
-          {context && context.info && typeof context.info.pubKey !== 'undefined' ? context.info.required ? (<ReCAPTCHA onChange={verifyCallback} sitekey={context.info.pubKey} />) : null : null}
+          <Captcha verifyCallback={(response) => verifyCallback(response)} />
         </div>
         <div className="submit-btn-container text-center">
           <button type="Submit" className="btn support-submit mt-5" disabled={shouldDisable} onClick={support}>

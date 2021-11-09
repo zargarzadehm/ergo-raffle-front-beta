@@ -1,7 +1,7 @@
 import { memo, useContext, useState } from "react";
 import ThemeContext from "../../../context";
 
-const StepTwoD = memo(({ formFeedback, defaultValue }) => {
+const CreateRaffleTicketSharePercent = memo(({ formFeedback, defaultValue }) => {
   const [ticketPercent, setTicketPercent] = useState(defaultValue);
   const context = useContext(ThemeContext);
   const handleChange = (e) => {
@@ -43,11 +43,11 @@ const StepTwoD = memo(({ formFeedback, defaultValue }) => {
           <p className="raffle-sharing winner-share">Winner Percent: {100 - ticketPercent - context.info.serviceFee}%</p>
         </div>
         <div className="col-4">
-          <p className="raffle-sharing service-share">Service: {context.info.serviceFee} %</p>
+          <p className="raffle-sharing service-share">Service: {context.info.serviceFee}%</p>
         </div>
       </div>
     </div>
   </div>)
 });
 
-export default StepTwoD;
+export default CreateRaffleTicketSharePercent;

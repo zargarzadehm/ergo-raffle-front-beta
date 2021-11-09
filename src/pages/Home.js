@@ -74,23 +74,31 @@ function Home() {
     <HomeHeader />
     <section>
       <div className="container raffle-links-container mt-5">
-        <Tabs tabs={tabsContent} 
-        setActiveTab={setActiveTab} 
-        activeTab={activeTab} 
-        changeTabContent={(tabIndex) => changeTab(tabIndex)} />
+        <Tabs tabs={tabsContent}
+          setActiveTab={setActiveTab}
+          activeTab={activeTab}
+          changeTabContent={(tabIndex) => changeTab(tabIndex)} />
       </div>
     </section>
     <section id="raffle-cards" className="p-lg-5 mt-5">
       <div className="container">
         <div className="row g-4">
-          {inProgress ? <div className={'loading-wrapper'}>
-            <img src={loader} alt={'loading spinner'} /></div> : [...raffles].map((item) =>
-            (<div key={item.name + Math.random() + '-raffle-card'} className="col-6 col-lg-4">
-              <Raffle raffle={item} />
-            </div>))}
+          {
+            inProgress ?
+              <div className={'loading-wrapper'}>
+                <img src={loader} alt={'loading spinner'} /></div>
+              :
+              raffles.map((item, key) =>
+              (
+                <div key={key+item.name + '-raffle-card'} className="col-6 col-lg-4">
+                  <Raffle raffle={item} />
+                </div>
+              )
+              )
+          }
         </div>
         <div className="see-more-raffles text-center mt-5">
-          <Link to={"/raffle/list"} className="nav-link see-more-link">
+          <Link to={"/raffle/list?s=" + (activeTab === 0 ? '-createTime' : activeTab === 1 ? 'activity' : 'deadline')} className="nav-link see-more-link">
             see more &#62;
           </Link>
         </div>
@@ -98,10 +106,14 @@ function Home() {
     </section>
     <HeadingTitle title={'Discover recent successfull raffles'} />
     <Suspense fallback={''}>
-      {successfulRaffles && successfulRaffles.length > 0 ?
-        <CarouselBar raffles={successfulRaffles} />
-        : <div className={'loading-wrapper'}>
-          <img src={loader} alt={'loading spinner'} /></div>}
+      {
+        successfulRaffles && successfulRaffles.length > 0
+          ?
+          <CarouselBar raffles={successfulRaffles} />
+          :
+          <div className={'loading-wrapper'}>
+            <img src={loader} alt={'loading spinner'} /></div>
+      }
     </Suspense>
     <section>
       <div className="container">

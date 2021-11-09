@@ -10,12 +10,14 @@ import Pagination from '../webparts/Shared/Pagination';
 import Tabs from '../components/Tabs';
 
 function Raffles() {
+  const params = new URLSearchParams(window.location.search) // id=123
+  const sorting = params.get('s');
   const context = useContext(ThemeContext)
   const sortContent = staticText.homeTabs;;
   const tabsContent = staticText.raffleListTabs;
   const [inProgress, setInProgress] = useState(true);
-  const [activeTab, setActiveTab] = useState('all');
-  const [activeSort, setActiveSort] = useState(0);
+  const [activeTab, setActiveTab] = useState(sorting ? 'active' : 'all');
+  const [activeSort, setActiveSort] = useState(sorting ? sorting === 'activity' ? 1 : sorting === 'deadline' ? 2 : 0 : 0);
   const [raffles, setRaffles] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -38,6 +40,7 @@ function Raffles() {
 
   const changeTab = (tabIndex) => {
     setPage(1);
+    setActiveSort(0);
     setActiveTab(tabIndex);
   }
 
@@ -81,6 +84,7 @@ function Raffles() {
               <div className="text-center">
                 <CircleTabs
                   tabs={tabsContent}
+                  defaultActiveTab={activeTab}
                   changeTabContent={(tabIndex) => changeTab(tabIndex)} />
               </div>
               <br />
@@ -89,6 +93,7 @@ function Raffles() {
                   tabs={sortContent}
                   setActiveTab={setActiveSort}
                   activeTab={activeSort}
+                  disableTab={activeTab === 'succeed' ? [3] : activeTab === 'failed' ? [3] : []}
                   changeTabContent={(tabIndex) => changeTabSort(tabIndex)} />
               </div>
             </div>
@@ -98,29 +103,38 @@ function Raffles() {
       <section id="raffle-cards" className="p-lg-5">
         <div className="container">
           <div className="row g-4">
-            {inProgress ? <div className={'loading-wrapper'}><img src={loader} alt={'Loading Spinner'} /></div> :
-              [...raffles].map((item) => (
-
-                <div className="col-6 col-lg-4" key={item.name + Math.random() + 1000 + '-item'}>
-                  <div className="card raffle-card">
-                    <Raffle raffle={item} />
-                  </div>
+            {
+              inProgress ?
+                <div className={'loading-wrapper'}>
+                  <img src={loader} alt={'Loading Spinner'} />
                 </div>
-              ))
+                :
+                raffles.map((item,key) => (
+                  <div className="col-6 col-lg-4" key={item.name + `1000-item${key}`}>
+                    <div className="card raffle-card">
+                      <Raffle raffle={item} />
+                    </div>
+                  </div>
+                )
+                )
             }
           </div>
         </div>
       </section>
       <section id="pagination" className="p-5">
-        {!(totalPages < 1 || (totalPages === 1 && page === 1)) ?
-          <Pagination
-            currentPage={page}
-            totalPages={totalPages}
-            prevPage={() => prevPage()}
-            nextPage={() => nextPage()}
-            PAGE_SIZE={staticText.PAGE_SIZE}
-            totalItems={totalItems} />
-          : null}
+        {
+          !(totalPages < 1 || (totalPages === 1 && page === 1))
+            ?
+            <Pagination
+              currentPage={page}
+              totalPages={totalPages}
+              prevPage={() => prevPage()}
+              nextPage={() => nextPage()}
+              PAGE_SIZE={staticText.PAGE_SIZE}
+              totalItems={totalItems} />
+            :
+            null
+        }
       </section>
     </main>
   </>);

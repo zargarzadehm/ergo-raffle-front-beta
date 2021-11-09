@@ -20,9 +20,6 @@ const HomeHeader = memo(() => {
                 className="helping-hand-img"
                 alt="helping hand"
               />
-              <div className="orange-circle orange-circle3"></div>
-              <div className="orange-circle orange-circle4"></div>
-              <div className="orange-circle orange-circle5"></div>
             </div>
           </div>
         </div>

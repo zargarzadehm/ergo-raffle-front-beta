@@ -10,19 +10,9 @@ const FinishedRaffleMiddleBar = ({ raffle }) => {
             >
                 <RaffleDestinationInfo raffle={raffle} />
             </div>
-            {raffle.status === 'succeed' ?
-                <div id="total-raised" className="text-center raffle-successful-total">
-                    <TotalRaisedMoney raffle={raffle} />
-                </div>
-                : raffle.status === 'failed' ?
-                    <div id="total-raised" className="text-center raffle-unsuccessful-total">
-                        <TotalRaisedMoney raffle={raffle} />
-                    </div>
-                    :
-                    <div id="total-raised" className="text-center raffle-total">
-                        <TotalRaisedMoney raffle={raffle} />
-                    </div>
-            }
+            <div id="total-raised" className={raffle.status === 'succeed' ? "text-center raffle-successful-total" : raffle.status === 'failed' ? "text-center raffle-unsuccessful-total" : "text-center raffle-total"}>
+                <TotalRaisedMoney raffle={raffle} />
+            </div>
         </div>
     </section>)
 }

@@ -10,13 +10,14 @@ const DashboardRaffleWinner = ({ yourRaffle, loading }) => {
           yourRaffle.length === 0) ?
           <p className="text-center mb-4">No Raffles Found</p>
           : null}
-        {(Array.isArray(yourRaffle) ?
-          yourRaffle :
-          []).map((item, key) => (
-            <div className="col-6 col-lg-3" key={key + Math.random() + 6000 + '-elem'}>
+        {
+          yourRaffle.map((item, key) => (
+            <div className="col-6 col-lg-3" key={key + '6000-elem'}>
               <Raffle raffle={item} />
             </div>
-          ))}
+          )
+          )
+        }
       </div>
     </div>
   </section>

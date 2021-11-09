@@ -1,8 +1,10 @@
-import { useRef, forwardRef, useImperativeHandle, useEffect, useContext, useState, useCallback } from "react";
+import { useRef, forwardRef, useImperativeHandle, useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ThemeContext, { DARK_THEME, LIGHT_THEME } from "../../context";
 import staticText from "../../statics";
 import HeaderLayout from "./HeaderLayout";
+import logo from '../../assets/img/logo.png';
+import logoDark from '../../assets/img/logo-dark.png';
 
 const Header = forwardRef((props, headerRef) => {
   const [wall, setWall] = useState(props.walletPassed);
@@ -10,21 +12,12 @@ const Header = forwardRef((props, headerRef) => {
   const desktopHeaderRef = useRef();
   const mobileHeaderRef = useRef();
   const wrapperRef = useRef();
-
-  const toggleMode = (e) => {
+  const bodyRef = useRef();
+  bodyRef.current = document.body;
+  const setContextTheme = (e) => {
     e.preventDefault();
-    toggleNight();
+    context.setTheme(context.theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME)
   }
-
-  const toggleNight = useCallback(() => {
-    if (document.body.classList.contains('night-mode')) {
-      window.localStorage.setItem('theme', LIGHT_THEME);
-    } else {
-      window.localStorage.setItem('theme', DARK_THEME);
-    }
-    document.body.classList.toggle("night-mode");
-  }, []);
-
   useImperativeHandle(headerRef, () => ({
     handleScroll(e) {
       let header = null;
@@ -43,40 +36,50 @@ const Header = forwardRef((props, headerRef) => {
       }
     }
   }))
-
   useEffect(() => {
-    if (window.localStorage.getItem('theme') !== null) {
-      if (window.localStorage.getItem('theme') === DARK_THEME) {
-        toggleNight();
-      }
+    if (context.theme === DARK_THEME) {
+      bodyRef.current.classList.add('night-mode');
+      window.localStorage.setItem('theme', DARK_THEME);
+    } else {
+      bodyRef.current.classList.remove('night-mode');
+      window.localStorage.setItem('theme', LIGHT_THEME);
     }
-  }, [toggleNight]);
+  }, [context.theme]);
   useEffect(() => {
     setWall(props.walletPassed);
   }, [props.walletPassed])
   return (<HeaderLayout headerRef={headerRef} wrapperRef={wrapperRef}
     mobileHeaderRef={mobileHeaderRef} desktopHeaderRef={desktopHeaderRef}>
     <Link className="navbar-brand mt-2 mt-lg-0" to={"/"}>
-      <span className="icon-logo site-logo"></span>
+      <span className="site-logo"><img src={context.theme === LIGHT_THEME ? logo : logoDark} alt={"ergo raffle logo"}/></span>
     </Link>
     <div className="collapse navbar-collapse" id="navbarToggler">
       <ul className="navbar-nav mb-2 mb-lg-0 nav-links">
-        {staticText.navigations.map((item, key) => (<li key={key + '-nav-items'} className="nav-item">
-          <Link className="nav-link" to={item.link}>{item.title}</Link>
-        </li>))}
-        {wall ? <li className="nav-item">
-          <Link className="nav-link" to={"/dashboard"}>Dashboard</Link>
-        </li> : null}
+        {staticText.navigations.map((item, key) =>
+        (
+          <li key={key + '-nav-items'} className="nav-item">
+            <Link className="nav-link" to={item.link}>{item.title}</Link>
+          </li>
+        )
+        )
+        }
+        {
+          wall ?
+            <li className="nav-item">
+              <Link className="nav-link" to={"/dashboard"}>Dashboard</Link>
+            </li> :
+            null
+        }
       </ul>
       <div className="d-flex align-items-center nav-buttons">
-        {/* Icon */}
+
         <a
           href={"/"}
           className="night-mode-link"
           id="night-mode"
           role="button"
         >
-          <span onClick={(e) => { toggleMode(e); context.setTheme(context.theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME) }}
+          <span onClick={setContextTheme}
             className="icon-moon night-mode-icon"></span>
         </a>
         <button
@@ -85,7 +88,12 @@ const Header = forwardRef((props, headerRef) => {
           data-bs-toggle="modal"
           data-bs-target="#walletModal"
         >
-          {!wall ? 'Set Wallet' : <span className={'smaller-wallet-set'}>Wallet : {wall}</span>}
+          {
+            !wall
+              ?
+              'Set Wallet' :
+              <span className={'smaller-wallet-set'}>Wallet : {wall}</span>
+          }
         </button>
       </div>
     </div>

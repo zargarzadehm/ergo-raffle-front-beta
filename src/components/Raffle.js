@@ -7,7 +7,9 @@ import RemainingBox from "./RemainingBox";
 
 const Raffle = memo(({ raffle }) => {
 
-  return (<Link className="raffle-card-link" to={(raffle && raffle.status === 'active') ? '/raffle/donate/' + (raffle && raffle.id) :
+  return (<Link className="raffle-card-link" to={(raffle && raffle.status === 'active')
+    ?
+    '/raffle/donate/' + (raffle && raffle.id) :
     '/raffle/show/' + (raffle && raffle.id)}>
     <div className={(raffle && raffle.status === 'succeed') ? "card raffle-card raffle-success" : (raffle && raffle.status === 'failed') ?
       "card raffle-card raffle-unsuccess" : "card raffle-card"}>

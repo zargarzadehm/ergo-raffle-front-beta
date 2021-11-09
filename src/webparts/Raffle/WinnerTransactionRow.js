@@ -1,11 +1,13 @@
 import { memo } from "react";
-import staticText from "../../statics";
 
 const WinnerTransactionRow = memo(({ transaction, isWinner }) => {
-  return (<>{transaction.type === staticText.winnerStateType ||
-    transaction.type === staticText.charityStateType ? <>
-    {<h2 className="winner-title text-left mb-4">
-      {isWinner ? "Winner Transaction" : "Charity Transaction"}</h2>
+  return (<>
+    {
+      <h2 className="winner-title text-left mb-4">
+        {isWinner ?
+          "Winner Transaction" :
+          "Charity Transaction"}
+      </h2>
     }
     <div className="winner-address-box mb-2 bordered-field-orange">
       <p>
@@ -16,7 +18,9 @@ const WinnerTransactionRow = memo(({ transaction, isWinner }) => {
       <div className={isWinner ? "col-lg-9" : "col-lg-12"}>
         <div className="transaction-id bordered-field-orange">
           <p>
-            Transaction ID :<a href={transaction.link} target="_blank" rel="noreferrer"> <span className="transaction-id-text">{transaction.id}</span></a>
+            Transaction ID :<a href={transaction.link} target="_blank" rel="noreferrer">
+              <span className="transaction-id-text">{transaction.id}</span>
+            </a>
           </p>
         </div>
       </div>
@@ -28,9 +32,12 @@ const WinnerTransactionRow = memo(({ transaction, isWinner }) => {
               <span className="tickets-number"> {transaction.tickets} </span>
             </p>
           </div>
-        </div>) : null}
+        </div>)
+        :
+        null
+      }
     </div>
-  </> : null}</>)
+  </>)
 })
 
 export default WinnerTransactionRow;

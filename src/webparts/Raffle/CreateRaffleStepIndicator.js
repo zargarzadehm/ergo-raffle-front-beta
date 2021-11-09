@@ -1,5 +1,5 @@
-import CreateRaffleStepOne from "./CreateRaffleStepOne";
-import CreateRaffleStepTwo from "./CreateRaffleStepTwo";
+import CreateRaffleSpecification from "./CreateRaffleSpecification";
+import CreateRaffleDonationGoal from "./CreateRaffleDonationGoal";
 import RaffleBarSubStepsOne from "./RaffleBarSubStepsOne";
 import RaffleBarSubStepsTwo from "./RaffleBarSubStepsTwo";
 
@@ -28,7 +28,7 @@ const CreateRaffleStepIndicator = ({ setIsActive, activeStep, subStep, barTitle,
                     </> : null}
                 </div>
                 <div className="col-lg-8 create-raffle-steps-content">
-                    <CreateRaffleStepOne
+                    <CreateRaffleSpecification
                         formFeedback={(key, value) => handleSteps(key, value)}
                         setIsActive={setIsActive}
                         activeStep={activeStep}
@@ -52,7 +52,7 @@ const CreateRaffleStepIndicator = ({ setIsActive, activeStep, subStep, barTitle,
                             <RaffleBarSubStepsTwo activeStep={activeStep} /> : null}
                     </div>
                     <div className="col-lg-8 create-raffle-steps-content">
-                        <CreateRaffleStepTwo
+                        <CreateRaffleDonationGoal
                             formFeedback={(key, value) => handleSteps(key, value)}
                             activeStep={activeStep}
                             ergGoal={ergGoal}

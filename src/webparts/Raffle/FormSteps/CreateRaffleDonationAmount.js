@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 
-const StepTwoA = memo(({ formFeedback, defaultValue }) => {
+const CreateRaffleWalletAddress = memo(({ formFeedback, defaultValue }) => {
   const [ergGoal, setErgGoal] = useState(defaultValue);
   const handleChange = (e) => {
     const { value } = e.target;
@@ -34,4 +34,4 @@ const StepTwoA = memo(({ formFeedback, defaultValue }) => {
   )
 });
 
-export default StepTwoA;
+export default CreateRaffleWalletAddress;

@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 
-const StepOneD = memo(({ formFeedback, defaultValue }) => {
+const CreateRaffleAddress = memo(({ formFeedback, defaultValue }) => {
   const [address, setAddress] = useState(defaultValue);
   const handleChange = (e) => {
     const { value } = e.target;
@@ -25,7 +25,7 @@ const StepOneD = memo(({ formFeedback, defaultValue }) => {
             value={address}
             className="form-control"
             id="floatingInput"
-            placeholder="charity Address"
+            placeholder="Address"
             onChange={handleChange}
             required
           />
@@ -36,4 +36,4 @@ const StepOneD = memo(({ formFeedback, defaultValue }) => {
   </div>)
 });
 
-export default StepOneD;
+export default CreateRaffleAddress;

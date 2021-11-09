@@ -9,9 +9,13 @@ const Navigation = memo(() => {
       {staticText.navigations.map((item, key) => (<li key={key + '-nav-items'} className="nav-item">
         <Link className="nav-link" to={item.link}>{item.title}</Link>
       </li>))}
-      {hasWallet ? <li className="nav-item">
-        <Link className="nav-link" to={"/dashboard"}>Dashboard</Link>
-      </li> : null}
+      {
+        hasWallet ?
+          <li className="nav-item">
+            <Link className="nav-link" to={"/dashboard"}>Dashboard</Link>
+          </li> :
+          null
+      }
     </ul>)}
   </ThemeContext.Consumer>)
 });

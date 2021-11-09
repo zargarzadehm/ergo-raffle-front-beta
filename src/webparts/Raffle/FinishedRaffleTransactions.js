@@ -1,6 +1,5 @@
 import staticText from "../../statics";
 import TransactionRow from "./TransactionRow";
-import WinnerTransactionRow from "./WinnerTransactionRow";
 
 const FinishedRaffleTransactions = ({ winnerRaffleTransactions, charityRaffleTransactions, ticketRaffleTransactions, titleRef, page }) => {
     return (<section id="raffle-transactions">
@@ -9,16 +8,42 @@ const FinishedRaffleTransactions = ({ winnerRaffleTransactions, charityRaffleTra
                 {Array.isArray(ticketRaffleTransactions) && ticketRaffleTransactions.length > 0 ? "Details of transactions" : null}
             </h2>
             <div className="winner-box mb-5">
-                {[...winnerRaffleTransactions].map((item, key) => (<WinnerTransactionRow isWinner={true}
-                    key={key + Math.random() + '-items'} transaction={item} />))}
-                {[...charityRaffleTransactions].map((item, key) => (<WinnerTransactionRow isWinner={false}
-                    key={key + Math.random() + '-items-charity'} transaction={item} />))}
+                {
+                    winnerRaffleTransactions.map((item, key) =>
+                    (
+                        <TransactionRow
+                            isWinner={true}
+                            isCharity={false}
+                            key={key + item.id + '-items'}
+                            transaction={item} />
+                    )
+                    )
+                }
+                {
+                    charityRaffleTransactions.map((item, key) => (
+                        <TransactionRow
+                            isWinner={false}
+                            isCharity={true}
+                            key={key + item.id + '-items-charity'}
+                            transaction={item} />
+                    )
+                    )
+                }
             </div>
         </div>
         <div className="container all-transactions">
-            {(Array.isArray(ticketRaffleTransactions) ? [...ticketRaffleTransactions] : []).map((item, key) =>
-                (<TransactionRow key={key + Math.random() + '-items'} 
-                transaction={item} row={((page -1)*(staticText.PAGE_SIZE - winnerRaffleTransactions.length - charityRaffleTransactions.length)) + key + 1} />))}
+            {
+                ticketRaffleTransactions.map((item, key) =>
+                (
+                    <TransactionRow
+                        isWinner={false}
+                        isCharity={false}
+                        key={key + item.id + '-items'}
+                        transaction={item}
+                        row={((page - 1) * (staticText.PAGE_SIZE - winnerRaffleTransactions.length - charityRaffleTransactions.length)) + key + 1} />
+                )
+                )
+            }
         </div>
     </section>)
 }

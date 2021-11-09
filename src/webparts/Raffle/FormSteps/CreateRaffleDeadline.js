@@ -1,7 +1,7 @@
 import { memo, useState } from "react";
 import EstimationBox from "../EstimationBox";
 
-const StepTwoC = memo(({ formFeedback, defaultValue }) => {
+const CreateRaffleDeadline = memo(({ formFeedback, defaultValue }) => {
   const [deadline, setDeadline] = useState(defaultValue);
   const handleChange = (e) => {
     const { value } = e.target;
@@ -40,4 +40,4 @@ const StepTwoC = memo(({ formFeedback, defaultValue }) => {
   </div>)
 });
 
-export default StepTwoC;
+export default CreateRaffleDeadline;

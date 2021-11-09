@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Erg from "../../components/Erg";
+import staticText from "../../statics";
 import TicketPriceRadioCheck from "./TicketPriceRadioCheck";
 
 const StepTwoDonation = ({ handleRadioChange, defaultValue, raffle }) => {
@@ -26,10 +27,7 @@ const StepTwoDonation = ({ handleRadioChange, defaultValue, raffle }) => {
           </p>
         </div>
         <div className="col-lg-6 text-center ticket-options-container">
-          <TicketPriceRadioCheck radioCheck={radioCheck} handleChange={handleChange} value={5} />
-          <TicketPriceRadioCheck radioCheck={radioCheck} handleChange={handleChange} value={10} />
-          <TicketPriceRadioCheck radioCheck={radioCheck} handleChange={handleChange} value={20} />
-          <TicketPriceRadioCheck radioCheck={radioCheck} handleChange={handleChange} value={30} />
+          {staticText.donationTickets.map((item,key)=>(<TicketPriceRadioCheck key={key+'-'} radioCheck={radioCheck} handleChange={handleChange} value={item} />))}
         </div>
         <div className="form-floating ticket-count-input">
           <input

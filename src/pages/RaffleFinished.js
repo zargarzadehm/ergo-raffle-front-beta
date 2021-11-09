@@ -9,6 +9,8 @@ import staticText from '../statics';
 import FinishedRaffleHeader from '../webparts/Raffle/FinishedRaffleHeader';
 import FinishedRaffleMiddleBar from '../webparts/Raffle/FinishedRaffleMiddleBar';
 import FinishedRaffleTransactions from '../webparts/Raffle/FinishedRaffleTransactions';
+import ShareModal from '../webparts/Modal/ShareModal';
+import { createPortal } from 'react-dom';
 
 const RaffleSuccessFul = memo(({ history }) => {
   const titleRef = useRef();
@@ -65,25 +67,46 @@ const RaffleSuccessFul = memo(({ history }) => {
       }
     )
   }
-
+  const ShareModalPortal = () => {
+    return document.getElementById('share-modal') ? createPortal(<ShareModal />, document.getElementById('share-modal')) : null;
+  }
   return (<>
-    {raffle ? <Title title={'Ergo Raffle - ' + raffle.name} /> : null}
+    {raffle ?
+      <Title title={'Ergo Raffle - ' + raffle.name} />
+      :
+      null
+    }
     <main>
       <FinishedRaffleHeader raffle={raffle} />
       <FinishedRaffleMiddleBar raffle={raffle} />
-      {Array.isArray(ticketRaffleTransactions) && ticketRaffleTransactions.length > 0 ?
-        <FinishedRaffleTransactions titleRef={titleRef}
-          page={page}
-          winnerRaffleTransactions={winnerRaffleTransactions}
-          charityRaffleTransactions={charityRaffleTransactions}
-          ticketRaffleTransactions={ticketRaffleTransactions} />
-        : null}
+      {
+        Array.isArray(ticketRaffleTransactions) && ticketRaffleTransactions.length > 0
+          ?
+          <FinishedRaffleTransactions
+            titleRef={titleRef}
+            page={page}
+            winnerRaffleTransactions={winnerRaffleTransactions}
+            charityRaffleTransactions={charityRaffleTransactions}
+            ticketRaffleTransactions={ticketRaffleTransactions} />
+          :
+          null
+      }
       <section id="pagination" className="p-5">
-        {!(totalTransactionPagess < 1 || (page === 1 && totalTransactionPagess === 1)) ?
-          <Pagination currentPage={page} totalPages={totalTransactionPagess} totalItems={total}
-            PAGE_SIZE={staticText.PAGE_SIZE} prevPage={prevPage} nextPage={nextPage} />
-          : null}
+        {
+          !(totalTransactionPagess < 1 || (page === 1 && totalTransactionPagess === 1))
+            ?
+            <Pagination
+              currentPage={page}
+              totalPages={totalTransactionPagess}
+              totalItems={total}
+              PAGE_SIZE={staticText.PAGE_SIZE}
+              prevPage={prevPage}
+              nextPage={nextPage} />
+            :
+            null
+        }
       </section>
+      <ShareModalPortal />
     </main>
   </>)
 })

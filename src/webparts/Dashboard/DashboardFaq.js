@@ -8,7 +8,12 @@ const DashboardFaq = memo(({ faqs }) => {
         Do you have any issues?
       </h2>
       <div className="accordion mt-5" id="questions">
-        {faqs.map((item, key) => (<FaqAccordion key={key + '-faq-row'} item={item} elemKey={key} parent={'questions'} />))}
+        {
+          faqs.map((item, key) => (
+            <FaqAccordion key={key + '-faq-row'} item={item} elemKey={key} parent={'questions'} />
+          )
+          )
+        }
       </div>
     </div>
   </section>)

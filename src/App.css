@@ -4,10 +4,13 @@
 :root {
   --primary: #000000;
   --secondary: #ffffff;
-  --orange: #fe4e2b;
-  --orange2: #ff4c29;
+  --orange: #fc3f27;
+  --orange2: #fc3f27;
 }
-
+@font-face {
+  font-family: 'frauce';
+  src: url('./assets/fonts/fonts/fraunce.ttf');
+}
 body {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -228,7 +231,10 @@ body.night-mode .site-logo {
   display: flex;
   min-width: 400px;
 }
-
+.left-column .card-body {
+  background: transparent !important;
+  box-shadow: none !important;
+}
 .card {
   background-color: transparent;
   z-index: 1;
@@ -236,20 +242,22 @@ body.night-mode .site-logo {
 }
 
 .card-body {
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(244, 244, 244, 0.25);
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-box-shadow: 0px 17px 102px 17px rgba(164, 164, 164, 0.1);
-  box-shadow: 0px 17px 102px 17px rgba(164, 164, 164, 0.1);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  -webkit-box-shadow: 0 4px 9px rgba(196,196,196, 0.28) !important;
+  box-shadow: 0 4px 9px rgba(196,196,196, 0.28) !important;
   border-radius: 19px;
 }
 
 .card-title {
-  font-size: 2rem;
-  font-family: "Reem Kufi", sans-serif;
+  font-size: 50px;
+  font-family: "frauce";
+  line-height: 50px;
+}
+.card-subtitle {
+  font-size: 20px;
+  font-family: "frauce";
 }
 
 .btn-create-raffle {
@@ -260,6 +268,7 @@ body.night-mode .site-logo {
   border-radius: 8px;
   padding: 2px 15px;
   text-decoration: none;
+  margin-top: 15px;
 }
 
 .btn-create-raffle:hover {
@@ -375,7 +384,6 @@ body.night-mode .site-logo {
 /* -------------------------- */
 
 .raffle-card {
-  background: #ffffff;
   border-radius: 16px;
   height: 100%;
   cursor: pointer;
@@ -481,7 +489,7 @@ body.night-mode #walletModal .modal-content .set-modal {
 }
 
 body.night-mode .modal.fade.show {
-  background-color: rgba(7, 7, 57, 0.46);
+  background-color: rgba(7, 7, 57, 0);
 }
 
 body.night-mode .modal.fade.show .btn-close {
@@ -522,7 +530,9 @@ body.night-mode .modal.fade.show .btn-close {
   min-height: 180px;
   /* Prevent carousel from being distorted if for some reason image doesn't load */
 }
-
+.justify-content-center {
+  justify-content: center !important;
+}
 .carousel-slide-container {
   gap: 20px;
   -webkit-box-pack: center;
@@ -708,9 +718,12 @@ body.night-mode .modal.fade.show .btn-close {
 }
 
 .modal-backdrop {
-  opacity: 1 !important;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(3px);
+  opacity: 0.7 !important;
+  backdrop-filter: blur(6px);
+}
+
+.night-mode .modal-content {
+  border: 1px solid rgba(255,255,255,0.8)
 }
 
 .modal-content {
@@ -790,16 +803,12 @@ body.night-mode .icon-moon:before {
 /* night mode classes */
 
 .night-mode {
-  --secondary: #070739;
+  --secondary: #000;
   --primary: #ffffff;
 }
 
 body.night-mode .fixed-top.scrolled-header {
-  background: rgba(7, 7, 57, 0.8);
-}
-
-body.night-mode .raffle-card {
-  background: rgba(244, 244, 244, 0.25);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 body.night-mode .set-wallet {
@@ -869,11 +878,11 @@ a#night-mode:hover {
 }
 
 .raffle-card:hover {
-  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+  box-shadow: 0 0px 9px rgba(33, 33, 33, 0.2);
 }
 
 body.night-mode .raffle-card:hover {
-  box-shadow: 0 0 11px rgba(255, 76, 41, 0.8);
+  box-shadow: 0px 4px 9px rgba(194, 194, 194, 0.28);
 }
 
 /* Styling for Responsive Layout */
@@ -989,10 +998,6 @@ body.night-mode .raffle-card:hover {
 
 .full-width {
   width: 100%;
-}
-
-#left-col {
-  max-width: 543px;
 }
 
 #floatingTextarea2 {
@@ -1462,6 +1467,8 @@ a[aria-controls] {
 .charity-address-field {
   background: rgba(227, 227, 227, 0.4);
   border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 
 .charity-address-text {

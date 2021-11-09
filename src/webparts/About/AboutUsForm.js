@@ -1,11 +1,9 @@
-import { memo, useContext, useState } from "react"
+import { memo, useState } from "react"
 import { toast } from 'react-toastify';
-import ThemeContext from "../../context";
 import { aboutFormSubmission } from "../../service/support.service";
-import ReCAPTCHA from "react-google-recaptcha";
+import Captcha from "../../components/Captcha";
 
 const AboutUsForm = memo(() => {
-  const context = useContext(ThemeContext);
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [shouldDisable, setShouldDisable] = useState(true);
@@ -88,7 +86,7 @@ const AboutUsForm = memo(() => {
           <label htmlFor="floatingTextarea2">Your Message</label>
         </div>
         <div className="recaptcha-cont">
-          {context && context.info && typeof context.info.pubKey !== 'undefined' ? context.info.required ? (<ReCAPTCHA onChange={verifyCallback} sitekey={context.info.pubKey} />) : null : null}
+          <Captcha verifyCallback={(response)=> verifyCallback(response)} />
         </div>
         <div className="text-center">
           <button type="submit" disabled={shouldDisable} className="btn contact-us-btn" onClick={handleSubmit}>Send</button>

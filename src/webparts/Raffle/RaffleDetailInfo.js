@@ -1,41 +1,33 @@
 import { memo, useContext } from "react";
 import { toast } from "react-toastify";
+import Days from "../../components/Days";
 import ThemeContext from "../../context";
-import staticText from "../../statics";
 
 const RaffleDetailInfo = memo(({ raffle }) => {
   const context = useContext(ThemeContext);
   const notify = (msg) => toast(msg);
   const tagRaffle = () => {
     if (window.localStorage.getItem('pin') !== null) {
-      const data = JSON.parse(window.localStorage.getItem('pin'));
-      let exists = false;
-      for (let item of data) {
-        if (item.id === raffle.id) {
-          exists = true;
-        }
-      }
+      const data = window.localStorage.getItem('pin').split(',');
+      const exists = data.includes(raffle.id);
       if (!exists) {
-        data.push(raffle);
-        window.localStorage.setItem('pin', JSON.stringify(data));
+        data.unshift(raffle.id);
+        if (data.length > 8) {
+          data.pop();
+        }
+        window.localStorage.setItem('pin', data.join(','));
         notify('Raffle Pinned');
       } else {
-        const deletedItem = [...data].filter((a)=> a.id !== raffle.id);
-        window.localStorage.setItem('pin', JSON.stringify(deletedItem));
+        const deletedItem = data.filter((a) => a !== raffle.id);
+        window.localStorage.setItem('pin', deletedItem.join(','));
+        let pinnedRaffles = [...context.pinnedRaffles];
+        context.setPinnedRaffles(pinnedRaffles.filter((a) => a.id !== raffle.id));
         notify('Raffle Un Pinned');
       }
     } else {
-      window.localStorage.setItem('pin', JSON.stringify([raffle]));
+      window.localStorage.setItem('pin', raffle.id);
       notify('Raffle Pinned');
     }
-  }
-  const remainingDays = () => {
-    return Math.floor(((raffle.deadline - context.info.height) / staticText.DAY_CONVERSION_SCALE)) === 0 ?
-      Math.ceil((((raffle.deadline - context.info.height) / staticText.DAY_CONVERSION_SCALE) * 24)) + ' hours remaining' :
-      Math.ceil(((raffle.deadline - context.info.height) / staticText.DAY_CONVERSION_SCALE)) + ' days remaining'
-  }
-  const passedDays = () => {
-    return Math.abs(Math.floor((raffle.deadline - context.info.height) / (staticText.DAY_CONVERSION_SCALE)))
   }
   return (<>
     <h2 className="raffle-title">{raffle.name}</h2>
@@ -44,8 +36,7 @@ const RaffleDetailInfo = memo(({ raffle }) => {
     </p>
     <div className="raffle-bottom-container d-flex align-items-center">
       <span className="icon-deadline deadline"></span>
-      <p className="deadline-date">Deadline: {raffle.status === 'active' ? <span className="remaining-days">{remainingDays()} </span> :
-        <span className="remaining-days">{passedDays()} days passed</span>}</p>
+      <p className="deadline-date">Deadline: <Days raffle={raffle} /></p>
       <div
         className="raffle-icons flex-grow-1 d-flex justify-content-end"
       >

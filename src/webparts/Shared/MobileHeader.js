@@ -28,7 +28,12 @@ const MobileHeader = ({ mobileHeaderRef }) => {
                     data-bs-toggle="modal"
                     data-bs-target="#walletModal"
                 >
-                    {!context.hasWallet ? 'Set Wallet' : <span className={'smaller-wallet-set'}>Wallet : {context.hasWallet}</span>}
+                    {
+                        !context.hasWallet ?
+                            'Set Wallet'
+                            :
+                            <span className={'smaller-wallet-set'}>Wallet : {context.hasWallet}</span>
+                    }
                 </button>
             </div>
             <Link className="mt-3 mt-lg-0" to={"/"}>

@@ -20,7 +20,7 @@ const RaffleDestinationInfo = memo(({ raffle }) => {
           <p>Winner: <span className="winner-share-text">{raffle.percent && raffle.percent.winner}%</span></p>
         </div>
         <div className="service-share flex-grow-1">
-          <p>Service: <span className="service-share-text">{context.info.serviceFee} %</span></p>
+          <p>Service: <span className="service-share-text">{context.info.serviceFee}%</span></p>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@ const RaffleDestinationInfo = memo(({ raffle }) => {
       </div>
       <div className="charity-address-box bordered-field">
         <p>
-          Charity Address:
+          Address:
           <span className="charity-address-text"
           > {raffle.charity}</span>
         </p>

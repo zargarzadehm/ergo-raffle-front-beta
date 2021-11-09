@@ -1,7 +1,7 @@
 import { memo, useContext } from "react";
 import ThemeContext from "../../../context";
 
-const StepOneE = memo(({ formFeedback }) => {
+const CreateRaffleWalletAddress = memo(({ formFeedback }) => {
   const context = useContext(ThemeContext);
   const handleChange = (e) => {
     const { value } = e.target;
@@ -38,4 +38,4 @@ const StepOneE = memo(({ formFeedback }) => {
     </div>)
 });
 
-export default StepOneE;
+export default CreateRaffleWalletAddress;

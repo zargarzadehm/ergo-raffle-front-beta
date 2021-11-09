@@ -1,17 +1,21 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import Title from "../components/Title";
 import { toast } from 'react-toastify';
+import { createPortal } from "react-dom";
 import ThemeContext from "../context";
 import { getRaffleStatus, postRaffle } from "../service/raffle.service";
 import { useLocation } from "react-router-dom";
 import RaffleBarStep from "../webparts/Raffle/RaffleBarStep";
-import CreateRaffleStepThree from "../webparts/Raffle/CreateRaffleStepThree";
 import CreateRaffleButtonBar from "../webparts/Raffle/CreateRaffleButtonBar";
 import CreateRaffleStepIndicator from "../webparts/Raffle/CreateRaffleStepIndicator";
 import staticText from "../statics";
+import DonationFinishModal from "../webparts/Raffle/DonationFinishModal";
+import CreateRaffleAgreeAndFinished from "../webparts/Raffle/CreateRaffleAgreeAndFinished";
 
 let intervallerItem = null;
-function CreateRaffle() {
+const CreateRaffle = () => {
+  const context = useContext(ThemeContext);
+  const {info} = context;
   const activeStepsTotal = [5, 4, 1];
   const barTitle = [
     "Your raffle name",
@@ -26,16 +30,25 @@ function CreateRaffle() {
     "Last Step : Agree to our terms",
   ]
   const [maxStep, setMaxStep] = useState(1);
-  const context = useContext(ThemeContext)
   const location = useLocation();
   const stepBarRef = useRef();
   const [activeStep, setActiveStep] = useState(1);
+  const [createRaffleResponse, setCreateRaffleResponse] = useState(null);
   const [subStep, setSubStep] = useState(1);
   const [isActive, setIsActive] = useState('');
+  const [modalStatus, setModalStatus] = useState(null);
   const [formParams, setFormParams] = useState({
-    address: '', walletAddress: (window.localStorage.getItem('wallet') !== null) ?
-      window.atob(window.localStorage.getItem('wallet')) : '', files: [], ergGoal: '', ticketPrice: 0.25,
-    ticketPercent: '', deadline: '', description: ''
+    address: '',
+    walletAddress:
+      (window.localStorage.getItem('wallet') !== null) ?
+        window.atob(window.localStorage.getItem('wallet'))
+        : '',
+    files: [],
+    ergGoal: '',
+    ticketPrice: 0.25,
+    ticketPercent: '',
+    deadline: '',
+    description: ''
   })
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [response, setResponse] = useState('');
@@ -45,8 +58,14 @@ function CreateRaffle() {
     if (value.length === 0) {
       setIsActive(false);
     } else {
-      if (key === 'deadline' && value > 262800) {
-        setIsActive(false);
+      if (key.trim() === 'description' || key === 'deadline') {
+        if (key === 'deadline' && value > staticText.deadlineLimit) {
+          setIsActive(false);
+        } else if (key === 'description' && value.length > staticText.descriptionLimit) {
+          setIsActive(false);
+        } else {
+          setIsActive(true);
+        }
       } else {
         setIsActive(true);
       }
@@ -59,7 +78,7 @@ function CreateRaffle() {
     if (maxStep < activeStep - 1) {
       setMaxStep(activeStep - 1);
     }
-    if (activeStep !== 1 && activeStep !== 4) {
+    if (activeStep !== 1 && activeStep !== 4 && activeStep !== 6) {
       if (activeStep <= maxStep) {
         setIsActive(true);
       } else {
@@ -110,26 +129,19 @@ function CreateRaffle() {
       formParams.description,
       response).then(
         ({ data }) => {
-          notify('Donation Perfomerd!');
+          notify('Creation Perfomerd!');
           setIsTermsAccepted(false);
           data.ticketPrice = null;
-          context.setModalInfo(data);
+          setCreateRaffleResponse(data);
           getRaffleStatus(data.requestId).then(
             ({ data }) => {
-              context.setModalStatus(data.status);
+              setModalStatus(data.status);
             }
           )
-          context.finishModalToggle.current.click();
-          context.finishModalRef.current.addEventListener("hidden.bs.modal", function () {
-            if (intervallerItem) {
-              clearInterval(intervallerItem);
-            }
-          });
           intervallerItem = setInterval(() => {
             getRaffleStatus(data.requestId).then(
               ({ data }) => {
-                context.setModalStatus(data.status);
-
+                setModalStatus(data.status);
               }
             )
           }, 10000);
@@ -147,57 +159,82 @@ function CreateRaffle() {
       clearInterval(intervallerItem);
     }
   }, [location]);
-  return (<ThemeContext.Consumer>
-    {({ info, setModalStatus, setModalInfo }) => (
-      <main>
-        <Title title={'Ergo Raffle - Create Raffle'} />
-        <section id="create-raffle">
-          <div className="container mt-header">
-            {activeStep <= 5 ?
+  const clearRequestInterval = () => {
+    if (intervallerItem) {
+      clearInterval(intervallerItem);
+    }
+  }
+  return (
+    <main>
+      <Title title={'Ergo Raffle - Create Raffle'} />
+      <section id="create-raffle">
+        <div className="container mt-header">
+          {
+            activeStep <= 5
+              ?
               <div
                 className={"create-raffle-img-container first-step-img text-center"}
               ></div>
-              : null}
-            {activeStep > 5 ?
+              :
+              null
+          }
+          {
+            activeStep > 5
+              ?
               <div
                 className={"create-raffle-img-container second-step-img text-center"}></div>
-              : null}
-            <RaffleBarStep activeStep={activeStep} stepBarRef={stepBarRef} />
-            <CreateRaffleStepIndicator setIsActive={setIsActive}
-              activeStep={activeStep}
-              ticketPercent={formParams.ticketPercent}
-              ticketPrice={formParams.ticketPrice}
-              handleSteps={handleSteps}
-              ergGoal={formParams.ergGoal}
-              barTitle={barTitle}
-              address={formParams.address}
-              raffleName={formParams.raffleName}
-              subStep={subStep}
-              description={formParams.description}
-              files={formParams.files}
-              activeStepsTotal={activeStepsTotal}
-              deadline={formParams.deadline}
-              walletAddress={formParams.walletAddress} />
-            {activeStep > 9 ?
-              <CreateRaffleStepThree info={info}
+              :
+              null
+          }
+
+          <RaffleBarStep activeStep={activeStep} stepBarRef={stepBarRef} />
+
+          <CreateRaffleStepIndicator
+            setIsActive={setIsActive}
+            activeStep={activeStep}
+            ticketPercent={formParams.ticketPercent}
+            ticketPrice={formParams.ticketPrice}
+            handleSteps={handleSteps}
+            ergGoal={formParams.ergGoal}
+            barTitle={barTitle}
+            address={formParams.address}
+            raffleName={formParams.raffleName}
+            subStep={subStep}
+            description={formParams.description}
+            files={formParams.files}
+            activeStepsTotal={activeStepsTotal}
+            deadline={formParams.deadline}
+            walletAddress={formParams.walletAddress} />
+          {
+            activeStep > 9
+              ?
+              <CreateRaffleAgreeAndFinished
+                info={info}
                 setIsTermsAccepted={setIsTermsAccepted}
                 isTermsAccepted={isTermsAccepted}
                 setResponse={setResponse}
                 response={response} />
-              : null}
-            <CreateRaffleButtonBar
-              isTermsAccepted={isTermsAccepted}
-              activeStep={activeStep}
-              prevStep={prevStep}
-              nextStep={nextStep}
-              isActive={isActive}
-              submitRaffleCreate={submitRaffleCreate}
-              setModInfo={setModalInfo}
-              setModalStatus={setModalStatus} />
-          </div>
-        </section>
-      </main>)}
-  </ThemeContext.Consumer>)
+              :
+              null
+          }
+          <CreateRaffleButtonBar
+            isTermsAccepted={isTermsAccepted}
+            activeStep={activeStep}
+            prevStep={prevStep}
+            nextStep={nextStep}
+            isActive={isActive}
+            submitRaffleCreate={submitRaffleCreate}
+          />
+        </div>
+      </section>
+      {
+        createRaffleResponse
+          ?
+          createPortal(<DonationFinishModal clearRequestInterval={clearRequestInterval} modalStatus={modalStatus} response={createRaffleResponse} />, document.getElementById('finish-modal'))
+          :
+          null
+      }
+    </main>)
 }
 
 export default CreateRaffle;

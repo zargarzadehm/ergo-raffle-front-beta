@@ -2,12 +2,13 @@ import { memo } from "react";
 import { toast } from "react-toastify";
 
 const RaffleModalAddress = memo(({ modInfo }) => {
-    const copyClipboard = () => {
+    const copyClipboard = (e) => {
+        e.preventDefault();
         navigator.clipboard.writeText(modInfo.address);
         toast('Copied');
     }
     return (<>
-        <p className="charity-address text-start">Charity address</p>
+        <p className="charity-address text-start">Address</p>
         <div className="row charity-address-box">
             <div className="col-lg-9">
                 <div className="charity-address-field">

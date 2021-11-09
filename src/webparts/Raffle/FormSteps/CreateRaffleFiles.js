@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import staticText from "../../../statics";
 import RaffleImgFileUploader from "../RaffleImgFileUploader";
 
-const StepOneB = memo(({ formFeedback, defaultValue, setIsActive, preview }) => {
+const CreateRaffleFiles = memo(({ formFeedback, defaultValue, setIsActive, preview }) => {
   const [isLoading, setIsLoading] = useState([false, false, false, false]);
   const [files, setFiles] = useState(defaultValue);
   const fillContent = async (result, index) => {
@@ -43,9 +43,11 @@ const StepOneB = memo(({ formFeedback, defaultValue, setIsActive, preview }) => 
           setIsLoading([false, false, false, false]);
         }, 1000);
 
+        setIsActive(true);
         notify('File is Too Large');
       }
     } else {
+      setIsActive(true);
       notify('File is not image');
     }
   }
@@ -56,20 +58,23 @@ const StepOneB = memo(({ formFeedback, defaultValue, setIsActive, preview }) => 
         You can choose 4 photos as your raffle cover
       </h3>
       <div className="row">
-        {['raffle-img1', 'raffle-img2', 'raffle-img3', 'raffle-img4'].map((item, key) => (
-          <RaffleImgFileUploader
-            isLoading={isLoading}
-            files={files}
-            preview={preview}
-            fillContent={fillContent}
-            getBase64={getBase64}
-            item={item}
-            row={key}
-            key={key} />
-        ))}
+        {
+          ['raffle-img1', 'raffle-img2', 'raffle-img3', 'raffle-img4'].map((item, key) => (
+            <RaffleImgFileUploader
+              isLoading={isLoading}
+              files={files}
+              preview={preview}
+              fillContent={fillContent}
+              getBase64={getBase64}
+              item={item}
+              row={key}
+              key={key} />
+          )
+          )
+        }
       </div>
     </div>
   </div>);
 });
 
-export default StepOneB;
+export default CreateRaffleFiles;

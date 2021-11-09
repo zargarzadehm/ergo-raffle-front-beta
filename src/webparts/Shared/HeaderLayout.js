@@ -16,7 +16,6 @@ const HeaderLayout = ({ children, desktopHeaderRef, headerRef, wrapperRef, mobil
                 </div>
             </nav>
         </div>
-        {/* mobile nav */}
         <MobileHeader headerRef={headerRef} wrapperRef={wrapperRef} mobileHeaderRef={mobileHeaderRef} />
     </header>
 

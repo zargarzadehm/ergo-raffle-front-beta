@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-const DonationRaffleStepOne = memo(({ toggleNextStep, walletAddress, changeWalletAddress }) => {
+const DonationRaffleWalletAddress = memo(({ toggleNextStep, walletAddress, changeWalletAddress }) => {
   return (<>
     <div className={"step-content step-1 text-center"}>
       <h3 className="step-title">What is your wallet address?</h3>
@@ -12,7 +12,7 @@ const DonationRaffleStepOne = memo(({ toggleNextStep, walletAddress, changeWalle
             className="form-control"
             id="floatingInput"
             placeholder="Wallet Address"
-            onChange={changeWalletAddress}
+            onChange={(e)=>changeWalletAddress(e.target.value)}
             required
           />
           <label htmlFor="floatingInput">Wallet address</label>
@@ -32,4 +32,4 @@ const DonationRaffleStepOne = memo(({ toggleNextStep, walletAddress, changeWalle
   </>);
 });
 
-export default DonationRaffleStepOne;
+export default DonationRaffleWalletAddress;

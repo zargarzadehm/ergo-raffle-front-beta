@@ -1,10 +1,10 @@
 import { memo, useContext } from "react";
 import ThemeContext from "../../context";
 import { Link } from "react-router-dom";
-import ReCAPTCHA from "react-google-recaptcha";
+import Captcha from "../../components/Captcha";
 
 
-const CreateRaffleStepThree = memo(({ setResponse, response, setIsTermsAccepted }) => {
+const CreateRaffleAgreeAndFinished = memo(({ setResponse, response, setIsTermsAccepted }) => {
   const context = useContext(ThemeContext);
   const handleTerms = (e) => {
     const { checked } = e.target;
@@ -32,12 +32,7 @@ const CreateRaffleStepThree = memo(({ setResponse, response, setIsTermsAccepted 
         <h3 className="step-title">Please accept our terms of use</h3>
         <div className="row accept-terms my-5">
           <div className="col-lg-6 verify-recaptcha text-center">
-            {info.required ?
-              <ReCAPTCHA
-                sitekey={info.pubKey}
-                onChange={verifyCallback}
-              />
-              : null}
+            <Captcha verifyCallback={(response)=> verifyCallback(response)} />
           </div>
           <div
             className="
@@ -67,4 +62,4 @@ const CreateRaffleStepThree = memo(({ setResponse, response, setIsTermsAccepted 
   </ThemeContext.Consumer>)
 });
 
-export default CreateRaffleStepThree;
+export default CreateRaffleAgreeAndFinished;

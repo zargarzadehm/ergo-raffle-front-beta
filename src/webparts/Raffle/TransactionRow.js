@@ -1,47 +1,18 @@
-const TransactionRow = ({ transaction, row }) => {
-  return (<>{transaction.type !== 'Winner' ? <div className="transaction-container my-5">
-    <div className="row g-1 g-md-2 mb-2">
-      <div className="col-1">
-        <div
-          className="transaction-id gray-field text-center row-number-box"
-        >
-          <p>
-            <span className="row-number">{row}</span>
-          </p>
-        </div>
-      </div>
-      <div className="col-11">
-        <div className="wallet-address-box gray-field">
-          <p>
-            Wallet Address : <span className="tickets-number">{transaction.address}</span>
-          </p>
-        </div>
-      </div>
-    </div>
-    <div
-      className="
-        row
-        g-1 g-md-2
-        justify-content-start justify-content-lg-end
-      "
-    >
-      <div className="col-11 col-lg-8 offset-1 offset-lg-0">
-        <div className="transaction-id gray-field">
-          <p>
-            Transaction ID: <a href={transaction.link} target="_blank" rel="noreferrer">
-              <span className="transaction-id-text">{transaction.id}</span></a>
-          </p>
-        </div>
-      </div>
-      <div className="col-6 col-lg-3 offset-1 offset-lg-0">
-        <div className="transaction-id gray-field">
-          <p>
-            Number of tickets : <span className="tickets-number"> {transaction.tickets} </span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div> : null}</>)
+import TicketTransactionRow from "./TicketTransactionRow"
+import WinnerTransactionRow from "./WinnerTransactionRow"
+
+const TransactionRow = ({ transaction, isWinner, isCharity, row }) => {
+  return (
+    isWinner
+      ?
+      <WinnerTransactionRow transaction={transaction} isWinner={true} />
+      :
+      isCharity
+        ?
+        <WinnerTransactionRow transaction={transaction} isWinner={false} />
+        :
+        <TicketTransactionRow transaction={transaction} row={row} />
+  )
 }
 
 export default TransactionRow;
