@@ -2,6 +2,13 @@ import staticText from "../../statics";
 import TransactionRow from "./TransactionRow";
 
 const FinishedRaffleTransactions = ({ winnerRaffleTransactions, charityRaffleTransactions, ticketRaffleTransactions, titleRef, page }) => {
+    const pageRowNumber = (key) => {
+        return page > 2
+            ?
+            ((page - 1) * (staticText.PAGE_SIZE) + key - 1)
+            :
+            ((page - 1) * (staticText.PAGE_SIZE - winnerRaffleTransactions.length - charityRaffleTransactions.length)) + key + 1
+    }
     return (<section id="raffle-transactions">
         <div className="container mt-5">
             <h2 className="transaction-title text-center mb-4" ref={titleRef}>
@@ -40,7 +47,7 @@ const FinishedRaffleTransactions = ({ winnerRaffleTransactions, charityRaffleTra
                         isCharity={false}
                         key={key + item.id + '-items'}
                         transaction={item}
-                        row={((page - 1) * (staticText.PAGE_SIZE - winnerRaffleTransactions.length - charityRaffleTransactions.length)) + key + 1} />
+                        row={pageRowNumber(key)} />
                 )
                 )
             }

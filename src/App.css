@@ -8,8 +8,8 @@
   --orange2: #fc3f27;
 }
 @font-face {
-  font-family: 'frauce';
-  src: url('./assets/fonts/fonts/fraunce.ttf');
+  font-family: "frauce";
+  src: url("./assets/fonts/fonts/fraunce.ttf");
 }
 body {
   font-family: "Poppins", sans-serif;
@@ -126,7 +126,9 @@ a:hover {
 .fixed-top.scrolled-header .site-logo {
   font-size: 47px;
 }
-
+.scrolled-header .site-logo {
+  margin-top: -8px;
+}
 .mt-header {
   margin-top: 120px;
 }
@@ -245,8 +247,8 @@ body.night-mode .site-logo {
   background: rgba(244, 244, 244, 0.25);
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-box-shadow: 0 4px 9px rgba(196,196,196, 0.28) !important;
-  box-shadow: 0 4px 9px rgba(196,196,196, 0.28) !important;
+  -webkit-box-shadow: 0 4px 9px rgba(196, 196, 196, 0.28) !important;
+  box-shadow: 0 4px 9px rgba(196, 196, 196, 0.28) !important;
   border-radius: 19px;
 }
 
@@ -431,7 +433,29 @@ body.night-mode .site-logo {
   flex-direction: row;
   gap: 10px;
 }
-
+.form-control:focus {
+  box-shadow: none !important;
+}
+.night-mode .form-control:focus {
+  border: 1px solid #666 !important;
+}
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-select ~ label {
+  transform: translateY(-1.7rem) translateX(0.15rem);
+  background-color: #fff;
+  opacity: 1 !important;
+}
+.night-mode .form-floating > .form-control:focus ~ label,
+.night-mode .form-floating > .form-control:not(:placeholder-shown) ~ label,
+.night-mode .form-floating > .form-select ~ label {
+  transform: translateY(-1.8rem) translateX(0.15rem);
+  background-color: #000;
+}
+.form-floating > label {
+  padding: 1rem 1rem !important;
+  margin-left: 30px;
+}
 .remaining-days {
   transform: translateY(-50%);
 }
@@ -485,15 +509,15 @@ body.night-mode #walletModal .modal-content * {
 }
 
 body.night-mode #walletModal .modal-content .set-modal {
-  background-color: #ff6c03;
+  background-color: #fc3f27;
 }
 
 body.night-mode .modal.fade.show {
-  background-color: rgba(7, 7, 57, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 body.night-mode .modal.fade.show .btn-close {
-  background-color: #ff6c03 !important;
+  background-color: #fc3f27 !important;
 }
 .progress-bar {
   height: 10px;
@@ -722,11 +746,12 @@ body.night-mode .modal.fade.show .btn-close {
   backdrop-filter: blur(6px);
 }
 
-.night-mode .modal-content {
-  border: 1px solid rgba(255,255,255,0.8)
+.night-mode .form-control {
+  border: 1px solid rgba(44, 44, 44, 0.8);
 }
 
-.modal-content {
+.night-mode .modal-content {
+  outline: 1px solid rgba(44, 44, 44, 0.8);
   border-radius: 12px;
 }
 
@@ -812,7 +837,7 @@ body.night-mode .fixed-top.scrolled-header {
 }
 
 body.night-mode .set-wallet {
-  background-color: #ff6c03;
+  background-color: #fc3f27;
 }
 
 body.night-mode .carousel-control-prev-icon {
@@ -1476,7 +1501,7 @@ a[aria-controls] {
 }
 
 .copy-charity {
-  background: #000000;
+  background: #333;
   border-radius: 8px;
   width: 100%;
   color: white;
@@ -1641,11 +1666,14 @@ input[type="file"].disabled + label {
 }
 
 .raffle-img-container {
+  position: relative;
+}
+.raffle-image-inner {
+  position: relative;
   height: 0;
   padding-bottom: 70%;
   overflow: hidden;
   border-radius: 19px;
-  position: relative;
 }
 .raffle-img-container img {
   width: 100%;
@@ -1840,8 +1868,9 @@ body.night-mode #base-timer-label {
   content: "";
   width: 100%;
   height: 100%;
-  bottom: -16px;
-  left: -16px;
+  top: -42%;
+  right: -52%;
+  transform: rotate(-10deg);
   border-radius: 16px;
   background-image: url("./assets/img/successful.png");
   background-size: 60%;
@@ -1870,7 +1899,7 @@ body.night-mode #base-timer-label {
 }
 
 .night-mode #shareModal .modal-content {
-  background-color: rgba(7, 7, 57, 1) !important;
+  background-color: rgba(0, 0, 0, 1) !important;
 }
 
 .night-mode #shareModal .modal-content label {
@@ -1886,7 +1915,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .night-mode #donation-modal .modal-content {
-  background-color: #070739 !important;
+  background-color: #000 !important;
 }
 .recaptcha-cont {
   margin: 20px 0;
@@ -1903,7 +1932,10 @@ body > .modal-backdrop.fade.show:last-of-type {
   color: #fff !important;
 }
 .night-mode .night-mode-link {
-  background-color: #070739 !important;
+  background-color: transparent !important;
+}
+.night-mode #offcanvas-sidebar .night-mode-link {
+  background-color: #141414 !important;
 }
 .ReactModal__Overlay {
   z-index: 2000 !important;
@@ -1918,8 +1950,9 @@ body > .modal-backdrop.fade.show:last-of-type {
   content: "";
   width: 100%;
   height: 100%;
-  bottom: -16px;
-  left: -16px;
+  top: -42%;
+  right: -52%;
+  transform: rotate(-10deg);
   border-radius: 16px;
   background-image: url("./assets/img/unsuccessful.png");
   background-size: 60%;
@@ -2789,7 +2822,7 @@ body.night-mode .support-ticket-textarea {
   background-color: transparent !important;
   color: white !important;
 }
-@media(max-width: 990px) {
+@media (max-width: 990px) {
   .upload-image + label {
     margin-left: 15px !important;
   }

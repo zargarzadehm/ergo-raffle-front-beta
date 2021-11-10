@@ -101,7 +101,8 @@ const CreateRaffle = () => {
   };
   const prevStep = (e) => {
     setIsTermsAccepted(false);
-    e.preventDefault()
+    e.preventDefault();
+    setCreateRaffleResponse(null);
     const newStep = activeStep - 1;
     setActiveStep(newStep);
     setSubStep(newStep);

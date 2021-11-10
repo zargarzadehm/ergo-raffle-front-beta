@@ -1,27 +1,7 @@
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 
-// Editor configuration.
-ClassicEditor.defaultConfig = {
-  toolbar: {
-    items: [
-      'heading',
-      '|',
-      'bold',
-      'italic',
-      '|',
-      'numberedList',
-      'bulletedList',
-      '|',
-      'link',
-      'blockQuote',
-      'insertTable',
-      '|',
-      'undo',
-      'redo'
-    ]
-  },
-};
+
 const CreateRaffleDescription = ({ formFeedback, defaultValue }) => {
   const changeEditor = (data) => {
     formFeedback('description', data);
@@ -35,8 +15,47 @@ const CreateRaffleDescription = ({ formFeedback, defaultValue }) => {
         <div className="editor-bordered-box">
           <div>
             <CKEditor
-              editor={ClassicEditor}
               data={defaultValue}
+              editor={DecoupledEditor}
+              onReady={editor => {
+                editor.ui.getEditableElement().parentElement.insertBefore(
+                  editor.ui.view.toolbar.element,
+                  editor.ui.getEditableElement()
+                );
+              }}
+              onError={({ willEditorRestart }) => {
+
+                // This is why you need to remove the older toolbar.
+                if (willEditorRestart) {
+                  this.editor.ui.view.toolbar.element.remove();
+                }
+              }}
+              config={{
+                toolbar: {
+                  items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    '|',
+                    'alignment:left',
+                    'alignment:right',
+                    'alignment:center',
+                    'alignment:justify',
+                    'indent',
+                    'outdent',
+                    'numberedList',
+                    'bulletedList',
+                    '|',
+                    'link',
+                    'blockQuote',
+                    'insertTable',
+                    '|',
+                    'undo',
+                    'redo'
+                  ]
+                },
+              }}
               onChange={(event, editor) => {
                 let data = editor.getData();
                 changeEditor(data);

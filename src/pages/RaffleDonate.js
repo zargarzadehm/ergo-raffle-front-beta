@@ -74,6 +74,7 @@ const RaffleDonate = ({ history }) => {
   const reduceStep = (e) => {
     setIsTermsAccepted(true);
     e.preventDefault();
+    setDonateResponse(null);
     const newStep = activeStep - 1;
     setActiveStep(newStep);
     if (newStep === 1) {
