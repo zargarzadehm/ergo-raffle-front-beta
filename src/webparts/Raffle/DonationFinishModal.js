@@ -3,6 +3,9 @@ import Erg from "../../components/Erg";
 import RaffleModalAddress from "./RaffleModalAddress";
 import RaffleModalStepNumber from "./RaffleModalStepNumber";
 import RaffleModalTicketNumber from "./RaffleModalTicketNumber";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { toast } from "react-toastify";
+import staticText from "../../statics";
 
 const DonationFinishModal = ({ response, modalStatus, clearRequestInterval }) => {
   const timerRef = useRef();
@@ -98,6 +101,9 @@ const DonationFinishModal = ({ response, modalStatus, clearRequestInterval }) =>
     }
   }
 
+  const copyTo = () => {
+    toast('Copied');
+  }
   useEffect(() => {
     modalRef.current.click();
   }, []);
@@ -117,9 +123,13 @@ const DonationFinishModal = ({ response, modalStatus, clearRequestInterval }) =>
           <div className="modal-header">
             <p className="donation-modal-instruction">
               Copy the Address from below and Send <span className="donation-amount">
-                <b>
-                  <Erg erg={response.erg} shouldDisplay={true} />
-                </b>
+                
+                <CopyToClipboard text={response.erg/staticText.ERG_SCALE}  
+                onCopy={() => copyTo()}>
+                  <b className={'cursor-pointer'}>
+                    <Erg erg={response.erg} shouldDisplay={true} />
+                  </b>
+                </CopyToClipboard>
               </span> to it.
             </p>
 

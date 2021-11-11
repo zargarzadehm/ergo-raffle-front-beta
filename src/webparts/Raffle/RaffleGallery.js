@@ -45,11 +45,13 @@ const RaffleGallery = ({ raffle }) => {
               <div
                 onClick={() => { setIsOpen(true) }} className={raffle.status === 'succeed' ? 'raffle-success' : raffle.status === 'failed' ? 'raffle-unsuccess' : ''}>
                 <div className={'raffle-img-container'}>
+                  <div className={'raffle-image-inner'}>
                   <img
                     src={item || defaultImg}
                     className="d-block w-100"
                     alt={raffle.name}
                   />
+                  </div>
                 </div>
               </div>
             </div>

@@ -62,7 +62,7 @@ const RaffleModalStepNumber = memo(({ modStatus, timerRef, remainingSeconds }) =
           </div>
           <p className="donation-fineprint mt-2">
             Your funds will be send back to you in case of any failure.
-            samrt contracts are being used to prevent the intermidiate
+            smart contracts are being used to prevent the intermidiate
             service from cheating.
           </p>
         </div>
