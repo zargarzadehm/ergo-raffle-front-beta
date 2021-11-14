@@ -442,7 +442,7 @@ body.night-mode .site-logo {
   flex-direction: row;
   gap: 10px;
 }
-.form-control:focus {
+/* .form-control:focus {
   box-shadow: none !important;
 }
 .night-mode .form-control:focus {
@@ -455,20 +455,24 @@ body.night-mode .site-logo {
 }
 .remaining-days {
   transform: translateY(-50%);
-}
+} */
 /* Change the white to any color */
 .night-mode input:-webkit-autofill,
 .night-mode input:-webkit-autofill:hover,
 .night-mode input:-webkit-autofill:focus,
 .night-mode input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px black inset !important;
+  -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0px 1000px black inset !important;
+  transition: background-color 5000s ease-in-out 0s !important;
 }
 /* Change the white to any color */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: black !important;
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  transition: background-color 5000s ease-in-out 0s !important;
 }
 #mobile-nav .site-logo img {
   width: 100px;
@@ -487,7 +491,7 @@ input:-webkit-autofill:active {
 .cursor-pointer {
   cursor: pointer;
 }
-.form-floating > .form-control ~ label {
+/* .form-floating > .form-control ~ label {
   height: 1px;
   line-height: 1px;
   background-color: #fff !important;
@@ -507,7 +511,7 @@ input:-webkit-autofill:active {
   transform: scale(0.85) translateY(0rem) translateX(0.15rem);
   opacity: 1;
   background-color: #000;
-}
+} */
 .remain-box::before {
   content: "";
   -webkit-box-flex: 1;
@@ -1466,10 +1470,10 @@ a[aria-controls] {
   font-size: 24px;
   line-height: 36px;
 }
-
+/* 
 .form-floating > label {
   color: rgba(0, 0, 0, 0.3);
-}
+} */
 
 .donate-next,
 .create-next {
@@ -1666,14 +1670,14 @@ body.night-mode .donation-goal-box-orange span {
 body.night-mode .form-control {
   background-color: transparent !important;
 }
-
+/* 
 body.night-mode .form-floating > label {
   color: white;
-}
-
+} */
+/* 
 body.night-mode .form-floating > .form-control {
   color: white !important;
-}
+} */
 
 body.night-mode .step-circle {
   border-color: white !important;
