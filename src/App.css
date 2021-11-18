@@ -1373,8 +1373,8 @@ a[aria-controls] {
 }
 
 .heart-jar {
-  height: 60vh;
-  width: 60vh;
+  height: 500px;
+
   margin: 1rem auto;
   background-image: url(./assets/img/heart-jar.png);
   background-size: contain;
