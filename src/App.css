@@ -1470,7 +1470,7 @@ a[aria-controls] {
   font-size: 24px;
   line-height: 36px;
 }
-/* 
+/*
 .form-floating > label {
   color: rgba(0, 0, 0, 0.3);
 } */
@@ -1590,7 +1590,7 @@ a[aria-controls] {
   text-decoration: underline !important;
 }
 
-/* 
+/*
 
 
 */
@@ -1670,11 +1670,11 @@ body.night-mode .donation-goal-box-orange span {
 body.night-mode .form-control {
   background-color: transparent !important;
 }
-/* 
+/*
 body.night-mode .form-floating > label {
   color: white;
 } */
-/* 
+/*
 body.night-mode .form-floating > .form-control {
   color: white !important;
 } */
@@ -2815,7 +2815,7 @@ body.night-mode a.ck.ck-button.ck-on {
 }
 
 .support-submit {
-  width: 263px;
+  min-width: 263px;
   height: 58px;
   background: var(--orange2);
   border-radius: 8px;

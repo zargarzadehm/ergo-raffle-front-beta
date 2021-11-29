@@ -38,7 +38,7 @@ const Footer = memo(() => {
           </div>
         </div>
         <div className="footer-copyright text-center mb-4">
-          <h6>CopyRight &copy; ErgoRaffle 2021</h6>
+          <h6>Copyright &copy; ErgoRaffle 2021</h6>
         </div>
       </div>
     </div>

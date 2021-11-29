@@ -36,7 +36,12 @@ const Layout = memo(({ children }) => {
       DARK_THEME :
       LIGHT_THEME :
     LIGHT_THEME);
-  const [info, setInfo] = useState({});
+  const [info, setInfo] = useState({
+    "pubKey" : "not-set",
+    "required" : false,
+    "height" : 83670,
+    "serviceFee" : 5
+  });
   const [pinnedRaffles, setPinnedRaffles] = useState([]);
   const debounce = require('lodash.debounce');
   const headerRef = useRef();

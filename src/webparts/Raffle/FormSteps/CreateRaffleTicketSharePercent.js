@@ -2,10 +2,12 @@ import { memo, useContext, useState } from "react";
 import ThemeContext from "../../../context";
 
 const CreateRaffleTicketSharePercent = memo(({ formFeedback, defaultValue }) => {
-  const [ticketPercent, setTicketPercent] = useState(defaultValue);
+  const [ticketPercent, setTicketPercent] = useState(729);
   const context = useContext(ThemeContext);
   const handleChange = (e) => {
     const { value } = e.target;
+    console.log(parseInt(value));
+    console.log("info is ",context.info);
     if ((parseInt(value) < (100 - context.info.serviceFee) && parseInt(value) > 0) || value === '') {
       setTicketPercent(value);
       formFeedback('ticketPercent', value)

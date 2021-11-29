@@ -1,15 +1,15 @@
-import loader from '../assets/img/loader.svg';
-import RaffleWork from '../components/RaffleWork';
+import loader from '../../assets/img/loader.svg';
+import RaffleWork from '../../components/RaffleWork';
 import { Link } from 'react-router-dom';
 import { Suspense, useState, useEffect, useCallback } from 'react';
-import { getSucceedRaffle, getLatestRaffle, getNearDeadlineRaffle, getTopRaffle } from '../service/raffle.service';
-import Raffle from '../components/Raffle';
-import Title from '../components/Title';
-import staticText from '../statics';
-import CarouselBar from '../webparts/Home/CarouselBar';
-import HeadingTitle from '../webparts/Shared/HeadingTitle';
-import Tabs from '../components/Tabs';
-import HomeHeader from '../webparts/Home/HomeHeader';
+import { getSucceedRaffle, getLatestRaffle, getNearDeadlineRaffle, getTopRaffle } from '../../service/raffle.service';
+import Raffle from '../../components/Raffle';
+import Title from '../../components/Title';
+import staticText from '../../statics';
+import CarouselBar from './CarouselBar';
+import HeadingTitle from '../../webparts/Shared/HeadingTitle';
+import Tabs from '../../components/Tabs';
+import HomeHeader from './HomeHeader';
 
 function Home() {
   const [raffles, setRaffles] = useState([]);
@@ -104,7 +104,7 @@ function Home() {
         </div>
       </div>
     </section>
-    <HeadingTitle title={'Discover recent successfull raffles'} />
+    <HeadingTitle title={'Some recent Raffle success stories'} />
     <Suspense fallback={''}>
       {
         successfulRaffles && successfulRaffles.length > 0

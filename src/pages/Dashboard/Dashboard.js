@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext, useCallback } from 'react';
-import Title from '../components/Title';
-import { getAllYourDonations, getAllYourRafflesYouWin, getSingleRaffle } from '../service/raffle.service';
-import staticText from '../statics';
-import DashboardRaffleDonation from '../webparts/Dashboard/DashboardRaffleDonation';
-import DashboardRaffleWinner from '../webparts/Dashboard/DashboardRaffleWinner';
-import DashboardFaq from '../webparts/Dashboard/DashboardFaq';
-import Tabs from '../components/Tabs';
-import DashboardRafflePin from '../webparts/Dashboard/DashboardRafflePin';
-import ThemeContext from '../context';
+import Title from '../../components/Title';
+import { getAllYourDonations, getAllYourRafflesYouWin, getSingleRaffle } from '../../service/raffle.service';
+import staticText from '../../statics';
+import DashboardRaffleDonation from './DashboardRaffleDonation';
+import DashboardRaffleWinner from './DashboardRaffleWinner';
+import DashboardFaq from './DashboardFaq';
+import Tabs from '../../components/Tabs';
+import DashboardRafflePin from './DashboardRafflePin';
+import ThemeContext from '../../context';
 
 const Dashboard = ({ history }) => {
   const context = useContext(ThemeContext);

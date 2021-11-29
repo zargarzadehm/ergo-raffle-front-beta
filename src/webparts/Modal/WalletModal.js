@@ -39,7 +39,11 @@ const WalletModal = ({ walletProp }) => {
         <div className="modal-content">
           <div className="modal-header">
             <label htmlFor="Wallet-address" className="col-form-label"
-            >Your fund will be sent to this address.</label>
+            >You need to set your wallet address here. this wallet address used for any failed transaction redeem.
+            also if you win a raffle reward goes to this address.
+              <br/>
+              Your fund will be safe using smart contracts that prevent service from cheating. Transaction may fail due to heavy load during lunch.
+            </label>
             <button
               type="button"
               className="btn-close"
@@ -58,6 +62,7 @@ const WalletModal = ({ walletProp }) => {
                   placeholder="Wallet address"
                   onChange={handleChange}
                 />
+                <small><b>&nbsp;&nbsp;&nbsp;&nbsp;Your winner prize of charity on winner raffle sent to this address</b></small>
               </div>
             </form>
           </div>

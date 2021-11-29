@@ -2,7 +2,7 @@ import staticText from "../statics";
 
 const RaffleWork = () => {
   return (<div className="erg-how text-center p-5 mb-5">
-    <h3>How do the Ergo & raffles work?</h3>
+    <h3>How does Ergo Raffle work?</h3>
     <p>
       {staticText.homeFooterText}
     </p>
