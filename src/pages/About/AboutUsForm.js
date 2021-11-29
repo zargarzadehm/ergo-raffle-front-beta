@@ -61,7 +61,7 @@ const AboutUsForm = memo(() => {
         <div className="contact-form-container">
             <form action="">
                 <h4 className="about-form-subtitle about-email">
-                    What's your email address?
+                    Your Email Address:
                 </h4>
                 <div className="form-floating about-email-form">
                     <input
@@ -75,7 +75,7 @@ const AboutUsForm = memo(() => {
                     <label htmlFor="floatingInput">Email</label>
                 </div>
                 <h4 className="about-form-subtitle about-message mt-5">
-                    What's your message?
+                    Your Message:
                 </h4>
                 <div className="form-floating">
           <textarea
