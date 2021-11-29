@@ -3,7 +3,7 @@ import { memo } from "react";
 const RaffleBarStep = memo(({ activeStep, stepBarRef }) => {
   return (<div className="create-raffle-header mb-3">
     <h3 className="help-request create-raffle-title text-center mt-3">
-      Ready to create a new raffle?
+      Ready to Create a New Raffle?
     </h3>
     <div className="row my-2 step-circle-box">
       <div className="col-12 step-bar zero-width" ref={stepBarRef}></div>
@@ -19,13 +19,13 @@ const RaffleBarStep = memo(({ activeStep, stepBarRef }) => {
     </div>
     <div className="row">
       <div className="col-4 text-start">
-        <p className="step-text mt-2">Step 1: raffle’s specifications</p>
+        <p className="step-text mt-2">Step 1: Raffle’s Specifications</p>
       </div>
       <div className="col-4 text-center">
-        <p className="step-text mt-2">Step 2: donation goal</p>
+        <p className="step-text mt-2">Step 2: Donation Goal</p>
       </div>
       <div className="col-4 text-end">
-        <p className="step-text mt-2">Step 3: agree and finish</p>
+        <p className="step-text mt-2">Step 3: Agreement</p>
       </div>
     </div>
   </div>)

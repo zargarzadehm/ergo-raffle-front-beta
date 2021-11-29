@@ -55,7 +55,7 @@ const CreateRaffleFiles = memo(({ formFeedback, defaultValue, setIsActive, previ
   return (<div className="first-step step-1-b">
     <div className="step-content text-center text-lg-start">
       <h3 className="step-title mb-4">
-        You can choose 4 photos as your raffle cover
+        Upload Up to 4 Photos.
       </h3>
       <div className="row">
         {

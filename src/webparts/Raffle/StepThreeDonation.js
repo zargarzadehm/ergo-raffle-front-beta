@@ -22,7 +22,7 @@ const StepThreeDonation = memo(({ handleFeedback }) => {
     handleFeedback(enabled, res)
   };
   return (<>
-    <h3 className="step-title">Please accept our terms of use</h3>
+    <h3 className="step-title">Read the Terms of Use</h3>
     <div className="row accept-terms my-5">
       <div className="col-lg-6 verify-recaptcha text-center">
         <Captcha verifyCallback={(response) => verifyCallback(response)} />
@@ -46,7 +46,7 @@ const StepThreeDonation = memo(({ handleFeedback }) => {
             onChange={handleChange}
           />
           <label className="form-check-label" htmlFor="flexCheckDefault">
-            I agree to the <Link to={'/'}> terms of use</Link>
+            I Agree to the <Link style={{color:"blue", textDecoration:"underline"}} to={'/'}> Terms of Use</Link>
           </label>
         </div>
       </div>

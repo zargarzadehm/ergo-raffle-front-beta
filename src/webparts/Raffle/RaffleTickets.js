@@ -5,13 +5,9 @@ const RaffleTickets = ({ raffleTransactions }) => {
         <div className="container">
             <div className="your-tickets-box text-center p-3">
                 {window.localStorage.getItem('wallet') !== null ? <>
-                    <h3 className="your-tickets-title mt-3">Your Tickets</h3>
+                    <h3 className="your-tickets-title mt-3">{raffleTransactions.length === 0 ? "No Tickets Yet" : "Your Tickets"}</h3>
                     {
-                        raffleTransactions.map((item, key) =>
-                        (
-                            <RaffleTicket raffle={item} key={item.id + key + '-transaction-raffle'} />
-                        )
-                        )
+                        raffleTransactions.map((item, key) =><RaffleTicket raffle={item} key={item.id + key + '-transaction-raffle'} />)
                     }
                 </>
                     :

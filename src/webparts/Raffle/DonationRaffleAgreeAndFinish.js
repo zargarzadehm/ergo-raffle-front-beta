@@ -7,7 +7,7 @@ const DonationRaffleStepThree = memo(({ handleFeedback, reduceStep, setModalInfo
         <div className="row action-button mb-5">
             <div className="col-6 text-end">
                 <button type="button" onClick={reduceStep} className="btn donate-back back-btn mt-3">
-                    back
+                    Back
                 </button>
             </div>
             <div className="col-6 text-start">
@@ -17,7 +17,7 @@ const DonationRaffleStepThree = memo(({ handleFeedback, reduceStep, setModalInfo
                     className="btn donate-next finish mt-3"
                     onClick={() => donate(setModalInfo, setModalStatus)}
                 >
-                    Finish
+                    Donate
                 </button>
             </div>
         </div>

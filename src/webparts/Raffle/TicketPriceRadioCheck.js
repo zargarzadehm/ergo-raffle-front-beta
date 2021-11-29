@@ -9,7 +9,7 @@ const TicketPriceRadioCheck = ({ radioCheck, handleChange, value }) => {
             checked={radioCheck === value}
             onChange={handleChange}
         />
-        <label className="btn btn-outline-danger" htmlFor={`${value}-tickets`}>{value} ticket</label>
+        <label className="btn btn-outline-danger" htmlFor={`${value}-tickets`}>{value} Ticket{value > 1 ? "s" : null}</label>
     </>)
 }
 

@@ -8,7 +8,7 @@ const SupportLink = props => {
         <div>
             <div className="submit-btn-container text-center">
                 <button type="Submit" className="btn support-submit mt-5" onClick={openSupportBot}>
-                    Goto support bot in discord
+                    Go to Support Bot in Discord
                 </button>
             </div>
         </div>

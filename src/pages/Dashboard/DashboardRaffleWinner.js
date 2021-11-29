@@ -3,7 +3,7 @@ import Raffle from '../../components/Raffle';
 const DashboardRaffleWinner = ({ yourRaffle, loading }) => {
   return (<section id="all-your-raffles-container" className="mt-5">
     <div className="container">
-      <h2 className="dashboard-title text-center mb-4">Raffles You Win</h2>
+      <h2 className="dashboard-title text-center mb-4">Raffles You Won</h2>
       <div id="all-your-raffles" className="row g-4">
         {(loading &&
           Array.isArray(yourRaffle) &&

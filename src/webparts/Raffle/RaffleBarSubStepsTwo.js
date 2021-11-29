@@ -6,7 +6,7 @@ const RaffleBarSubStepsTwo = ({ activeStep }) => {
         "create-raffle-substep active-substep" :
         "create-raffle-substep done-substep"
     }>
-      Donation goal
+      Donation Goal
     </p>
     <p className={
       activeStep === 7
@@ -35,7 +35,7 @@ const RaffleBarSubStepsTwo = ({ activeStep }) => {
           "create-raffle-substep done-substep"
           :
           "create-raffle-substep"
-    }>Shares percentage</p>
+    }>Distribution</p>
   </>)
 }
 

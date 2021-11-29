@@ -9,7 +9,7 @@ const CreateRaffleDescription = ({ formFeedback, defaultValue }) => {
   return (<div className="first-step step-1-c">
     <div className="step-content text-center text-lg-start">
       <h3 className="step-title mb-4">
-        You can write a description for your raffle.
+        Write the Raffle's Description.
       </h3>
       <form>
         <div className="editor-bordered-box">

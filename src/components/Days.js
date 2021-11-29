@@ -8,9 +8,9 @@ const Days = ({ raffle }) => {
         return raffle.status === 'active' ?
             Math.floor((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE) === 0
                 ?
-                Math.abs((Math.ceil(((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE) * 24))) + ' hours remaining'
+                Math.abs((Math.ceil(((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE) * 24))) + ' Hours to Go'
                 :
-                Math.abs(Math.floor((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE)) + ' days remaining'
+                Math.abs(Math.floor((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE)) + ' Days to Go'
             :
             Math.floor((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE) === 0
                 ?
@@ -19,9 +19,9 @@ const Days = ({ raffle }) => {
                 Math.abs(Math.floor((raffle.deadline - info.height) / staticText.DAY_CONVERSION_SCALE)) + ' days passed';
     }
     return (
-        remainingOrPassedDays().indexOf('1 hours') >= 0 || remainingOrPassedDays().indexOf('1 days') >= 0
+        remainingOrPassedDays().indexOf('1 Hours') === 0 || remainingOrPassedDays().indexOf('1 Days') === 0
             ?
-            remainingOrPassedDays().split('days').join('day').split('hours').join('hour')
+            remainingOrPassedDays().split('Days').join('Day').split('Hours').join('Hour')
             :
             remainingOrPassedDays()
     )

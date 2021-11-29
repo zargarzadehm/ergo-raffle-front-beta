@@ -1,7 +1,7 @@
 import Title from '../../components/Title';
 import staticText from '../../statics';
 import DashboardFaq from '../Dashboard/DashboardFaq';
-import SupportLink from "./SupportLink";
+import SupportLink from "../Faq/SupportLink";
 
 const Support = () => {
     const faqs = staticText.faq;

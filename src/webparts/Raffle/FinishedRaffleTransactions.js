@@ -12,7 +12,7 @@ const FinishedRaffleTransactions = ({ winnerRaffleTransactions, charityRaffleTra
     return (<section id="raffle-transactions">
         <div className="container mt-5">
             <h2 className="transaction-title text-center mb-4" ref={titleRef}>
-                {Array.isArray(ticketRaffleTransactions) && ticketRaffleTransactions.length > 0 ? "Details of transactions" : null}
+                {Array.isArray(ticketRaffleTransactions) && ticketRaffleTransactions.length > 0 ? "Details of Transactions" : null}
             </h2>
             <div className="winner-box mb-5">
                 {

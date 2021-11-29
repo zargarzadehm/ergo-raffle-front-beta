@@ -12,7 +12,7 @@ const RaffleDonation = memo(() => {
     </div>
     <div className="d-none d-lg-block col-lg-3">
       <div className="transaction-id text-start">
-        <p className="tickets-number-title">Number of tickets:</p>
+        <p className="tickets-number-title">Number of Tickets:</p>
       </div>
     </div>
   </div>)

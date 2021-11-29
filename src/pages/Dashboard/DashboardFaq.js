@@ -5,7 +5,7 @@ const DashboardFaq = memo(({ faqs }) => {
   return (<section id="questions" className="p-lg-5 mt-header">
     <div className="container">
       <h2 className="dashboard-title text-center mb-4">
-        Do you have any issues?
+        Do You Have Any Issues?
       </h2>
       <div className="accordion mt-5" id="questions">
         {

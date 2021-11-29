@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import Home from '../pages/Home/Home.js';
-import Faq from '../pages/Faq.js';
+import Faq from '../pages/Faq/Faq.js';
 import About from '../pages/About/About.js';
 import Raffles from '../pages/Raffles.js';
 import CreateRaffle from '../pages/CreateRaffle.js';

@@ -18,9 +18,9 @@ const CreateRaffle = () => {
   const {info} = context;
   const activeStepsTotal = [5, 4, 1];
   const barTitle = [
-    "Your raffle name",
-    "Your raffle cover photo",
-    "Your raffle description",
+    "Title",
+    "Upload Photos",
+    "Description",
     "charity address",
     "Wallet address",
     "Donation goal",

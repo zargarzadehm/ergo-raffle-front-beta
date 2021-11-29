@@ -63,7 +63,7 @@ const Dashboard = ({ history }) => {
   const changeTab = (tabIndex) => {
     setActiveTab(tabIndex);
     if (tabIndex === 0) {
-      history.push('/support');
+      history.push('/faq');
     }
   }
   return (<>
@@ -72,7 +72,7 @@ const Dashboard = ({ history }) => {
       <DashboardRafflePin pinnedRaffles={context.pinnedRaffles} />
       <DashboardRaffleDonation loading={isDonationFinished} donationRaffle={donationRaffle} />
       <DashboardRaffleWinner loading={isWinnerRaffleFinished} yourRaffle={yourRaffle} />
-      <div className="dashboard-support-choice d-flex justify-content-around">
+      <div className="dashboard-support-choice d-flex justify-content-around mt-4">
         <Tabs
           tabs={tabContent}
           defaultActiveTab={1}

@@ -3,21 +3,29 @@ import about from "./About";
 
 const staticText = {
     about: about,
-    homeFooterText: "Ergo Raffle is a crowdfunding service that aims to enable anyone to raise enough money needed for a project." +
-        " The project can be a direct donation to a charity, an academic or business plan, or anything else the creator can convince people " +
-        "to part with their hard-earned ERG for. As an added bonus, after finishing the raffle, a lottery takes place at the end of the Raffle," +
-        " and onea lucky participant wins a set percent of the Raffle as the ‘the raffle reward.",
     faq: faq,
-    homeTabs: ['Newest Raffles', 'Top Raffles', 'Nearing Deadline'],
+    homeTabs: ['Newest', 'Last Activity', 'Nearing Deadline'],
     dashboardTabs: ['Ask For Help', 'FAQ and Problems'],
     raffleListTabs: [{label: 'All Raffles', value: 'all'}, {label: 'Active', value: 'active'},
         {label: 'Successful', value: 'succeed'}, {label: 'Failed', value: 'failed'}],
     navigations: [{title: 'Home', link: '/'}, {title: 'All Raffles', link: '/raffle/list'},
         {title: 'FAQ', link: '/faq'}, {title: 'About/Contact', link: '/about'}],
-    footers: [{title: 'All Raffles', link: '/raffle/list'}, {
-        title: 'Support',
-        link: '/support'
-    }, {title: 'About/Contact', link: '/about'}],
+    // footers: [{title: 'All Raffles', link: '/raffle/list'}, {
+    //     title: 'Support',
+    //     link: '/support'
+    // }, {title: 'About/Contact', link: '/about'}],
+    privateLink: [
+        {"link": 'https://github.com/ErgoRaffle', "title": "Github"},
+        {"link": 'https://github.com/ErgoRaffle/raffle-documentation', "title": "Whitepaper"},
+        {"link": 'https://github.com/ErgoRaffle', "title": "Raffle Beta"},
+    ],
+    publicLink: [
+        {"link": 'https://t.me/ergoplatform', "title": "Telegram"},
+        {"link": 'https://twitter.com/ergoplatformorg', "title": "Twitter"},
+        {"link": 'https://discord.gg/ahktsCT9TM', "title": "Discord"},
+        {"link": 'https://www.ergoforum.org/', "title": "Ergo Platform"},
+        {"link": 'https://www.ergoforum.org/', "title": "Ergo Forum"},
+    ],
     socials: {
         'Telegram': 'https://t.me/ergoplatform',
         'Twitter': 'https://twitter.com/ergoplatformorg',

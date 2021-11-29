@@ -18,14 +18,14 @@ const DonateRaffleProgress = memo(({ stepBarRef, activeStep }) => {
         </div>
         <div className="row">
             <div className="col-4 text-start">
-                <p className="step-text mt-2">Step 1: wallet address</p>
+                <p className="step-text mt-2">Step 1: Wallet Address</p>
             </div>
 
             <div className="col-4 text-center">
-                <p className="step-text mt-2">Step 2: donation amount</p>
+                <p className="step-text mt-2">Step 2: Donation Amount</p>
             </div>
             <div className="col-4 text-end">
-                <p className="step-text mt-2">Step 3: agree and finish</p>
+                <p className="step-text mt-2">Step 3: Agreement</p>
             </div>
         </div>
     </>)
