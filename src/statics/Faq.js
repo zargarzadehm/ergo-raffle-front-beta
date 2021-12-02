@@ -82,6 +82,52 @@ const faq = [
                 fees. You can read more technical details on the documentation page.
             </div>
         )
+    }, {
+        question: "Do I need a license to host a raffle on your platform?",
+        answer: "No. All Raffles on our platform are legally classed as 'prize competitions' which do not require a license."
+    }, {
+        question: "What should I put in my description?",
+        answer: "Your description should ideally provide an external link to verify authenticity if required."
+    }, {
+        question: "Can I host a raffle in my business name?",
+        answer: "Yes. You can host a raffle in your personal name or your business name."
+    }, {
+        question: "What is the minimum ticket price I can charge for my raffle?",
+        answer: "Technically, 0.XX ERG, however, we recommend looking through previous successful raffles to gauge the best level for your raffle."
+    }, {
+        question: "What is the maximum ticket price I can charge for my raffle?",
+        answer: "There is no maximum price. However, if the ticket is too expensive people may be discouraged from entering."
+    }, {
+        question: "Can entrants purchase more than one raffle ticket?",
+        answer: "Yes, entrants can purchase as many tickets as they like."
+    }, {
+        question: "What happens if the Raffle isn’t funded by the draw date?",
+        answer: "Entrants will have their funds refunded and your Raffle will be marked as unsuccessful."
+    }, {
+        question: "How is the winner selected?",
+        answer: "Randomly."
+    }, {
+        question: "How will I know who the winner is?",
+        answer: "You won’t"
+    }, {
+        question: "What is the ‘Service Fee’?",
+        answer: "This fee pays for the maintenance and upkeep required for this beautiful user interface."
+    }, {
+        question: "How do I provide the prize to the winner?",
+        answer: "The prize is automatically distributed at the end of the Raffle."
+    }, {
+        question: "What happens once my raffle ends?",
+        answer: "Your raffle will either be marked as successful, you will receive your funds and the raffle winner receives the prize."
+    }
+]
+
+const SupportFaq = [
+    {
+        question: "I put in the wrong date - can I cancel my Raffle?",
+        answer: "Unfortunately, raffles cannot be altered after creation. Your best bet is to create a second raffle and distribute the new link instead.",
+    }, {
+        question: "What is the ‘Shares Percentage’",
+        answer: "This is the percentage that the lucky raffle winner will claim.",
     }
 ]
 
