@@ -1,6 +1,6 @@
 import React from "react";
 
-const faq = [
+const Faq = [
     {
         question: 'What is a Raffle?',
         answer: (
@@ -131,4 +131,8 @@ const SupportFaq = [
     }
 ]
 
-export default faq
+export default Faq
+
+export {
+    SupportFaq
+}

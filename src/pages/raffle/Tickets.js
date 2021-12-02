@@ -39,11 +39,11 @@ class Tickets extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate = () => {
         this.fetch_data();
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         this.fetch_data();
     }
 

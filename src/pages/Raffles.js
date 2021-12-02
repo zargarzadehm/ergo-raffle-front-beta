@@ -60,7 +60,7 @@ class Raffles extends React.Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         const params = new URLSearchParams(window.location.search) // id=123
         const sortingIndex = RAFFLE_SORTING_TABS.map(item =>item.sorting).indexOf(params.get('sorting'));
         if (sortingIndex > 0 && sortingIndex < RAFFLE_SORTING_TABS.length) {
@@ -69,7 +69,7 @@ class Raffles extends React.Component {
         this.fetch_data()
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate = () => {
         this.fetch_data()
     }
 

@@ -15,7 +15,7 @@ class Raffle extends React.Component {
         raffle: {}
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         getSingleRaffle(this.props.match.params.id).then(
             ({data}) => {
                 this.setState({raffle: data});
@@ -58,33 +58,6 @@ class Raffle extends React.Component {
                             )}
                         </React.Fragment>
                     ) : null}
-                    {/*{*/}
-                    {/*    Array.isArray(ticketRaffleTransactions) && ticketRaffleTransactions.length > 0*/}
-                    {/*        ?*/}
-                    {/*        <FinishedRaffleTransactions*/}
-                    {/*            titleRef={titleRef}*/}
-                    {/*            page={page}*/}
-                    {/*            winnerRaffleTransactions={winnerRaffleTransactions}*/}
-                    {/*            charityRaffleTransactions={charityRaffleTransactions}*/}
-                    {/*            ticketRaffleTransactions={ticketRaffleTransactions}/>*/}
-                    {/*        :*/}
-                    {/*        null*/}
-                    {/*}*/}
-                    {/*<section id="pagination" className="p-5">*/}
-                    {/*    {*/}
-                    {/*        !(totalTransactionPagess < 1 || (page === 1 && totalTransactionPagess === 1))*/}
-                    {/*            ?*/}
-                    {/*            <Pagination*/}
-                    {/*                currentPage={page}*/}
-                    {/*                totalPages={totalTransactionPagess}*/}
-                    {/*                totalItems={total}*/}
-                    {/*                PAGE_SIZE={staticText.PAGE_SIZE}*/}
-                    {/*                prevPage={prevPage}*/}
-                    {/*                nextPage={nextPage}/>*/}
-                    {/*            :*/}
-                    {/*            null*/}
-                    {/*    }*/}
-                    {/*</section>*/}
                     {/*<ShareModalPortal/>*/}
                 </main>
             </React.Fragment>
@@ -93,107 +66,4 @@ class Raffle extends React.Component {
 }
 Raffle.contextType = ThemeContext;
 
-/*
-const RaffleSuccessFul = ({history}) => {
-    const titleRef = useRef();
-    let {id} = useParams();
-    const [page, setPage] = useState(1);
-    const [raffle, setRaffle] = useState({name: '', description: ''})
-    const [winnerRaffleTransactions, setWinnerRaffleTransactions] = useState([]);
-    const [ticketRaffleTransactions, setTicketRaffleTransactions] = useState([]);
-    const [charityRaffleTransactions, setCharityRaffleTransactions] = useState([]);
-    const [totalTransactionPagess, setTotalTransactionPages] = useState(0);
-    const [total, setTotal] = useState(0);
-    const getTransactions = useCallback(() => {
-        getRaffleTransactions(id, 0, staticText.PAGE_SIZE).then(
-            ({data}) => {
-                const items = data.items;
-                setWinnerRaffleTransactions([...items].filter((a) => a.type === staticText.winnerStateType));
-                setCharityRaffleTransactions([...items].filter((a) => a.type === staticText.charityStateType));
-                setTicketRaffleTransactions([...items].filter((a) => a.type !== staticText.winnerStateType && a.type !== staticText.charityStateType));
-                setTotalTransactionPages(isNaN(Math.ceil(data.total / staticText.PAGE_SIZE)) ? 1 : Math.ceil(data.total / staticText.PAGE_SIZE));
-                setTotal(typeof data.total === 'undefined' ? 0 : data.total);
-            }
-        )
-    }, [id]);
-    useEffect(() => {
-        getSingleRaffle(id).then(
-            ({data}) => {
-                setRaffle(data);
-                if (data.status === 'active') {
-                    history.push('/raffle/donate/' + id)
-                }
-            }
-        )
-        getTransactions();
-    }, [id, history, getTransactions]);
-    const nextPage = () => {
-        const newPage = page + 1;
-        setPage(newPage);
-        titleRef.current.scrollIntoView();
-        getRaffleTransactions(id, (newPage - 1) * staticText.PAGE_SIZE, staticText.PAGE_SIZE).then(
-            ({data}) => {
-                const items = data.items;
-                setTicketRaffleTransactions([...items].filter((a) => a.type !== staticText.winnerStateType && a.type !== staticText.charityStateType));
-            }
-        )
-    }
-    const prevPage = () => {
-        const newPage = page - 1;
-        titleRef.current.scrollIntoView();
-        setPage(newPage);
-        getRaffleTransactions(id, (newPage - 1) * staticText.PAGE_SIZE, staticText.PAGE_SIZE).then(
-            ({data}) => {
-                const items = data.items;
-                setTicketRaffleTransactions([...items].filter((a) => a.type !== staticText.winnerStateType && a.type !== staticText.charityStateType));
-            }
-        )
-    }
-    const ShareModalPortal = () => {
-        return document.getElementById('share-modal') ? createPortal(
-            <ShareModal/>, document.getElementById('share-modal')) : null;
-    }
-    return (
-        <>
-            {raffle ?
-                <Title title={'Ergo Raffle - ' + raffle.name}/>
-                :
-                null
-            }
-            <main>
-                <Header raffle={raffle}/>
-                <StatusInfo raffle={raffle}/>
-                {
-                    Array.isArray(ticketRaffleTransactions) && ticketRaffleTransactions.length > 0
-                        ?
-                        <FinishedRaffleTransactions
-                            titleRef={titleRef}
-                            page={page}
-                            winnerRaffleTransactions={winnerRaffleTransactions}
-                            charityRaffleTransactions={charityRaffleTransactions}
-                            ticketRaffleTransactions={ticketRaffleTransactions}/>
-                        :
-                        null
-                }
-                <section id="pagination" className="p-5">
-                    {
-                        !(totalTransactionPagess < 1 || (page === 1 && totalTransactionPagess === 1))
-                            ?
-                            <Pagination
-                                currentPage={page}
-                                totalPages={totalTransactionPagess}
-                                totalItems={total}
-                                PAGE_SIZE={staticText.PAGE_SIZE}
-                                prevPage={prevPage}
-                                nextPage={nextPage}/>
-                            :
-                            null
-                    }
-                </section>
-                <ShareModalPortal/>
-            </main>
-        </>
-    )
-};
-*/
 export default Raffle;

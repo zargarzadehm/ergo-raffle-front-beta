@@ -1,4 +1,5 @@
-import faq from './Faq';
+import Faq, { SupportFaq } from './Faq';
+
 
 const RAFFLE_SORTING_TABS = [
     {title: "Newest", sorting: "-createTime", status: "active"},
@@ -13,9 +14,8 @@ const RAFFLE_STATUS_TABS = [
 ];
 
 const staticText = {
-    faq: faq,
+    faq: Faq,
     homeTabs: ['Newest', 'Last Activity', 'Nearing Deadline'],
-    dashboardTabs: ['Ask For Help', 'FAQ and Problems'],
     navigations: [
         {title: 'Home', link: '/'},
         {title: 'All Raffles', link: '/raffle/list'},
@@ -70,17 +70,19 @@ const FILE_SIZE_LIMITATION = 150000;
 const UPLOAD_API_URL = 'https://ergoutilsupload.azurewebsites.net/ipfs/';
 const FILE_URL_PREVIEW = 'https://cloudflare-ipfs.com/ipfs/';
 const FILE_TO_SEND_PREFIX = 'ipfs://';
-const TICKET_PRICES = [0.25, 0.5, 1, 3, 5]
+const TICKET_PRICES = [0.25, 0.5, 1, 3, 5];
 const DEADLINE_LIMIT = 365 * DAY_BLOCK_COUNT;
 const ERG_FACTOR = 1000000000;
 const PAGE_SIZE = 12;
 const DESCRIPTION_SIZE_LIMIT = 1000;
 const DONATION_TICKET_COUNT = [5, 10, 20, 30];
-
+const DASHBOARD_TABS = ['Ask For Help', 'FAQ and Problems'];
+const PIN_KEY = "pin";
 export default staticText;
 
 export {
-    faq,
+    Faq,
+    SupportFaq,
     RAFFLE_SORTING_TABS,
     RAFFLE_STATUS_TABS,
     HOUR_BLOCKS_COUNT,
@@ -96,4 +98,6 @@ export {
     PAGE_SIZE,
     DESCRIPTION_SIZE_LIMIT,
     DONATION_TICKET_COUNT,
+    DASHBOARD_TABS,
+    PIN_KEY,
 }

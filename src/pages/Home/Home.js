@@ -36,11 +36,11 @@ class Home extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate = () => {
         this.fetch_data();
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         this.fetch_data();
         getRaffle(0, 6, "", "succeed").then(response => {
                 this.setState({successStories: response.data.items});

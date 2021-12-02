@@ -59,11 +59,11 @@ class Transactions extends React.Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         this.fetch_data();
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate = () => {
         this.fetch_data();
     }
 

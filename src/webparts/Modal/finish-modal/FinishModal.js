@@ -20,7 +20,7 @@ class FinishModal extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate = () => {
         if(!intervalItem) {
             intervalItem = setInterval(() => {
                 this.setState(state => ({...state, interval: state.interval + 1}));

@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import Home from '../pages/Home/Home.js';
-import Faq from '../pages/Faq/Faq.js';
+import FaqPage from '../pages/Faq/FaqPage.js';
 import About from '../pages/About/About.js';
 import Raffles from '../pages/Raffles.js';
 import CreateRaffle from '../pages/CreateRaffle/CreateRaffle.js';
@@ -13,7 +13,7 @@ const Routes = () => {
         <Switch>
             <Route component={Test} path={'/test'} exact/>
             <Route component={Home} path={'/'} exact/>
-            <Route component={Faq} path={'/faq'}/>
+            <Route component={FaqPage} path={'/faq'}/>
             <Route component={About} path={'/about'}/>
             <Route component={Dashboard} path={'/Dashboard'}/>
             <Route component={Raffles} path={'/raffle/list'}/>

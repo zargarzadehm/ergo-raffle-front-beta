@@ -4,7 +4,7 @@ import defaultImg from '../assets/img/default.jpg'
 import ErgProgressBar from "./ErgProgressBar";
 import RemainingBox from "./RemainingBox";
 
-const Raffle = memo(({raffle}) => {
+const Raffle = ({raffle}) => {
     let raffle_class = "";
     let picture = defaultImg
     if(raffle) {
@@ -32,6 +32,6 @@ const Raffle = memo(({raffle}) => {
             </div>
         </div>
     </Link>)
-});
+};
 
 export default Raffle;
