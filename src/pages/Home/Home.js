@@ -5,11 +5,12 @@ import { Suspense } from 'react';
 import { getRaffle } from '../../service/raffle.service';
 import Raffle from '../../components/Raffle';
 import Title from '../../components/Title';
-import { raffleTabs } from '../../statics';
+import { RAFFLE_SORTING_TABS } from '../../statics';
 import CarouselBar from './CarouselBar';
 import HeadingTitle from '../../webparts/Shared/HeadingTitle';
 import Tabs from '../../components/Tabs';
 import HomeHeader from './HomeHeader';
+import { Link } from "react-router-dom";
 
 class Home extends React.Component {
     state = {
@@ -24,7 +25,7 @@ class Home extends React.Component {
         if (!this.state.progress && this.state.rafflesTab !== this.state.activeTab) {
             const activeTab = this.state.activeTab
             this.setState({progress: true});
-            const tab = raffleTabs[activeTab];
+            const tab = RAFFLE_SORTING_TABS[activeTab];
             getRaffle(0, 6, tab.sorting, tab.status).then(response => {
                 this.setState({
                     raffles: response.data.items,
@@ -49,8 +50,8 @@ class Home extends React.Component {
 
     render = () => {
         console.log(this.state);
-        const tabsContent = raffleTabs.map(item => item.title);
-        const tab = raffleTabs[this.state.activeTab];
+        const tabsContent = RAFFLE_SORTING_TABS.map(item => item.title);
+        const tab = RAFFLE_SORTING_TABS[this.state.activeTab];
         return (
             <>
                 <Title title={'Ergo Raffle - Home'}/>
@@ -76,13 +77,13 @@ class Home extends React.Component {
                                 )
                             }
                         </div>
-                        {/*<div className="see-more-raffles text-center mt-5">*/}
-                        {/*    <Link*/}
-                        {/*        to={"/raffle/list?s=" + (activeTab === 0 ? '-createTime' : activeTab === 1 ? 'activity' : 'deadline')}*/}
-                        {/*        className="nav-link see-more-link">*/}
-                        {/*        See More &#62;*/}
-                        {/*    </Link>*/}
-                        {/*</div>*/}
+                        <div className="see-more-raffles text-center mt-5">
+                            <Link
+                                to={"/raffle/list?sorting=" + tab.sorting}
+                                className="nav-link see-more-link">
+                                See More &#62;
+                            </Link>
+                        </div>
                     </div>
                 </section>
                 <HeadingTitle title={'Success Stories'}/>

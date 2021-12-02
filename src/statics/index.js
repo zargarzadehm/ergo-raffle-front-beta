@@ -1,21 +1,21 @@
 import faq from './Faq';
 
-const raffleTabs = [
+const RAFFLE_SORTING_TABS = [
     {title: "Newest", sorting: "-createTime", status: "active"},
     {title: "Last Activity", sorting: "", status: "active"},
     {title: "Nearing Deadline", sorting: "-deadline", status: "active"},
 ]
+const RAFFLE_STATUS_TABS = [
+    {label: 'Active', value: 'active'},
+    {label: 'Successful', value: 'succeed'},
+    {label: 'Failed', value: 'failed'},
+    {label: 'All Raffles', value: 'all'},
+];
 
 const staticText = {
     faq: faq,
     homeTabs: ['Newest', 'Last Activity', 'Nearing Deadline'],
     dashboardTabs: ['Ask For Help', 'FAQ and Problems'],
-    raffleListTabs: [
-        {label: 'All Raffles', value: 'all'},
-        {label: 'Active', value: 'active'},
-        {label: 'Successful', value: 'succeed'},
-        {label: 'Failed', value: 'failed'}
-    ],
     navigations: [
         {title: 'Home', link: '/'},
         {title: 'All Raffles', link: '/raffle/list'},
@@ -73,12 +73,14 @@ const FILE_TO_SEND_PREFIX = 'ipfs://';
 const TICKET_PRICES = [0.25, 0.5, 1, 3, 5]
 const DEADLINE_LIMIT = 365 * DAY_BLOCK_COUNT;
 const ERG_FACTOR = 1000000000;
+const PAGE_SIZE = 12;
 
 export default staticText;
 
 export {
     faq,
-    raffleTabs,
+    RAFFLE_SORTING_TABS,
+    RAFFLE_STATUS_TABS,
     HOUR_BLOCKS_COUNT,
     DAY_BLOCK_COUNT,
     MINUTE_BLOCK_COUNT,
@@ -89,4 +91,5 @@ export {
     TICKET_PRICES,
     DEADLINE_LIMIT,
     ERG_FACTOR,
+    PAGE_SIZE,
 }
