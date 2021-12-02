@@ -203,7 +203,7 @@ class CreateRaffle extends React.Component {
                     amount: data.erg,
                     requestId: data.requestId,
                     show: true,
-                    status: 'new',
+                    status: 'waiting',
                     start: Date.now(),
                 }
             });
