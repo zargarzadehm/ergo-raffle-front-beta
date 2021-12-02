@@ -1,5 +1,5 @@
 import React from "react";
-import RaffleTicketPriceBadge from "./RaffleTicketPriceBadge";
+import TicketPriceBadge from "../../../components/TicketPriceBadge";
 import * as constant from '../../../statics';
 
 const RaffleTicketPrice = ({init, setValue, setValid}) => {
@@ -12,7 +12,7 @@ const RaffleTicketPrice = ({init, setValue, setValid}) => {
             <div className="row mt-3">
                 <div className="text-center text-lg-start ticket-options-container">
                     {constant.TICKET_PRICES.map(item =>
-                        <RaffleTicketPriceBadge
+                        <TicketPriceBadge
                             ticketPrice={item}
                             handleChange={() => setValue(item)}
                             value={init}/>

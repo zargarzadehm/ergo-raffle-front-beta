@@ -6,7 +6,7 @@ import Raffles from '../pages/Raffles.js';
 import CreateRaffle from '../pages/CreateRaffle/CreateRaffle.js';
 import RaffleDonate from '../pages/RaffleDonate.js';
 import Dashboard from '../pages/Dashboard/Dashboard.js';
-import RaffleFinished from '../pages/RaffleFinished.js';
+import RaffleFinished from '../pages/raffle/Raffle.js';
 import Test from "../pages/Test";
 
 const Routes = () => {

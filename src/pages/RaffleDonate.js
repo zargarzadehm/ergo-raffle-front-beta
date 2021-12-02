@@ -16,7 +16,7 @@ import DonationRaffleAgreeAndFinish from "../webparts/Raffle/DonationRaffleAgree
 import DonateRaffleProgress from "../webparts/Raffle/DonateRaffleProgress";
 import RaffleDonationHeader from "../webparts/Raffle/RaffleDonationHeader";
 import RaffleDonateMiddleBar from "../webparts/Raffle/RaffleDonateMiddleBar";
-import RaffleTickets from "../webparts/Raffle/RaffleTickets";
+import Tickets from "./raffle/Tickets";
 import FinishModal from "../webparts/Modal/finish-modal/FinishModal";
 import ShareModal from "../webparts/Modal/ShareModal";
 
@@ -186,7 +186,7 @@ const RaffleDonate = ({history}) => {
                     </div>
                 </div>
             </section>
-            <RaffleTickets raffleTransactions={raffleTransactions}/>
+            <Tickets raffleTransactions={raffleTransactions}/>
             <ShareModalPortal/>
         </main>
         {

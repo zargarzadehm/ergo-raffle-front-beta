@@ -235,8 +235,6 @@ class CreateRaffle extends React.Component {
     }
 
     render = () => {
-        console.log(this.state)
-        console.log(this.context)
         const step_image = this.state.step === 0 ? "first-step-img" : "second-step-img";
         const sub_steps = this.MultiStep[this.state.step].subs
         return (
@@ -280,6 +278,5 @@ class CreateRaffle extends React.Component {
 }
 
 CreateRaffle.contextType = ThemeContext;
-
 
 export default CreateRaffle;

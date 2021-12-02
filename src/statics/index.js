@@ -74,6 +74,8 @@ const TICKET_PRICES = [0.25, 0.5, 1, 3, 5]
 const DEADLINE_LIMIT = 365 * DAY_BLOCK_COUNT;
 const ERG_FACTOR = 1000000000;
 const PAGE_SIZE = 12;
+const DESCRIPTION_SIZE_LIMIT = 1000;
+const DONATION_TICKET_COUNT = [5, 10, 20, 30];
 
 export default staticText;
 
@@ -92,4 +94,6 @@ export {
     DEADLINE_LIMIT,
     ERG_FACTOR,
     PAGE_SIZE,
+    DESCRIPTION_SIZE_LIMIT,
+    DONATION_TICKET_COUNT,
 }

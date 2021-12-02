@@ -1,6 +1,6 @@
-import RaffleDestinationInfo from "./RaffleDestinationInfo";
-import RaffleDetailInfo from "./RaffleDetailInfo";
-import RaffleGallery from "./RaffleGallery";
+import DestinationInfo from "../../pages/raffle/DestinationInfo";
+import DetailInfo from "../../pages/raffle/DetailInfo";
+import Gallery from "../../pages/raffle/Gallery";
 
 const RaffleDonationHeader = ({raffle}) => {
     return (<>
@@ -8,10 +8,10 @@ const RaffleDonationHeader = ({raffle}) => {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-5">
-                        <RaffleGallery raffle={raffle}/>
+                        <Gallery raffle={raffle}/>
                     </div>
                     <div className="col-lg-7 pt-4 pt-lg-0 raffle-intorduction-right">
-                        <RaffleDetailInfo raffle={raffle}/>
+                        <DetailInfo raffle={raffle}/>
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@ const RaffleDonationHeader = ({raffle}) => {
         <section id="raffle-details">
             <div className="container">
                 <div className="row align-items-center justify-content-between">
-                    <RaffleDestinationInfo raffle={raffle}/>
+                    <DestinationInfo raffle={raffle}/>
                 </div>
             </div>
         </section>

@@ -20,10 +20,12 @@ class FinishModal extends React.Component {
         }
     }
 
-    componentDidMount() {
-        intervalItem = setInterval(() => {
-            this.setState(state => ({...state, interval: state.interval + 1}));
-        }, 1000)
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(!intervalItem) {
+            intervalItem = setInterval(() => {
+                this.setState(state => ({...state, interval: state.interval + 1}));
+            }, 1000)
+        }
     }
 
     render = () => {

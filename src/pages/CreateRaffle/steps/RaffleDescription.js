@@ -1,12 +1,13 @@
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
+import { DESCRIPTION_SIZE_LIMIT } from "../../../statics";
 
 
 const RaffleDescription = ({setValid, init, setValue}) => {
     const changeEditor = (data) => {
         setValue(data);
     }
-    setValid(!!init)
+    setValid(!!init && init.length < DESCRIPTION_SIZE_LIMIT)
     return (
         <div className="first-step step-1-c">
             <div className="step-content text-center text-lg-start">

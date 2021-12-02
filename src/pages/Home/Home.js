@@ -49,7 +49,6 @@ class Home extends React.Component {
     }
 
     render = () => {
-        console.log(this.state);
         const tabsContent = RAFFLE_SORTING_TABS.map(item => item.title);
         const tab = RAFFLE_SORTING_TABS[this.state.activeTab];
         return (

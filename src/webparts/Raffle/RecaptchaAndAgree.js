@@ -6,7 +6,7 @@ import Captcha from "../../components/Captcha";
 
 const RecaptchaAndAgree = ({setValue, setValid, init, showTerms}) => {
     const context = useContext(ThemeContext);
-    const [termsAccepted, setTermsAccepted] = useState(true)
+    const [termsAccepted, setTermsAccepted] = useState(false)
     const handleTerms = (e) => {
         setTermsAccepted(e.target.checked);
     }
@@ -14,7 +14,6 @@ const RecaptchaAndAgree = ({setValue, setValid, init, showTerms}) => {
     function verifyCallback(value) {
         setValue(value)
     }
-    console.log(termsAccepted, init)
     setValid(termsAccepted && (!context.info.required || !!init))
     return (
         <div className="row">

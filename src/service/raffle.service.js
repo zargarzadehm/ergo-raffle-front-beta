@@ -28,6 +28,7 @@ export const donateRaffle = (id, walletAddr, ticketCounts, recaptcha) => {
     return axios.post(config.baseUrl + `/raffle/${id}/donate`, { walletAddr: walletAddr, ticketCounts: ticketCounts, recaptcha: recaptcha })
 }
 export const getYourActiveRaffleTickets = (id, wallet) => {
+    console.log(wallet)
     return axios.get(config.baseUrl + `/raffle/${id}/address/${wallet}/donation`)
 }
 export const getNearDeadlineRaffle = (offset, limit) => {
