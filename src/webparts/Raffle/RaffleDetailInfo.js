@@ -1,6 +1,6 @@
 import { memo, useContext } from "react";
 import { toast } from "react-toastify";
-import Days from "../../components/Days";
+import Day from "../../components/Day";
 import ThemeContext from "../../context";
 
 const RaffleDetailInfo = memo(({ raffle }) => {
@@ -36,7 +36,7 @@ const RaffleDetailInfo = memo(({ raffle }) => {
     </p>
     <div className="raffle-bottom-container d-flex align-items-center">
       <span className="icon-deadline deadline"></span>
-      <p className="deadline-date">Deadline: <Days raffle={raffle} /></p>
+      <p className="deadline-date">Deadline: <Day deadline={raffle.deadline} add_suffix={true} /></p>
       <div
         className="raffle-icons flex-grow-1 d-flex justify-content-end"
       >

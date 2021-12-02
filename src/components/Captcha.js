@@ -4,17 +4,10 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 const Captcha = ({verifyCallback}) => {
     const context = useContext(ThemeContext);
-    const verifyCall = (response) => {
-        verifyCallback(response)
-    }
-    return (context.info.required ?
-        <ReCAPTCHA
-          sitekey={context.info.pubKey}
-          onChange={verifyCall}
-        />
-        :
-        null
-      )
+    if (context.info.required)
+        return <ReCAPTCHA sitekey={context.info.pubKey} onChange={verifyCallback} onExpired={() => verifyCallback('')}/>
+    return null
+
 }
 
 export default Captcha;

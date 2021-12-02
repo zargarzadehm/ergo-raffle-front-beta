@@ -1,4 +1,5 @@
-const CreateRaffleTicketPrice = ({ value, handleChange, ticketPrice }) => {
+const RaffleTicketPriceBadge = ({ value, handleChange, ticketPrice }) => {
+    console.log(value, ticketPrice);
     return (<>
         <input
             type="radio"
@@ -13,4 +14,4 @@ const CreateRaffleTicketPrice = ({ value, handleChange, ticketPrice }) => {
     </>)
 }
 
-export default CreateRaffleTicketPrice;
+export default RaffleTicketPriceBadge;

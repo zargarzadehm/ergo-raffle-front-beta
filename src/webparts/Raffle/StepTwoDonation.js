@@ -16,8 +16,12 @@ const StepTwoDonation = ({handleRadioChange, defaultValue, raffle}) => {
             <div className="row mt-3">
                 <div className="col-lg-12 text-center ticket-options-container">
                     {staticText.donationTickets.map((item, key) => (
-                        <TicketPriceRadioCheck key={key + '-'} radioCheck={radioCheck} handleChange={handleChange}
-                                               value={item}/>))}
+                        <TicketPriceRadioCheck
+                            key={key + '-'}
+                            radioCheck={radioCheck}
+                            handleChange={handleChange}
+                            value={item}/>
+                    ))}
                 </div>
                 <div className="col-lg-12">
                     <p className="ticket-price-text text-center mt-2 mb-lg-0">
@@ -41,7 +45,7 @@ const StepTwoDonation = ({handleRadioChange, defaultValue, raffle}) => {
                     <label htmlFor="floatingInput">Ticket Counts</label>
                 </div>
                 <p className="text-center mb-4">Total Donation: <Erg erg={radioCheck * raffle.ticket.price}
-                                                                           shouldDisplay={true}/></p>
+                                                                     shouldDisplay={true}/></p>
             </div>
         </form>
     </>)

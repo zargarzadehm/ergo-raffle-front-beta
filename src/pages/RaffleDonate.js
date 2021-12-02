@@ -17,7 +17,7 @@ import DonateRaffleProgress from "../webparts/Raffle/DonateRaffleProgress";
 import RaffleDonationHeader from "../webparts/Raffle/RaffleDonationHeader";
 import RaffleDonateMiddleBar from "../webparts/Raffle/RaffleDonateMiddleBar";
 import RaffleTickets from "../webparts/Raffle/RaffleTickets";
-import DonationFinishModal from "../webparts/Raffle/DonationFinishModal";
+import FinishModal from "../webparts/Modal/finish-modal/FinishModal";
 import ShareModal from "../webparts/Modal/ShareModal";
 
 let intervallerItem = null;
@@ -192,8 +192,8 @@ const RaffleDonate = ({history}) => {
         {
             donateResponse
                 ?
-                createPortal(<DonationFinishModal clearRequestInterval={clearRequestInterval} modalStatus={modalStatus}
-                                                  response={donateResponse}/>, document.getElementById('finish-modal'))
+                createPortal(<FinishModal clearRequestInterval={clearRequestInterval} modalStatus={modalStatus}
+                                          response={donateResponse}/>, document.getElementById('finish-modal'))
                 :
                 null
         }

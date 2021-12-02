@@ -23,7 +23,7 @@
 
 .form-floating > .form-control:focus,
 .form-floating > .form-control:not(:placeholder-shown) {
-  /*padding-top: 0 !important;*/
+  padding-top: 0 !important;
   padding-bottom: 0 !important;
   padding-left: 1.5rem;
 }

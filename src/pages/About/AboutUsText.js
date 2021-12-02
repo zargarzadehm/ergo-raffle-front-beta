@@ -1,5 +1,4 @@
 import { memo } from "react";
-import staticText from "../../statics";
 
 const AboutUsText = memo(() => {
     return (

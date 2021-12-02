@@ -1,14 +1,15 @@
-import { memo, useState } from "react";
-import EstimationBox from "../EstimationBox";
+import React, { useState } from "react";
+import EstimationBox from "../../../webparts/Raffle/EstimationBox";
+import * as constant from '../../../statics'
 
-const CreateRaffleDeadline = memo(({formFeedback, defaultValue}) => {
-    const [deadline, setDeadline] = useState(defaultValue);
+
+const RaffleDeadline = ({setValue, init, setValid}) => {
     const handleChange = (e) => {
         const {value} = e.target;
-        setDeadline(value.split('.').join('').split('-').join(''));
-        formFeedback('deadline', value);
+        setValue(Number(value.split('.').join('').split('-').join('')));
     }
-    return (<div className="second-step step-2-c">
+    setValid(!isNaN(init) && init > 0 && init < constant.DEADLINE_LIMIT)
+    return (
         <div className="step-content text-center text-lg-start">
             <h3 className="step-title mb-4">Set Raffle's Deadline.</h3>
             <div className="row">
@@ -16,7 +17,7 @@ const CreateRaffleDeadline = memo(({formFeedback, defaultValue}) => {
                     <form>
                         <div className="form-floating create-raffle-input raffle-deadline-input">
                             <input
-                                value={deadline}
+                                value={init}
                                 type="number"
                                 min={0}
                                 step={1}
@@ -30,10 +31,10 @@ const CreateRaffleDeadline = memo(({formFeedback, defaultValue}) => {
                         </div>
                     </form>
                 </div>
-                <EstimationBox deadline={deadline}/>
+                <EstimationBox deadline={init}/>
             </div>
         </div>
-    </div>)
-});
+    )
+};
 
-export default CreateRaffleDeadline;
+export default RaffleDeadline;

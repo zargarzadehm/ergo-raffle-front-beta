@@ -83,8 +83,7 @@ const AboutUsForm = memo(() => {
               className="form-control"
               placeholder="Leave a comment here"
               id="floatingTextarea2"
-              onChange={handleChangeMessage}
-          ></textarea>
+              onChange={handleChangeMessage}/>
                     <label htmlFor="floatingTextarea2">Your Message</label>
                 </div>
                 <div className="recaptcha-cont">
