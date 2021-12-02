@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import EstimationBox from "../../../webparts/Raffle/EstimationBox";
 import * as constant from '../../../statics'
 

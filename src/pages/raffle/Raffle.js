@@ -3,7 +3,6 @@ import Title from '../../components/Title';
 import { getSingleRaffle } from '../../service/raffle.service';
 import Header from './Header';
 import StatusInfo from './StatusInfo';
-import ShareModal from '../../webparts/Modal/ShareModal';
 import IconBox from "./IconBox";
 import Transactions from "./Transactions";
 import Donation from "./donate/Donation";

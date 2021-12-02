@@ -139,7 +139,7 @@ class Donation extends React.Component {
                                     step_forward={this.step_forward}
                                     valid={this.state.stepValid}
                                     is_last={this.state.step === this.MultiStep.length - 1}
-                                    is_first={this.state.step === 0 && this.state.subStep === 0}
+                                    is_first={this.state.step === 0}
                                 />
                             </div>
                         </div>

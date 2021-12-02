@@ -4,9 +4,8 @@ import Faq from '../pages/Faq/Faq.js';
 import About from '../pages/About/About.js';
 import Raffles from '../pages/Raffles.js';
 import CreateRaffle from '../pages/CreateRaffle/CreateRaffle.js';
-import RaffleDonate from '../pages/RaffleDonate.js';
 import Dashboard from '../pages/Dashboard/Dashboard.js';
-import RaffleFinished from '../pages/raffle/Raffle.js';
+import Raffle from '../pages/raffle/Raffle.js';
 import Test from "../pages/Test";
 
 const Routes = () => {
@@ -19,8 +18,7 @@ const Routes = () => {
             <Route component={Dashboard} path={'/Dashboard'}/>
             <Route component={Raffles} path={'/raffle/list'}/>
             <Route component={CreateRaffle} path={'/raffle/create'}/>
-            <Route component={RaffleDonate} path={'/raffle/donate/:id'}/>
-            <Route component={RaffleFinished} path={'/raffle/show/:id'}/>
+            <Route component={Raffle} path={'/raffle/show/:id'}/>
         </Switch>
     </>)
 }

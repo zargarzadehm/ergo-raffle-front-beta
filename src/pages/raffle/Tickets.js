@@ -1,6 +1,6 @@
 import React from "react";
 import RaffleTicket from "../../webparts/Raffle/RaffleTicket";
-import { getRaffleTransactions, getYourActiveRaffleTickets } from "../../service/raffle.service";
+import { getYourActiveRaffleTickets } from "../../service/raffle.service";
 import { PAGE_SIZE } from "../../statics";
 import ThemeContext from "../../context";
 import loader from "../../assets/img/loader.svg";
