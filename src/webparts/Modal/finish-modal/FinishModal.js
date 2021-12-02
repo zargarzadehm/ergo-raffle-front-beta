@@ -51,7 +51,7 @@ class FinishModal extends React.Component {
                                     <CopyToClipboard text={this.props.amount / constant.ERG_FACTOR}
                                                      onCopy={() => toast('Copied')}>
                                         <b className={'cursor-pointer'}>
-                                            <Erg erg={this.props.amount} shouldDisplay={true}/>
+                                            exactly <Erg erg={this.props.amount} shouldDisplay={true}/>
                                         </b>
                                     </CopyToClipboard>
                                     &nbsp;to it.

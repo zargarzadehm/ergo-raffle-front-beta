@@ -17,9 +17,7 @@ const StepDisplay = ({totalStatus, status, stepTitle}) => {
                 </div>
             </div>
             <p className="donation-fine-print mt-2">
-                Your funds will be send back to you in case of any failure.
-                smart contracts are being used to prevent the intermidiate
-                service from cheating.
+                In case of any failure, your funds are safe and will be sent back to your address.
             </p>
         </div>
     )

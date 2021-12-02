@@ -38,13 +38,8 @@ const WalletModal = ({walletProp}) => {
                 <div className="modal-content">
                     <div className="modal-header">
                         <label htmlFor="Wallet-address" className="col-form-label">
-                            You need to set your wallet address
-                            here. this wallet address used for any failed transaction
-                            redeem.
-                            also if you win a raffle reward goes to this address.
-                            <br/>
-                            Your fund will be safe using smart contracts that prevent service from cheating. Transaction
-                            may fail due to heavy load during lunch.
+                            Set your Ergo address here. In case of refunding or winning a Raffle, the funds will be sent
+                            to this address.
                         </label>
                         <button
                             type="button"

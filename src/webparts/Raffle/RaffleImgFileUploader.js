@@ -15,7 +15,7 @@ const RaffleImgFileUploader = ({setValid, setValue, url}) => {
         if (!loading) {
             debugger
             if(!isFileImage(file_value)){
-                toast("File is not a valid image")
+                toast("File type is not supported.")
             }else if(file_value.size > constant.FILE_SIZE_LIMITATION) {
                 toast("File is too big")
             }else{

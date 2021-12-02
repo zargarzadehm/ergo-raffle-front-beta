@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 
 const WARNING_THRESHOLD = 80;
 const ALERT_THRESHOLD = 20;
@@ -10,7 +10,10 @@ const CountDown = ({percent, remainingSeconds}) => {
     return (
         <React.Fragment>
             <div className="text-center operation-text mt-5">
-                <p>The operation will be done automatically afterward.</p>
+                <p>
+                    The operation will be done automatically afterward. It is safe to close this window. Keeping it open
+                    will show the donation process.
+                </p>
             </div>
             <div className="timer-container d-flex justify-content-center align-items-center">
                 <div className="timer text-center mt-3">
@@ -28,7 +31,7 @@ const CountDown = ({percent, remainingSeconds}) => {
                                 </g>
                             </svg>
                             <span id="base-timer-label" className="base-timer__label">
-                            {remainingSeconds} Second{remainingSeconds>1 ? "s": ""}
+                            {remainingSeconds} Second{remainingSeconds > 1 ? "s" : ""}
                         </span>
                         </div>
                     </div>
