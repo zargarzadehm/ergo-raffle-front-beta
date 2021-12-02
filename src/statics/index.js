@@ -39,7 +39,7 @@ const staticText = {
         'Twitter': 'https://twitter.com/ergoplatformorg',
         'Github': 'https://github.com/ErgoRaffle',
         'Discord': "https://discord.gg/ahktsCT9TM",
-        'Whitepaper': "https://github.com/ErgoRaffle/raffle-documentation",
+        'Docs': "https://github.com/ErgoRaffle/raffle-documentation",
         'Ergo Forum': "https://www.ergoforum.org/",
         'Ergo Platform': "https://www.ergoforum.org/"
     },
@@ -75,6 +75,7 @@ const DEADLINE_LIMIT = 365 * DAY_BLOCK_COUNT;
 const ERG_FACTOR = 1000000000;
 const PAGE_SIZE = 12;
 const DESCRIPTION_SIZE_LIMIT = 1000;
+const TITLE_LENGTH = 70;
 const DONATION_TICKET_COUNT = [5, 10, 20, 30];
 const DASHBOARD_TABS = ['Ask For Help', 'FAQ and Problems'];
 const PIN_KEY = "pin";
@@ -100,4 +101,5 @@ export {
     DONATION_TICKET_COUNT,
     DASHBOARD_TABS,
     PIN_KEY,
+    TITLE_LENGTH,
 }

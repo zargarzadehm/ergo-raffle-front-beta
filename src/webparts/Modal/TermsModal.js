@@ -12,9 +12,9 @@ const TermsModal = ({close, show}) => {
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content p-3">
                         <div className="modal-header">
-                            <p className="donation-modal-instruction">
+                            <h3 className="donation-modal-instruction">
                                 Terms of Use
-                            </p>
+                            </h3>
                             <button
                                 onClick={close}
                                 type="button"

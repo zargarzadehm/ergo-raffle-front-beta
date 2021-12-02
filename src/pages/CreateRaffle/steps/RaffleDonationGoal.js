@@ -1,11 +1,12 @@
-import { memo, useState } from "react";
+import React from "react";
 
-const CreateRaffleWalletAddress = ({init, setValue, setValid}) => {
+const RaffleDonationGoal = ({init, setValue, setValid}) => {
     const handleChange = (e) => {
         const {value} = e.target;
-        setValue(Number(value.split('-').join('')));
+        console.log(value);
+        setValue(value.split('-').join(''));
     }
-    setValid(init > 0)
+    setValid(!isNaN(init) && Number(init) > 0)
     return (
         <div className="step-content text-center text-lg-start">
             <h3 className="step-title mb-4">
@@ -21,7 +22,7 @@ const CreateRaffleWalletAddress = ({init, setValue, setValid}) => {
                         id="floatingInput"
                         placeholder="Donation Amount"
                         onChange={handleChange}
-                        onKeyDown={handleChange}
+                        // onKeyDown={handleChange}
                         value={init}
                     />
                     <label htmlFor="floatingInput">Amount (ERG)</label>
@@ -31,4 +32,4 @@ const CreateRaffleWalletAddress = ({init, setValue, setValid}) => {
     )
 };
 
-export default CreateRaffleWalletAddress;
+export default RaffleDonationGoal;

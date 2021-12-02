@@ -1,7 +1,8 @@
-import { useState } from "react";
+import React from "react";
+import { TITLE_LENGTH } from '../../../statics';
 
 const RaffleTitle = ({setValid, init, setValue}) => {
-    setValid(!!init)
+    setValid(!!init && init.length < TITLE_LENGTH)
     return (
         <div className="first-step step-1-a">
             <div className="step-content text-center text-lg-start">

@@ -103,21 +103,6 @@ const Faq = [
     }, {
         question: "What happens if the Raffle isn’t funded by the draw date?",
         answer: "Entrants will have their funds refunded and your Raffle will be marked as unsuccessful."
-    }, {
-        question: "How is the winner selected?",
-        answer: "Randomly."
-    }, {
-        question: "How will I know who the winner is?",
-        answer: "You won’t"
-    }, {
-        question: "What is the ‘Service Fee’?",
-        answer: "This fee pays for the maintenance and upkeep required for this beautiful user interface."
-    }, {
-        question: "How do I provide the prize to the winner?",
-        answer: "The prize is automatically distributed at the end of the Raffle."
-    }, {
-        question: "What happens once my raffle ends?",
-        answer: "Your raffle will either be marked as successful, you will receive your funds and the raffle winner receives the prize."
     }
 ]
 

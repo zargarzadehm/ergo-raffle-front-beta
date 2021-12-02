@@ -32,8 +32,7 @@ const WalletModal = ({walletProp}) => {
             id="walletModal"
             tabIndex="-1"
             aria-labelledby="walletModalLabel"
-            aria-hidden="true"
-        >
+            aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -41,12 +40,7 @@ const WalletModal = ({walletProp}) => {
                             Set your Ergo address here. In case of refunding or winning a Raffle, the funds will be sent
                             to this address.
                         </label>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                        />
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
                     </div>
                     <div className="modal-body">
                         <form>
@@ -59,12 +53,6 @@ const WalletModal = ({walletProp}) => {
                                     placeholder="Wallet address"
                                     onChange={handleChange}
                                 />
-                                <small>
-                                    <b>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;Your winner prize of charity on winner raffle sent to
-                                        this address
-                                    </b>
-                                </small>
                             </div>
                         </form>
                     </div>

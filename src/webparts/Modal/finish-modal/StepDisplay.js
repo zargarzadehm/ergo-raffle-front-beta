@@ -16,9 +16,9 @@ const StepDisplay = ({totalStatus, status, stepTitle}) => {
                     </p>
                 </div>
             </div>
-            <p className="donation-fine-print mt-2">
+            <div className="donation-fine-print mt-2">
                 In case of any failure, your funds are safe and will be sent back to your address.
-            </p>
+            </div>
         </div>
     )
 };

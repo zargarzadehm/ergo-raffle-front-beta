@@ -561,7 +561,7 @@ input:-webkit-autofill:active {
     border-radius: 11px;
 }
 
-body.night-mode #walletModal .modal-content {
+body.night-mode .modal .modal-content {
     background-color: var(--secondary);
     color: #fff;
 }
@@ -839,6 +839,10 @@ body.night-mode .modal.fade.show .btn-close {
 .modal-footer {
     color: black;
     border: none;
+}
+
+.night-mode .modal-header, .night-mode .modal-footer{
+    color: white;
 }
 
 .set-modal {
@@ -1637,7 +1641,7 @@ a[aria-controls] {
 }
 
 .modal-content p {
-    color: black !important;
+    /*color: black !important;*/
 }
 
 .terms-link {
@@ -1841,7 +1845,7 @@ input[type="file"].disabled + label {
 }
 
 body.night-mode #base-timer-label {
-    color: black !important;
+    /*color: black !important;*/
 }
 
 .image-preview {
@@ -2683,10 +2687,6 @@ body.night-mode .next-page {
     }
 }
 
-body.night-mode #base-timer-label {
-    color: black !important;
-}
-
 #about-us {
     margin-top: 280px !important;
 }
@@ -3071,7 +3071,7 @@ body.night-mode .support-ticket-textarea {
     position: relative;
     font-size: 22px;
     margin-bottom: 18px;
-    color: rgba(0, 0, 0, 0.3);
+    color: #999999;
 }
 .multi-step-left li:before{
     content: "";
@@ -3079,7 +3079,7 @@ body.night-mode .support-ticket-textarea {
     height: 12px;
     left: 0;
     top: calc(50% - 6px);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #999999;
     position: absolute;
     border-radius: 50%;
 }

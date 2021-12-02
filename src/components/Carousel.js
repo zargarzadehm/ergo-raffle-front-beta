@@ -30,7 +30,7 @@ const Carousel = memo(({raffle}) => {
                 <div className="ic-container d-flex g-5 mt-4">
                     <div className="slider-ic-box">
                         <span className="slider-icon raffle-icon">
-                            <img src={context.theme === DARK_THEME ? handHeartDark : handHeart} alt={'people donation'}/>
+                            <img src={context.theme === DARK_THEME ? piggyDark : piggy} alt={'ticket price'}/>
                         </span>
                         {/*<span*/}
                         {/*  className="icon-complete-icon slider-icon slider-icon1"*/}
@@ -39,7 +39,7 @@ const Carousel = memo(({raffle}) => {
                     </div>
                     <div className="slider-ic-box">
                         <span className="slider-icon raffle-icon">
-                            <img src={context.theme === DARK_THEME ? piggyDark : piggy} alt={'ticket price'}/>
+                            <img src={context.theme === DARK_THEME ? handHeartDark : handHeart} alt={'people donation'}/>
                         </span>
                         {/*<span*/}
                         {/*  className="icon-donated slider-icon slider-icon2"*/}
