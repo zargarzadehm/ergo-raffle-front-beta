@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../context";
 
 const SupportLink = props => {
+    const context = useContext(ThemeContext);
     const openSupportBot = () => {
-        window.open("http://discord.com", "_blank")
+        window.open(context.info.supportUrl, "_blank")
     }
     return (
         <div>

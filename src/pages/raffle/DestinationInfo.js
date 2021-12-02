@@ -9,7 +9,7 @@ const DestinationInfo = ({raffle}) => {
             <div className="col-lg-5">
                 <div className={"donation-goal-box bordered-field " + (raffle.status !== 'active' ? "" : "bordered-field-orange")}>
                     <p className="total-donation">
-                        Donation Goal:
+                        Donation Goal: &nbsp;
                         <span className="total-donation-number">
                             <Erg erg={isNaN(raffle.goal) ? 0 : raffle.goal} shouldDisplay={true}/>
                         </span>

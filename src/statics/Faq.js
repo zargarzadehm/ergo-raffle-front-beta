@@ -110,9 +110,6 @@ const SupportFaq = [
     {
         question: "I put in the wrong date - can I cancel my Raffle?",
         answer: "Unfortunately, raffles cannot be altered after creation. Your best bet is to create a second raffle and distribute the new link instead.",
-    }, {
-        question: "What is the ‘Shares Percentage’",
-        answer: "This is the percentage that the lucky raffle winner will claim.",
     }
 ]
 

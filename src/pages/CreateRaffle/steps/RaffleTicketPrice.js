@@ -3,7 +3,7 @@ import TicketPriceBadge from "../../../components/TicketPriceBadge";
 import * as constant from '../../../statics';
 
 const RaffleTicketPrice = ({init, setValue, setValid}) => {
-    setValid(init > 0);
+    setValid(!isNaN(init) && Number(init) > 0);
     return (
         <div className="step-content text-center text-lg-start">
             <h3 className="step-title mb-4">
@@ -13,7 +13,7 @@ const RaffleTicketPrice = ({init, setValue, setValid}) => {
                 <div className="text-center text-lg-start ticket-options-container">
                     {constant.TICKET_PRICES.map(item =>
                         <TicketPriceBadge
-                            ticketPrice={item}
+                            ticketPrice={Number(item)}
                             handleChange={() => setValue(item)}
                             value={init}/>
                     )}
@@ -27,7 +27,7 @@ const RaffleTicketPrice = ({init, setValue, setValid}) => {
                         className="form-control"
                         id="ticket-price"
                         placeholder="Custom Price"
-                        onChange={(e) => setValue(Number(e.target.value + ''))}
+                        onChange={(e) => setValue(e.target.value + '')}
                     />
                     <label htmlFor="ticket-price">Custom Price</label>
                 </div>

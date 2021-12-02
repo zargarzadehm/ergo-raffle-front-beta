@@ -38,6 +38,7 @@ const Layout = memo(({children}) => {
         "pubKey": "not-set",
         "required": false,
         "height": 83670,
+        supportUrl: '',
         "serviceFee": 5
     });
     const [pinnedRaffles, setPinnedRaffles] = useState([]);

@@ -17,11 +17,12 @@ class FinishModal extends React.Component {
         this.props.close();
         if (intervalItem) {
             clearInterval(intervalItem)
+            intervalItem = null;
         }
     }
 
     componentDidUpdate = () => {
-        if(!intervalItem) {
+        if (!intervalItem) {
             intervalItem = setInterval(() => {
                 this.setState(state => ({...state, interval: state.interval + 1}));
             }, 1000)
