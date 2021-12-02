@@ -1,4 +1,4 @@
-import { useEffect, useState, memo, useRef, useCallback, useContext } from 'react';
+import { useEffect, useState, useRef, useCallback, useContext } from 'react';
 import { BrowserRouter as Router, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { ErrorBoundary } from 'react-error-boundary'
@@ -23,7 +23,7 @@ const ScrollTop = () => {
     return (null);
 }
 
-const Layout = memo(({children}) => {
+const Layout = ({children}) => {
     const [hasWallet, setHasWallet] = useState((window.localStorage.getItem('wallet') !== null &&
         typeof window.localStorage.getItem('wallet') !== 'undefined') ?
         window.atob(window.localStorage.getItem('wallet')) :
@@ -88,6 +88,6 @@ const Layout = memo(({children}) => {
             <ToastContainer/>
         </ThemeContext.Provider>
     )
-});
+};
 
 export default Layout;

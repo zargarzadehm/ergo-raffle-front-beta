@@ -1,3 +1,3 @@
 export const config = {
-    baseUrl: "https://mock.ergoraffle.com/api"
+    baseUrl: "https://api-beta.ergoraffle.com/api"
 }

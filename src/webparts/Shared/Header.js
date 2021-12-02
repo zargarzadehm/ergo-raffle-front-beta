@@ -5,6 +5,7 @@ import staticText from "../../statics";
 import HeaderLayout from "./HeaderLayout";
 import logo from '../../assets/img/logo.png';
 import logoDark from '../../assets/img/logo-dark.png';
+import Logo from "./Logo";
 
 const Header = forwardRef((props, headerRef) => {
     const [wall, setWall] = useState(props.walletPassed);
@@ -51,8 +52,7 @@ const Header = forwardRef((props, headerRef) => {
     return (<HeaderLayout headerRef={headerRef} wrapperRef={wrapperRef}
                           mobileHeaderRef={mobileHeaderRef} desktopHeaderRef={desktopHeaderRef}>
         <Link className="navbar-brand mt-2 mt-lg-0" to={"/"}>
-            <span className="site-logo"><img src={context.theme === LIGHT_THEME ? logo : logoDark}
-                                             alt={"ergo raffle logo"}/></span>
+            <span className="site-logo"><Logo theme={context.theme}/></span>
         </Link>
         <div className="collapse navbar-collapse" id="navbarToggler">
             <ul className="navbar-nav mb-2 mb-lg-0 nav-links">
