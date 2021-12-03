@@ -1,32 +1,19 @@
 import React, { useContext } from "react";
 import { toast } from "react-toastify";
 import Day from "../../components/Day";
-import ThemeContext from "../../context";
+import { getPinnedRaffles, setPinnedRaffles } from "../../utils/utils";
 
 const DetailInfo = ({raffle}) => {
-    const context = useContext(ThemeContext);
     const tagRaffle = () => {
-        if (window.localStorage.getItem('pin') !== null) {
-            const data = window.localStorage.getItem('pin').split(',');
-            const exists = data.includes(raffle.id);
-            if (!exists) {
-                data.unshift(raffle.id);
-                if (data.length > 8) {
-                    data.pop();
-                }
-                window.localStorage.setItem('pin', data.join(','));
-                toast('Raffle Pinned');
-            } else {
-                const deletedItem = data.filter((a) => a !== raffle.id);
-                window.localStorage.setItem('pin', deletedItem.join(','));
-                let pinnedRaffles = [...context.pinnedRaffles];
-                context.setPinnedRaffles(pinnedRaffles.filter((a) => a.id !== raffle.id));
-                toast('Raffle Un Pinned');
-            }
-        } else {
-            window.localStorage.setItem('pin', raffle.id);
+        let pinned = getPinnedRaffles().reverse();
+        if(pinned.includes(raffle.id)){
+            pinned = pinned.filter(item => item !== raffle.id)
+            toast('Raffle Un Pinned');
+        }else{
+            pinned.push(raffle.id)
             toast('Raffle Pinned');
         }
+        setPinnedRaffles(pinned.reverse())
     }
     return (
         <React.Fragment>

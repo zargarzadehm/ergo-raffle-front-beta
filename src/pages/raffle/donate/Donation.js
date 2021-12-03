@@ -123,7 +123,6 @@ class Donation extends React.Component {
         const step = this.MultiStep[this.state.step]
         return (
             <main>
-                {/*<Title title={'Ergo Raffle - Create Raffle'}/>*/}
                 <section id="create-raffle">
                     <div className="container mt-header">
                         <MultiStepBar

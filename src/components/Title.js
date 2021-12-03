@@ -3,11 +3,9 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const Title = ({title}) => {
     return (
-        <HelmetProvider>
-            <Helmet>
-                <title>{title}</title>
-            </Helmet>
-        </HelmetProvider>
+        <Helmet>
+            <title>{title}</title>
+        </Helmet>
     );
 };
 

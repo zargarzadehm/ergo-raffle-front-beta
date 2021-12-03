@@ -1,9 +1,8 @@
 import React from "react";
-import Raffle from "../../components/Raffle";
-import { PIN_KEY } from "../../statics";
+import { getPinnedRaffles } from "../../utils/utils";
 
 const EmptyPinnedRaffles = () => {
-    const pinned = window.localStorage.getItem(PIN_KEY).split(",").filter(item => !!item)
+    const pinned = getPinnedRaffles()
     if(pinned.length > 0){
         return null
     }

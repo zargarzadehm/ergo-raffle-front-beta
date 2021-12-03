@@ -26,11 +26,7 @@ class Raffle extends React.Component {
     render = () => {
         return (
             <React.Fragment>
-                {/*{raffle ?*/}
-                {/*    <Title title={'Ergo Raffle - ' + raffle.name}/>*/}
-                {/*    :*/}
-                {/*    null*/}
-                {/*}*/}
+                {this.state.raffle ? <Title title={'Ergo Raffle - ' + this.state.raffle.name}/> : null}
                 <main>
                     <Header raffle={this.state.raffle}/>
                     <StatusInfo raffle={this.state.raffle}/>
@@ -64,6 +60,7 @@ class Raffle extends React.Component {
         )
     }
 }
+
 Raffle.contextType = ThemeContext;
 
 export default Raffle;

@@ -239,7 +239,7 @@ class CreateRaffle extends React.Component {
         const sub_steps = this.MultiStep[this.state.step].subs
         return (
             <main>
-                {/*<Title title={'Ergo Raffle - Create Raffle'}/>*/}
+                <Title title={'Ergo Raffle - Create Raffle'}/>
                 <section id="create-raffle">
                     <div className="container mt-header">
                         <div className={`create-raffle-img-container text-center ${step_image}`}/>

@@ -18,7 +18,7 @@ class Dashboard extends React.Component{
     render = () => {
         return(
             <React.Fragment>
-                {/*<Title title={'Ergo Raffle - Dashboard'}/>*/}
+                <Title title={'Ergo Raffle - Dashboard'}/>
                 <main>
                     <PinnedRaffles/>
                     <DashboardRaffles
