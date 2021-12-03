@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import defaultImg from '../../assets/img/default.jpg';
 import Lightbox from 'lightbox-react';
 import GalleryNavigation from './GalleryNavigation';
-import 'lightbox-react/style.css'; // This only needs to be imported once in your app
+import defaultDark from '../../assets/img/default-dark.png'
+import defaultLight from '../../assets/img/default-light.png'
+import 'lightbox-react/style.css';
+import ThemeContext, { DARK_THEME } from "../../context"; // This only needs to be imported once in your app
 
 const Gallery = ({raffle}) => {
-    const images = raffle.picture && raffle.picture.length > 0 ? raffle.picture : [defaultImg];
+    const context = useContext(ThemeContext);
+    let picture = context.theme === DARK_THEME  ? defaultDark : defaultLight;
+    const images = raffle.picture && raffle.picture.length > 0 ? raffle.picture : [picture];
     const [isOpen, setIsOpen] = useState(false);
     const [startIndex, setStartIndex] = useState(0);
 
-    const pictures = (raffle.picture && raffle.picture.length > 0 ? raffle.picture : [defaultImg])
+    const pictures = (raffle.picture && raffle.picture.length > 0 ? raffle.picture : [picture])
     return (
         <React.Fragment>
             <div id="carouselExampleIndicators" className={"carousel slide " + (raffle.status === 'succeed' ? 'raffle-success-image' : raffle.status === 'failed' ? 'raffle-unsuccess-image' : '')} data-bs-ride="carousel">
