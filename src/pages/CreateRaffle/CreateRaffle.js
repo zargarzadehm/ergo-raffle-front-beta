@@ -18,6 +18,7 @@ import * as constant from '../../statics';
 import { getRaffleStatus, postRaffle } from "../../service/raffle.service";
 import { toast } from "react-toastify";
 import TermsModal from "../../webparts/Modal/TermsModal";
+import { IS_BETA } from "../../statics";
 
 let interval_item = null;
 
@@ -240,36 +241,50 @@ class CreateRaffle extends React.Component {
         return (
             <main>
                 <Title title={'Ergo Raffle - Create Raffle'}/>
-                <section id="create-raffle">
-                    <div className="container mt-header">
-                        <div className={`create-raffle-img-container text-center ${step_image}`}/>
-                        <MultiStepBar
-                            steps={this.MultiStep.map(item => item.title)}
-                            active={this.state.step}
-                            showStep={true}
-                            title="Ready to Create a New Raffle?"/>
-                        <div className="row pt-4">
-                            {sub_steps ? (
-                                <React.Fragment>
-                                    <div className="col-md-4 col-xs-12">
-                                        <MultiStepLeft
-                                            active={this.state.subStep}
-                                            steps={sub_steps.map(item => item.title)}/>
-                                    </div>
-                                    <div className="col-md-8 col-xs-12">
+                {IS_BETA ? (
+                    <section id="create-raffle">
+                        <div className="container mt-header text-center pt-5">
+                            <h3 className={"mt-5"}>
+                                This is the Ergo Raffle Beta. No new raffles can be created anymore. The Beta version is
+                                being maintained in order to complete running raffles.
+                            </h3>
+                            <a className="btn btn-create-raffle" href={"http://ergoraffle.com"}>
+                                Go to ergoraffle.com
+                            </a>
+                        </div>
+                    </section>
+                ) : (
+                    <section id="create-raffle">
+                        <div className="container mt-header">
+                            <div className={`create-raffle-img-container text-center ${step_image}`}/>
+                            <MultiStepBar
+                                steps={this.MultiStep.map(item => item.title)}
+                                active={this.state.step}
+                                showStep={true}
+                                title="Ready to Create a New Raffle?"/>
+                            <div className="row pt-4">
+                                {sub_steps ? (
+                                    <React.Fragment>
+                                        <div className="col-md-4 col-xs-12">
+                                            <MultiStepLeft
+                                                active={this.state.subStep}
+                                                steps={sub_steps.map(item => item.title)}/>
+                                        </div>
+                                        <div className="col-md-8 col-xs-12">
+                                            {this.render_sub_state()}
+                                            {this.render_buttons()}
+                                        </div>
+                                    </React.Fragment>
+                                ) : (
+                                    <div className="col-xs-8">
                                         {this.render_sub_state()}
                                         {this.render_buttons()}
                                     </div>
-                                </React.Fragment>
-                            ) : (
-                                <div className="col-xs-8">
-                                    {this.render_sub_state()}
-                                    {this.render_buttons()}
-                                </div>
-                            )}
+                                )}
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                )}
                 <FinishModal {...this.state.response} stepTitle="Create Raffle Steps" close={this.closeModal}/>
                 <TermsModal show={this.state.showTerms} close={this.closeModal}/>
             </main>

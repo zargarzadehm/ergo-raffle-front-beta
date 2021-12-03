@@ -5,12 +5,13 @@ import { Suspense } from 'react';
 import { getRaffle } from '../../service/raffle.service';
 import Raffle from '../../components/Raffle';
 import Title from '../../components/Title';
-import { RAFFLE_SORTING_TABS } from '../../statics';
+import { IS_BETA, RAFFLE_SORTING_TABS } from '../../statics';
 import CarouselBar from './CarouselBar';
 import HeadingTitle from '../../webparts/Shared/HeadingTitle';
 import Tabs from '../../components/Tabs';
 import HomeHeader from './HomeHeader';
 import { Link } from "react-router-dom";
+import BetaModal from "../../webparts/Modal/BetaModal";
 
 class Home extends React.Component {
     state = {
@@ -18,7 +19,8 @@ class Home extends React.Component {
         successStories: [],
         progress: false,
         activeTab: 0,
-        rafflesTab: -1
+        rafflesTab: -1,
+        show_beta: IS_BETA,
     }
 
     fetch_data = () => {
@@ -52,9 +54,9 @@ class Home extends React.Component {
         const tabsContent = RAFFLE_SORTING_TABS.map(item => item.title);
         const tab = RAFFLE_SORTING_TABS[this.state.activeTab];
         return (
-            <>
+            <React.Fragment>
                 <Title title={'Ergo Raffle - Home'}/>
-                <HomeHeader/>
+                <HomeHeader showBeta={()=>this.setState({show_beta: true})}/>
                 <section>
                     <div className="container raffle-links-container mt-5">
                         <Tabs tabs={tabsContent}
@@ -97,7 +99,8 @@ class Home extends React.Component {
                         <RaffleWork/>
                     </div>
                 </section>
-            </>
+                <BetaModal show={this.state.show_beta} close={() => this.setState({show_beta: false})}/>
+            </React.Fragment>
         )
     }
 }
