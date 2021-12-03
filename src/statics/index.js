@@ -80,6 +80,7 @@ const DONATION_TICKET_COUNT = [5, 10, 20, 30];
 const DASHBOARD_TABS = ['Ask For Help', 'FAQ and Problems'];
 const PIN_KEY = "pin";
 const IS_BETA = true;
+const DEFAULT_SUPPORT_URL = "https://discord.gg/4CPBVyDt";
 export default staticText;
 
 export {
@@ -104,4 +105,5 @@ export {
     PIN_KEY,
     TITLE_LENGTH,
     IS_BETA,
+    DEFAULT_SUPPORT_URL
 }

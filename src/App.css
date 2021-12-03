@@ -504,6 +504,7 @@ input:-webkit-autofill:active {
     -ms-flex-positive: 1;
     flex-grow: 1;
     height: 1px;
+    margin-top: 12px;
     background-color: rgba(227, 227, 227, 0.76);
     z-index: -1;
 }
@@ -541,6 +542,7 @@ input:-webkit-autofill:active {
     height: 1px;
     background-color: rgba(227, 227, 227, 0.76);
     z-index: -1;
+    margin-top: 12px;
 }
 
 .progress-container {

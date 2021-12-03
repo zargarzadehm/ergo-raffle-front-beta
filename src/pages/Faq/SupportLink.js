@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import ThemeContext from "../../context";
+import { DEFAULT_SUPPORT_URL } from "../../statics";
 
 const SupportLink = props => {
     const context = useContext(ThemeContext);
     const openSupportBot = () => {
-        window.open(context.info.supportUrl, "_blank")
+        const support_url = context.info.supportUrl ? context.info.supportUrl : DEFAULT_SUPPORT_URL;
+        window.open(support_url, "_blank")
     }
     return (
         <div>
