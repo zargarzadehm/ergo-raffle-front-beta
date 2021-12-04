@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Erg from "../../../components/Erg";
 import { DONATION_TICKET_COUNT } from "../../../statics";
-import TicketPriceBadge from "../../../components/TicketPriceBadge";
+import TicketCountBadge from "./TicketCountBadge";
 
 const DonateTicketCount = ({init, setValid, setValue, ticketPrice}) => {
     setValid(!!init);
@@ -12,9 +12,9 @@ const DonateTicketCount = ({init, setValid, setValue, ticketPrice}) => {
                 <div className="row mt-3">
                     <div className="col-lg-12 text-center ticket-options-container">
                         {DONATION_TICKET_COUNT.map(item => (
-                            <TicketPriceBadge
+                            <TicketCountBadge
                                 key={item + '-'}
-                                ticketPrice={item}
+                                ticketCount={item}
                                 handleChange={() => setValue(item)}
                                 value={init}/>
                         ))}

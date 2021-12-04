@@ -12,7 +12,7 @@ const RaffleDescription = ({setValid, init, setValue}) => {
         <div className="first-step step-1-c">
             <div className="step-content text-center text-lg-start">
                 <h3 className="step-title mb-4">
-                    Write the Raffle's Description.
+                    Write the Raffle's Description. <small>({DESCRIPTION_SIZE_LIMIT} characters)</small>
                 </h3>
                 <form>
                     <div className="editor-bordered-box">
