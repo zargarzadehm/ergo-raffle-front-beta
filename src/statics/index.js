@@ -2,7 +2,7 @@ import Faq, { SupportFaq } from './Faq';
 
 
 const RAFFLE_SORTING_TABS = [
-    {title: "Newest", sorting: "-createTime", status: "active"},
+    {title: "Newest", sorting: "createTime", status: "active"},
     {title: "Last Activity", sorting: "", status: "active"},
     {title: "Nearing Deadline", sorting: "-deadline", status: "active"},
 ]
